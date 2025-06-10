@@ -1,33 +1,126 @@
 aid: polyapi
-name: PolyAPI
-description: >-
-  Poly, built using cutting-edge AI and Kubernetes-native technology,
-  accelerates development and simplifies the operation of integrations,
-  orchestrations, and microservices with TypeScript, Python, Java, and C. 
-type: Index
-position: Consumer
-access: 3rd-Party
-image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
-tags:
-  - API
-created: '2025-06-05'
-modified: '2025-06-05'
 url: >-
   https://raw.githubusercontent.com/api-evangelist/polyapi/refs/heads/main/apis.yml
-specificationVersion: '0.19'
 apis:
   - aid: polyapi:polyapi
     name: PolyAPI
+    tags:
+      - API
+    humanURL: ' https://polyapi.io/'
+    properties:
+      - url: ' https://polyapi.io/'
+        type: Documentation
     description: >-
       Poly, built using cutting-edge AI and Kubernetes-native technology,
       accelerates development and simplifies the operation of integrations,
       orchestrations, and microservices with TypeScript, Python, Java, and C. 
-    humanURL: ' https://polyapi.io/'
-    tags:
-      - API
-    properties:
-      - type: Documentation
-        url: ' https://polyapi.io/'
+name: PolyAPI
+tags:
+  - API
+type: Index
+image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+access: 3rd-Party
+created: '2025-06-05'
+modified: '2025-06-10'
+position: Consumer
+description: >-
+  Poly, built using cutting-edge AI and Kubernetes-native technology,
+  accelerates development and simplifies the operation of integrations,
+  orchestrations, and microservices with TypeScript, Python, Java, and C. 
 maintainers:
   - FN: Kin Lane
     email: info@apievangelist.com
+specificationVersion: '0.19'
+common:
+  - name: PolyAPI - Modern Enterprise Middleware
+    description: 'null'
+    url: https://polyapi.io/
+    type: Website
+  - name: PolyAPI - Modern Enterprise Middleware
+    description: 'null'
+    url: https://polyapi.io/#pricing
+    type: Pricing
+  - name: Use Cases - PolyAPI
+    description: 'null'
+    url: https://polyapi.io/platform/use-cases/
+    type: UseCases
+  - name: The Poly Platform - PolyAPI
+    description: 'null'
+    url: https://polyapi.io/platform/#roadmap
+    type: RoadMap
+  - name: System Status - PolyAPI
+    description: 'null'
+    url: https://polyapi.io/platform/system-status/
+    type: Status
+  - name: Case Studies - PolyAPI
+    description: 'null'
+    url: https://polyapi.io/solutions/case-studies/
+    type: CaseStudies
+  - name: Release Notes - PolyAPI
+    description: 'null'
+    url: https://polyapi.io/learn-more/release-notes/
+    type: ChangeLog
+  - name: PolyAPI documentation
+    description: 'null'
+    url: https://docs.polyapi.io/
+    type: Documentation
+  - name: Generated SDKs - PolyAPI documentation
+    description: 'null'
+    url: https://docs.polyapi.io/generated_sdks/index.html
+    type: SDKs
+  - name: Authentication - PolyAPI documentation
+    description: 'null'
+    url: https://docs.polyapi.io/authentication/index.html
+    type: Authentication
+  - name: Webhooks - PolyAPI documentation
+    description: 'null'
+    url: https://docs.polyapi.io/webhooks/index.html
+    type: Webhooks
+  - name: Schemas - PolyAPI documentation
+    description: 'null'
+    url: https://docs.polyapi.io/schemas/index.html
+    type: Schema
+  - name: Snippets - PolyAPI documentation
+    description: 'null'
+    url: https://docs.polyapi.io/snippets/index.html
+    type: Snippets
+  - name: Environments - PolyAPI documentation
+    description: 'null'
+    url: https://docs.polyapi.io/environments/index.html
+    type: Environments
+  - name: Versions - PolyAPI documentation
+    description: 'null'
+    url: https://docs.polyapi.io/versions.html
+    type: Versioning
+  - name: Quickstart - PolyAPI documentation
+    description: 'null'
+    url: https://docs.polyapi.io/quickstart.html
+    type: GettingStarted
+  - name: Videos - PolyAPI
+    description: 'null'
+    url: https://polyapi.io/learn-more/videos/
+    type: Videos
+  - name: White Papers - PolyAPI
+    description: 'null'
+    url: https://polyapi.io/learn-more/white-papers/
+    type: WhitePapers
+  - name: White Papers - PolyAPI
+    description: 'null'
+    url: https://polyapi.io/learn-more/white-papers/
+    type: WhitePapers
+  - name: Blog - PolyAPI
+    description: 'null'
+    url: https://polyapi.io/learn-more/blog/
+    type: Blog
+  - name: Investors & Partners - PolyAPI
+    description: 'null'
+    url: https://polyapi.io/about-us/investors-partners/#partners
+    type: Partners
+  - name: Login To Poly - PolyAPI
+    description: 'null'
+    url: https://na1.polyapi.io/canopy/polyui/login
+    type: Login
+  - name: Sign Up For Poly - PolyAPI
+    description: 'null'
+    url: https://na1.polyapi.io/canopy/polyui/signup
+    type: SignUp
