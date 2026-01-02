@@ -23,6 +23,7 @@ tags:
   - Orchestrations
   - Microservices
   - Middleware
+  - Pro-Code API Composition
 type: Index
 image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
 access: 3rd-Party
@@ -36,8 +37,6 @@ common:
     type: Pricing
     description: 'null'
   - url: https://polyapi.io/platform/use-cases/
-    name: Use Cases - PolyAPI
-    type: UseCases
     data:
       - name: Service Development
       - name: Operational Applications
@@ -65,9 +64,9 @@ common:
       - name: Common Interfaces
       - name: Decouple & Transform
       - name: Vendor Monitoring
-  - name: Features
-    type: Features
-    data:
+    name: Use Cases - PolyAPI
+    type: UseCases
+  - data:
       - name: Catalog
       - name: Devleopment
       - name: Operations
@@ -128,14 +127,16 @@ common:
       - name: Reusable Schema Models in Node
       - name: PolyAPI integration with Zoom
       - name: Node Improvements
-      - name: PolyAPI's Canopy Experience
+      - name: PolyAPIs Canopy Experience
       - name: Shared Metrics
-      - name: Using PolyAPI's Postman Collection
+      - name: Using PolyAPIs Postman Collection
       - name: Magic UI Configuration with Canopy
       - name: Function Invocation via UI
       - name: Function Code Copying
       - name: Function Replication
       - name: Error Events to Server Function Triggers
+    name: Features
+    type: Features
   - url: https://polyapi.io/platform/#roadmap
     name: The Poly Platform - PolyAPI
     type: RoadMap
@@ -217,7 +218,7 @@ common:
     type: SignUp
     description: 'null'
 created: '2025-06-05T00:00:00.000Z'
-modified: '2025-06-10'
+modified: '2026-01-02'
 position: Consumer
 description: >-
   Poly, built using cutting-edge AI and Kubernetes-native technology,
