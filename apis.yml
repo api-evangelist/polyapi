@@ -128,9 +128,9 @@ common:
       - name: Reusable Schema Models in Node
       - name: PolyAPI integration with Zoom
       - name: Node Improvements
-      - name: PolyAPIs Canopy Experience
+      - name: PolyAPI's Canopy Experience
       - name: Shared Metrics
-      - name: Using PolyAPIs Postman Collection
+      - name: Using PolyAPI's Postman Collection
       - name: Magic UI Configuration with Canopy
       - name: Function Invocation via UI
       - name: Function Code Copying
