@@ -1,0 +1,50 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/api-evangelist/polyapi/blob/main/json-schema/webhook.json",
+  "title": "PolyAPI Webhook",
+  "description": "A webhook endpoint that receives events via HTTP calls, with support for authentication and custom listeners that can be connected to server functions via triggers.",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "The unique identifier of the webhook."
+    },
+    "name": {
+      "type": "string",
+      "description": "The name of the webhook."
+    },
+    "description": {
+      "type": "string",
+      "description": "A description of the webhook."
+    },
+    "context": {
+      "type": "string",
+      "description": "The context path for organizing the webhook in the catalog."
+    },
+    "url": {
+      "type": "string",
+      "format": "uri",
+      "description": "The webhook endpoint URL."
+    },
+    "authentication": {
+      "type": "object",
+      "description": "Authentication configuration for the webhook."
+    },
+    "state": {
+      "type": "string",
+      "enum": ["active", "inactive"],
+      "description": "The state of the webhook."
+    },
+    "createdAt": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Timestamp when the webhook was created."
+    },
+    "updatedAt": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Timestamp when the webhook was last updated."
+    }
+  },
+  "required": ["name"]
+}

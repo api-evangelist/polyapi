@@ -1,0 +1,54 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/api-evangelist/polyapi/blob/main/json-schema/trigger.json",
+  "title": "PolyAPI Trigger",
+  "description": "A trigger connects a cloud event source (such as a webhook) to a function for event-driven execution.",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "The unique identifier of the trigger."
+    },
+    "name": {
+      "type": "string",
+      "description": "The name of the trigger."
+    },
+    "description": {
+      "type": "string",
+      "description": "A description of the trigger."
+    },
+    "sourceType": {
+      "type": "string",
+      "description": "The type of event source (e.g., webhook, cloud event)."
+    },
+    "sourceId": {
+      "type": "string",
+      "description": "The ID of the event source."
+    },
+    "targetFunctionId": {
+      "type": "string",
+      "description": "The ID of the function to trigger."
+    },
+    "targetFunctionType": {
+      "type": "string",
+      "enum": ["server", "api"],
+      "description": "The type of function to trigger."
+    },
+    "state": {
+      "type": "string",
+      "enum": ["active", "inactive"],
+      "description": "The state of the trigger."
+    },
+    "createdAt": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Timestamp when the trigger was created."
+    },
+    "updatedAt": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Timestamp when the trigger was last updated."
+    }
+  },
+  "required": ["name", "sourceType", "sourceId", "targetFunctionId", "targetFunctionType"]
+}

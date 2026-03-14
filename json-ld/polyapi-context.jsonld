@@ -1,0 +1,132 @@
+{
+  "@context": {
+    "@vocab": "https://schema.org/",
+    "poly": "https://docs.polyapi.io/",
+    "ApiFunction": {
+      "@id": "poly:api_functions",
+      "@context": {
+        "name": "https://schema.org/name",
+        "description": "https://schema.org/description",
+        "context": "https://schema.org/category",
+        "method": "https://schema.org/httpMethod",
+        "url": "https://schema.org/url",
+        "headers": "https://schema.org/additionalProperty",
+        "requestBody": "https://schema.org/object",
+        "responseSchema": "https://schema.org/object",
+        "state": "https://schema.org/status",
+        "owner": "https://schema.org/author",
+        "visibility": "https://schema.org/accessMode"
+      }
+    },
+    "ServerFunction": {
+      "@id": "poly:server_functions",
+      "@context": {
+        "name": "https://schema.org/name",
+        "description": "https://schema.org/description",
+        "context": "https://schema.org/category",
+        "language": "https://schema.org/programmingLanguage",
+        "code": "https://schema.org/text",
+        "deploymentId": "https://schema.org/identifier",
+        "state": "https://schema.org/status",
+        "owner": "https://schema.org/author",
+        "visibility": "https://schema.org/accessMode"
+      }
+    },
+    "ClientFunction": {
+      "@id": "poly:client_functions",
+      "@context": {
+        "name": "https://schema.org/name",
+        "description": "https://schema.org/description",
+        "context": "https://schema.org/category",
+        "language": "https://schema.org/programmingLanguage",
+        "code": "https://schema.org/text",
+        "state": "https://schema.org/status",
+        "owner": "https://schema.org/author",
+        "visibility": "https://schema.org/accessMode"
+      }
+    },
+    "Webhook": {
+      "@id": "poly:webhooks",
+      "@context": {
+        "name": "https://schema.org/name",
+        "description": "https://schema.org/description",
+        "context": "https://schema.org/category",
+        "url": "https://schema.org/url",
+        "authentication": "https://schema.org/authenticator",
+        "state": "https://schema.org/status"
+      }
+    },
+    "Variable": {
+      "@id": "poly:variables",
+      "@context": {
+        "name": "https://schema.org/name",
+        "description": "https://schema.org/description",
+        "pathIdentifier": "https://schema.org/identifier",
+        "value": "https://schema.org/value",
+        "secret": "https://schema.org/accessMode",
+        "visibility": "https://schema.org/accessMode"
+      }
+    },
+    "Trigger": {
+      "@id": "poly:triggers",
+      "@context": {
+        "name": "https://schema.org/name",
+        "description": "https://schema.org/description",
+        "sourceType": "https://schema.org/category",
+        "sourceId": {
+          "@id": "poly:webhooks",
+          "@type": "@id"
+        },
+        "targetFunctionId": {
+          "@id": "poly:server_functions",
+          "@type": "@id"
+        },
+        "targetFunctionType": "https://schema.org/category",
+        "state": "https://schema.org/status"
+      }
+    },
+    "Job": {
+      "@id": "poly:jobs",
+      "@context": {
+        "name": "https://schema.org/name",
+        "description": "https://schema.org/description",
+        "functionId": {
+          "@id": "poly:server_functions",
+          "@type": "@id"
+        },
+        "functionType": "https://schema.org/category",
+        "schedule": "https://schema.org/repeatFrequency",
+        "state": "https://schema.org/status",
+        "lastRunAt": "https://schema.org/dateModified",
+        "nextRunAt": "https://schema.org/scheduledTime"
+      }
+    },
+    "Schema": {
+      "@id": "poly:schemas",
+      "@context": {
+        "name": "https://schema.org/name",
+        "description": "https://schema.org/description",
+        "context": "https://schema.org/category",
+        "definition": "https://schema.org/object",
+        "visibility": "https://schema.org/accessMode"
+      }
+    },
+    "Environment": {
+      "@id": "poly:environments",
+      "@context": {
+        "name": "https://schema.org/name",
+        "description": "https://schema.org/description",
+        "contextName": "https://schema.org/identifier"
+      }
+    },
+    "Conversation": {
+      "@id": "poly:assistants",
+      "@context": {
+        "slug": "https://schema.org/identifier",
+        "messages": "https://schema.org/comment",
+        "role": "https://schema.org/roleName",
+        "content": "https://schema.org/text"
+      }
+    }
+  }
+}

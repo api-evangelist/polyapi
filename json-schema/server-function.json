@@ -1,0 +1,63 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/api-evangelist/polyapi/blob/main/json-schema/server-function.json",
+  "title": "PolyAPI Server Function",
+  "description": "A server function is a Knative serverless function that runs in the PolyAPI cloud infrastructure, supporting TypeScript, Python, Java, and C# languages.",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "The unique identifier of the server function."
+    },
+    "name": {
+      "type": "string",
+      "description": "The name of the server function."
+    },
+    "description": {
+      "type": "string",
+      "description": "A description of what the server function does."
+    },
+    "context": {
+      "type": "string",
+      "description": "The context path for organizing the function in the catalog."
+    },
+    "language": {
+      "type": "string",
+      "enum": ["typescript", "python", "java", "csharp"],
+      "description": "The programming language of the function."
+    },
+    "code": {
+      "type": "string",
+      "description": "The function source code."
+    },
+    "deploymentId": {
+      "type": "string",
+      "description": "The deployment identifier for the function."
+    },
+    "state": {
+      "type": "string",
+      "enum": ["active", "inactive", "deprecated"],
+      "description": "The lifecycle state of the function."
+    },
+    "owner": {
+      "type": "string",
+      "description": "The owner of the function."
+    },
+    "visibility": {
+      "type": "string",
+      "enum": ["public", "private"],
+      "description": "The visibility of the function."
+    },
+    "createdAt": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Timestamp when the function was created."
+    },
+    "updatedAt": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Timestamp when the function was last updated."
+    }
+  },
+  "required": ["name", "language", "code"]
+}

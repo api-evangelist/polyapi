@@ -1,0 +1,45 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/api-evangelist/polyapi/blob/main/json-schema/assistant.json",
+  "title": "PolyAPI Assistant Conversation",
+  "description": "An AI assistant conversation for AI-powered document assistance and discovery in PolyAPI.",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "The unique identifier of the conversation."
+    },
+    "slug": {
+      "type": "string",
+      "description": "The slug identifier for the conversation."
+    },
+    "messages": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "role": {
+            "type": "string",
+            "enum": ["user", "assistant"],
+            "description": "The role of the message sender."
+          },
+          "content": {
+            "type": "string",
+            "description": "The message content."
+          }
+        }
+      },
+      "description": "The list of messages in the conversation."
+    },
+    "createdAt": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Timestamp when the conversation was created."
+    },
+    "updatedAt": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Timestamp when the conversation was last updated."
+    }
+  }
+}

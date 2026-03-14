@@ -1,0 +1,50 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/api-evangelist/polyapi/blob/main/json-schema/variable.json",
+  "title": "PolyAPI Variable",
+  "description": "A variable or secret that is stored securely and injected into functions at runtime using a path identifier.",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "The unique identifier of the variable."
+    },
+    "name": {
+      "type": "string",
+      "description": "The name of the variable."
+    },
+    "description": {
+      "type": "string",
+      "description": "A description of the variable."
+    },
+    "pathIdentifier": {
+      "type": "string",
+      "description": "The path identifier used to reference this variable in functions (e.g., 'tutorial.apiKey')."
+    },
+    "value": {
+      "type": "string",
+      "description": "The variable value (masked for secrets)."
+    },
+    "secret": {
+      "type": "boolean",
+      "default": false,
+      "description": "Whether this variable is stored as a secret."
+    },
+    "visibility": {
+      "type": "string",
+      "enum": ["public", "private"],
+      "description": "The visibility of the variable."
+    },
+    "createdAt": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Timestamp when the variable was created."
+    },
+    "updatedAt": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Timestamp when the variable was last updated."
+    }
+  },
+  "required": ["name", "value"]
+}

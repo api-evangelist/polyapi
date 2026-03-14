@@ -3,22 +3,47 @@ url: >-
   https://raw.githubusercontent.com/api-evangelist/polyapi/refs/heads/main/apis.yml
 apis:
   - aid: polyapi:polyapi
-    name: PolyAPI
+    name: PolyAPI Platform API
     tags:
       - Integrations
       - Orchestrations
       - Microservices
       - Middleware
-    humanURL: ' https://polyapi.io/'
+    humanURL: https://polyapi.io/
     properties:
-      - url: ' https://polyapi.io/'
+      - url: https://docs.polyapi.io/
         type: Documentation
       - url: openapi/polyapi-platform-openapi.yml
         type: OpenAPI
+      - url: json-schema/api-function.json
+        type: JSONSchema
+      - url: json-schema/server-function.json
+        type: JSONSchema
+      - url: json-schema/client-function.json
+        type: JSONSchema
+      - url: json-schema/webhook.json
+        type: JSONSchema
+      - url: json-schema/variable.json
+        type: JSONSchema
+      - url: json-schema/trigger.json
+        type: JSONSchema
+      - url: json-schema/job.json
+        type: JSONSchema
+      - url: json-schema/schema.json
+        type: JSONSchema
+      - url: json-schema/environment.json
+        type: JSONSchema
+      - url: json-schema/assistant.json
+        type: JSONSchema
+      - url: json-ld/polyapi-context.jsonld
+        type: JSONLD
     description: >-
-      Poly, built using cutting-edge AI and Kubernetes-native technology,
-      accelerates development and simplifies the operation of integrations,
-      orchestrations, and microservices with TypeScript, Python, Java, and C.
+      PolyAPI is a modern enterprise middleware platform that provides a unified
+      REST API for managing cloud service resources including functions, variables,
+      webhooks, triggers, jobs, schemas, and environments. Built using AI and
+      Kubernetes-native technology, it accelerates development and simplifies the
+      operation of integrations, orchestrations, and microservices with TypeScript,
+      Python, Java, and C#.
 name: PolyAPI
 tags:
   - Integrations
@@ -199,10 +224,6 @@ common:
     name: White Papers - PolyAPI
     type: WhitePapers
     description: 'null'
-  - url: https://polyapi.io/learn-more/white-papers/
-    name: White Papers - PolyAPI
-    type: WhitePapers
-    description: 'null'
   - url: https://polyapi.io/learn-more/blog/
     name: Blog - PolyAPI
     type: Blog
@@ -225,7 +246,7 @@ position: Consumer
 description: >-
   Poly, built using cutting-edge AI and Kubernetes-native technology,
   accelerates development and simplifies the operation of integrations,
-  orchestrations, and microservices with TypeScript, Python, Java, and C. 
+  orchestrations, and microservices with TypeScript, Python, Java, and C.
 maintainers:
   - FN: Kin Lane
     email: info@apievangelist.com

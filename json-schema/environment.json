@@ -1,0 +1,36 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/api-evangelist/polyapi/blob/main/json-schema/environment.json",
+  "title": "PolyAPI Environment",
+  "description": "An environment for organizing and deploying resources across development, staging, and production in PolyAPI.",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "The unique identifier of the environment."
+    },
+    "name": {
+      "type": "string",
+      "description": "The name of the environment."
+    },
+    "description": {
+      "type": "string",
+      "description": "A description of the environment."
+    },
+    "contextName": {
+      "type": "string",
+      "description": "The context name attribute for the environment."
+    },
+    "createdAt": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Timestamp when the environment was created."
+    },
+    "updatedAt": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Timestamp when the environment was last updated."
+    }
+  },
+  "required": ["name"]
+}

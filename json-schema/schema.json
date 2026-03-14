@@ -1,0 +1,45 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/api-evangelist/polyapi/blob/main/json-schema/schema.json",
+  "title": "PolyAPI Schema",
+  "description": "A shared JSON Schema definition used to type events and application data across PolyAPI functions and webhooks.",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "The unique identifier of the schema."
+    },
+    "name": {
+      "type": "string",
+      "description": "The name of the schema."
+    },
+    "description": {
+      "type": "string",
+      "description": "A description of the schema."
+    },
+    "context": {
+      "type": "string",
+      "description": "The context path for organizing the schema in the catalog."
+    },
+    "definition": {
+      "type": "object",
+      "description": "The JSON Schema definition."
+    },
+    "visibility": {
+      "type": "string",
+      "enum": ["public", "private"],
+      "description": "The visibility of the schema."
+    },
+    "createdAt": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Timestamp when the schema was created."
+    },
+    "updatedAt": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Timestamp when the schema was last updated."
+    }
+  },
+  "required": ["name", "definition"]
+}

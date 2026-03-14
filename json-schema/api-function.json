@@ -1,0 +1,75 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/api-evangelist/polyapi/blob/main/json-schema/api-function.json",
+  "title": "PolyAPI API Function",
+  "description": "An API function wraps a third-party API call and is invoked through the PolyAPI gateway, providing a managed proxy with built-in authentication, monitoring, and variable injection.",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "The unique identifier of the API function."
+    },
+    "name": {
+      "type": "string",
+      "description": "The name of the API function."
+    },
+    "description": {
+      "type": "string",
+      "description": "A description of what the API function does."
+    },
+    "context": {
+      "type": "string",
+      "description": "The context path for organizing the function in the catalog."
+    },
+    "method": {
+      "type": "string",
+      "enum": ["GET", "POST", "PUT", "PATCH", "DELETE"],
+      "description": "The HTTP method used by the API function."
+    },
+    "url": {
+      "type": "string",
+      "format": "uri",
+      "description": "The target URL for the API call."
+    },
+    "headers": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "string"
+      },
+      "description": "HTTP headers to include in the API call."
+    },
+    "requestBody": {
+      "type": "object",
+      "description": "The request body schema for the API call."
+    },
+    "responseSchema": {
+      "type": "object",
+      "description": "The expected response schema."
+    },
+    "state": {
+      "type": "string",
+      "enum": ["active", "inactive", "deprecated"],
+      "description": "The lifecycle state of the function."
+    },
+    "owner": {
+      "type": "string",
+      "description": "The owner of the function."
+    },
+    "visibility": {
+      "type": "string",
+      "enum": ["public", "private"],
+      "description": "The visibility of the function."
+    },
+    "createdAt": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Timestamp when the function was created."
+    },
+    "updatedAt": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Timestamp when the function was last updated."
+    }
+  },
+  "required": ["name", "method", "url"]
+}

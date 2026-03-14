@@ -1,0 +1,60 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/api-evangelist/polyapi/blob/main/json-schema/job.json",
+  "title": "PolyAPI Job",
+  "description": "A job executes a function at a set time, interval, or CRON schedule for automated recurring tasks.",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "The unique identifier of the job."
+    },
+    "name": {
+      "type": "string",
+      "description": "The name of the job."
+    },
+    "description": {
+      "type": "string",
+      "description": "A description of the job."
+    },
+    "functionId": {
+      "type": "string",
+      "description": "The ID of the function to execute."
+    },
+    "functionType": {
+      "type": "string",
+      "enum": ["server", "api"],
+      "description": "The type of function to execute."
+    },
+    "schedule": {
+      "type": "string",
+      "description": "The CRON expression or interval defining when the job runs."
+    },
+    "state": {
+      "type": "string",
+      "enum": ["active", "inactive"],
+      "description": "The state of the job."
+    },
+    "lastRunAt": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Timestamp of the last execution."
+    },
+    "nextRunAt": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Timestamp of the next scheduled execution."
+    },
+    "createdAt": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Timestamp when the job was created."
+    },
+    "updatedAt": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Timestamp when the job was last updated."
+    }
+  },
+  "required": ["name", "functionId", "functionType", "schedule"]
+}
