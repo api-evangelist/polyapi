@@ -13,10 +13,12 @@ apis:
     properties:
       - url: ' https://polyapi.io/'
         type: Documentation
+      - url: openapi/polyapi-platform-openapi.yml
+        type: OpenAPI
     description: >-
       Poly, built using cutting-edge AI and Kubernetes-native technology,
       accelerates development and simplifies the operation of integrations,
-      orchestrations, and microservices with TypeScript, Python, Java, and C. 
+      orchestrations, and microservices with TypeScript, Python, Java, and C.
 name: PolyAPI
 tags:
   - Integrations
@@ -218,7 +220,7 @@ common:
     type: SignUp
     description: 'null'
 created: '2025-06-05T00:00:00.000Z'
-modified: '2026-01-02'
+modified: '2026-03-14'
 position: Consumer
 description: >-
   Poly, built using cutting-edge AI and Kubernetes-native technology,

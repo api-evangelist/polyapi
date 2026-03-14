@@ -1,0 +1,1886 @@
+openapi: 3.1.0
+info:
+  title: PolyAPI Platform API
+  description: >-
+    PolyAPI is a modern enterprise middleware platform that provides a unified
+    REST API for managing cloud service resources including functions, variables,
+    webhooks, triggers, jobs, schemas, and environments. Built using AI and
+    Kubernetes-native technology, it accelerates development and simplifies the
+    operation of integrations, orchestrations, and microservices.
+  version: 1.0.0
+  contact:
+    name: PolyAPI
+    url: https://polyapi.io/
+  license:
+    name: Proprietary
+    url: https://polyapi.io/
+  termsOfService: https://polyapi.io/
+
+externalDocs:
+  description: PolyAPI Documentation
+  url: https://docs.polyapi.io/
+
+servers:
+  - url: https://na1.polyapi.io
+    description: North America (AWS us-west-2)
+  - url: https://eu1.polyapi.io
+    description: Europe (AWS eu-west-1)
+
+security:
+  - bearerAuth: []
+
+tags:
+  - name: API Functions
+    description: >-
+      Manage API functions that wrap third-party API calls and are invoked
+      through the PolyAPI gateway.
+  - name: Server Functions
+    description: >-
+      Manage Knative serverless functions that run in the PolyAPI cloud
+      infrastructure.
+  - name: Client Functions
+    description: >-
+      Manage shared client functions that run wherever they are executed.
+  - name: Webhooks
+    description: >-
+      Manage webhook endpoints that receive events via HTTP calls, with support
+      for authentication and custom listeners.
+  - name: Variables
+    description: >-
+      Manage variables and secrets that are stored securely and injected into
+      functions at runtime.
+  - name: Triggers
+    description: >-
+      Manage triggers that connect cloud events to functions for event-driven
+      execution.
+  - name: Jobs
+    description: >-
+      Manage jobs that execute functions at a set time, interval, or CRON
+      schedule.
+  - name: Schemas
+    description: >-
+      Manage shared JSON Schema definitions used to type events and application
+      data.
+  - name: Environments
+    description: >-
+      Manage environments for organizing and deploying resources across
+      development, staging, and production.
+  - name: Assistants
+    description: >-
+      Manage AI assistants and conversations for AI-powered document assistance
+      and discovery.
+
+paths:
+  /functions/api:
+    get:
+      operationId: listApiFunctions
+      summary: List API functions
+      description: Retrieve a list of all API functions in the current environment.
+      tags:
+        - API Functions
+      parameters:
+        - $ref: '#/components/parameters/limitParam'
+        - $ref: '#/components/parameters/offsetParam'
+      responses:
+        '200':
+          description: A list of API functions.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ApiFunction'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+    post:
+      operationId: createApiFunction
+      summary: Create an API function
+      description: Create a new API function that wraps a third-party API call.
+      tags:
+        - API Functions
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ApiFunctionInput'
+      responses:
+        '201':
+          description: The created API function.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiFunction'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+
+  /functions/api/{functionId}:
+    get:
+      operationId: getApiFunction
+      summary: Get an API function
+      description: Retrieve details of a specific API function by its ID.
+      tags:
+        - API Functions
+      parameters:
+        - $ref: '#/components/parameters/functionIdParam'
+      responses:
+        '200':
+          description: The API function details.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiFunction'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+    patch:
+      operationId: updateApiFunction
+      summary: Update an API function
+      description: Update an existing API function.
+      tags:
+        - API Functions
+      parameters:
+        - $ref: '#/components/parameters/functionIdParam'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ApiFunctionInput'
+      responses:
+        '200':
+          description: The updated API function.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiFunction'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+    delete:
+      operationId: deleteApiFunction
+      summary: Delete an API function
+      description: Delete a specific API function by its ID.
+      tags:
+        - API Functions
+      parameters:
+        - $ref: '#/components/parameters/functionIdParam'
+      responses:
+        '204':
+          description: The API function was deleted successfully.
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+
+  /functions/api/{functionId}/execute:
+    post:
+      operationId: executeApiFunction
+      summary: Execute an API function
+      description: >-
+        Execute an API function by its ID. Requires the Execute Functions
+        permission. Variables can be injected using PolyVariable objects in
+        the request body.
+      tags:
+        - API Functions
+      parameters:
+        - $ref: '#/components/parameters/functionIdParam'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/FunctionExecutionInput'
+      responses:
+        '200':
+          description: The execution result.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FunctionExecutionResult'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+
+  /functions/server:
+    get:
+      operationId: listServerFunctions
+      summary: List server functions
+      description: Retrieve a list of all server functions in the current environment.
+      tags:
+        - Server Functions
+      parameters:
+        - $ref: '#/components/parameters/limitParam'
+        - $ref: '#/components/parameters/offsetParam'
+      responses:
+        '200':
+          description: A list of server functions.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ServerFunction'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+    post:
+      operationId: createServerFunction
+      summary: Create a server function
+      description: Create a new Knative serverless function.
+      tags:
+        - Server Functions
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ServerFunctionInput'
+      responses:
+        '201':
+          description: The created server function.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ServerFunction'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+
+  /functions/server/{functionId}:
+    get:
+      operationId: getServerFunction
+      summary: Get a server function
+      description: Retrieve details of a specific server function by its ID.
+      tags:
+        - Server Functions
+      parameters:
+        - $ref: '#/components/parameters/functionIdParam'
+      responses:
+        '200':
+          description: The server function details.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ServerFunction'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+    patch:
+      operationId: updateServerFunction
+      summary: Update a server function
+      description: Update an existing server function.
+      tags:
+        - Server Functions
+      parameters:
+        - $ref: '#/components/parameters/functionIdParam'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ServerFunctionInput'
+      responses:
+        '200':
+          description: The updated server function.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ServerFunction'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+    delete:
+      operationId: deleteServerFunction
+      summary: Delete a server function
+      description: Delete a specific server function by its ID.
+      tags:
+        - Server Functions
+      parameters:
+        - $ref: '#/components/parameters/functionIdParam'
+      responses:
+        '204':
+          description: The server function was deleted successfully.
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+
+  /functions/server/{functionId}/execute:
+    post:
+      operationId: executeServerFunction
+      summary: Execute a server function
+      description: >-
+        Execute a server function by its ID. Supports asynchronous execution
+        and custom response handling via the polyCustom object. Requires
+        the Execute Functions permission.
+      tags:
+        - Server Functions
+      parameters:
+        - $ref: '#/components/parameters/functionIdParam'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/FunctionExecutionInput'
+      responses:
+        '200':
+          description: The execution result.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FunctionExecutionResult'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+
+  /functions/client:
+    get:
+      operationId: listClientFunctions
+      summary: List client functions
+      description: Retrieve a list of all client functions in the current environment.
+      tags:
+        - Client Functions
+      parameters:
+        - $ref: '#/components/parameters/limitParam'
+        - $ref: '#/components/parameters/offsetParam'
+      responses:
+        '200':
+          description: A list of client functions.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ClientFunction'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+    post:
+      operationId: createClientFunction
+      summary: Create a client function
+      description: Create a new shared client function.
+      tags:
+        - Client Functions
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ClientFunctionInput'
+      responses:
+        '201':
+          description: The created client function.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ClientFunction'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+
+  /functions/client/{functionId}:
+    get:
+      operationId: getClientFunction
+      summary: Get a client function
+      description: Retrieve details of a specific client function by its ID.
+      tags:
+        - Client Functions
+      parameters:
+        - $ref: '#/components/parameters/functionIdParam'
+      responses:
+        '200':
+          description: The client function details.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ClientFunction'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+    patch:
+      operationId: updateClientFunction
+      summary: Update a client function
+      description: Update an existing client function.
+      tags:
+        - Client Functions
+      parameters:
+        - $ref: '#/components/parameters/functionIdParam'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ClientFunctionInput'
+      responses:
+        '200':
+          description: The updated client function.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ClientFunction'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+    delete:
+      operationId: deleteClientFunction
+      summary: Delete a client function
+      description: Delete a specific client function by its ID.
+      tags:
+        - Client Functions
+      parameters:
+        - $ref: '#/components/parameters/functionIdParam'
+      responses:
+        '204':
+          description: The client function was deleted successfully.
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+
+  /webhooks:
+    get:
+      operationId: listWebhooks
+      summary: List webhooks
+      description: Retrieve a list of all webhooks in the current environment.
+      tags:
+        - Webhooks
+      parameters:
+        - $ref: '#/components/parameters/limitParam'
+        - $ref: '#/components/parameters/offsetParam'
+      responses:
+        '200':
+          description: A list of webhooks.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Webhook'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+    post:
+      operationId: createWebhook
+      summary: Create a webhook
+      description: >-
+        Create a new webhook endpoint that can receive events via HTTP calls.
+      tags:
+        - Webhooks
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/WebhookInput'
+      responses:
+        '201':
+          description: The created webhook.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Webhook'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+
+  /webhooks/{webhookId}:
+    get:
+      operationId: getWebhook
+      summary: Get a webhook
+      description: Retrieve details of a specific webhook by its ID.
+      tags:
+        - Webhooks
+      parameters:
+        - $ref: '#/components/parameters/webhookIdParam'
+      responses:
+        '200':
+          description: The webhook details.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Webhook'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+    patch:
+      operationId: updateWebhook
+      summary: Update a webhook
+      description: Update an existing webhook.
+      tags:
+        - Webhooks
+      parameters:
+        - $ref: '#/components/parameters/webhookIdParam'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/WebhookInput'
+      responses:
+        '200':
+          description: The updated webhook.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Webhook'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+    delete:
+      operationId: deleteWebhook
+      summary: Delete a webhook
+      description: Delete a specific webhook by its ID.
+      tags:
+        - Webhooks
+      parameters:
+        - $ref: '#/components/parameters/webhookIdParam'
+      responses:
+        '204':
+          description: The webhook was deleted successfully.
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+
+  /webhooks/{webhookId}/trigger:
+    post:
+      operationId: triggerWebhook
+      summary: Trigger a webhook
+      description: >-
+        Send a payload to trigger a webhook endpoint. The webhook will process
+        the event and route it to any connected server functions via triggers.
+      tags:
+        - Webhooks
+      parameters:
+        - $ref: '#/components/parameters/webhookIdParam'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              description: The webhook event payload.
+      responses:
+        '200':
+          description: The webhook was triggered successfully.
+          content:
+            application/json:
+              schema:
+                type: object
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+
+  /variables:
+    get:
+      operationId: listVariables
+      summary: List variables
+      description: >-
+        Retrieve a list of all variables and secrets in the current environment.
+      tags:
+        - Variables
+      parameters:
+        - $ref: '#/components/parameters/limitParam'
+        - $ref: '#/components/parameters/offsetParam'
+      responses:
+        '200':
+          description: A list of variables.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Variable'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+    post:
+      operationId: createVariable
+      summary: Create a variable
+      description: >-
+        Create a new variable or secret that can be securely injected into
+        functions at runtime.
+      tags:
+        - Variables
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/VariableInput'
+      responses:
+        '201':
+          description: The created variable.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Variable'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+
+  /variables/{variableId}:
+    get:
+      operationId: getVariable
+      summary: Get a variable
+      description: Retrieve details of a specific variable by its ID.
+      tags:
+        - Variables
+      parameters:
+        - $ref: '#/components/parameters/variableIdParam'
+      responses:
+        '200':
+          description: The variable details.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Variable'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+    patch:
+      operationId: updateVariable
+      summary: Update a variable
+      description: Update an existing variable or secret.
+      tags:
+        - Variables
+      parameters:
+        - $ref: '#/components/parameters/variableIdParam'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/VariableInput'
+      responses:
+        '200':
+          description: The updated variable.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Variable'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+    delete:
+      operationId: deleteVariable
+      summary: Delete a variable
+      description: Delete a specific variable by its ID.
+      tags:
+        - Variables
+      parameters:
+        - $ref: '#/components/parameters/variableIdParam'
+      responses:
+        '204':
+          description: The variable was deleted successfully.
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+
+  /triggers:
+    get:
+      operationId: listTriggers
+      summary: List triggers
+      description: Retrieve a list of all triggers in the current environment.
+      tags:
+        - Triggers
+      parameters:
+        - $ref: '#/components/parameters/limitParam'
+        - $ref: '#/components/parameters/offsetParam'
+      responses:
+        '200':
+          description: A list of triggers.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Trigger'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+    post:
+      operationId: createTrigger
+      summary: Create a trigger
+      description: >-
+        Create a new trigger that connects a cloud event to a function for
+        event-driven execution.
+      tags:
+        - Triggers
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TriggerInput'
+      responses:
+        '201':
+          description: The created trigger.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Trigger'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+
+  /triggers/{triggerId}:
+    get:
+      operationId: getTrigger
+      summary: Get a trigger
+      description: Retrieve details of a specific trigger by its ID.
+      tags:
+        - Triggers
+      parameters:
+        - $ref: '#/components/parameters/triggerIdParam'
+      responses:
+        '200':
+          description: The trigger details.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Trigger'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+    patch:
+      operationId: updateTrigger
+      summary: Update a trigger
+      description: Update an existing trigger.
+      tags:
+        - Triggers
+      parameters:
+        - $ref: '#/components/parameters/triggerIdParam'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TriggerInput'
+      responses:
+        '200':
+          description: The updated trigger.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Trigger'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+    delete:
+      operationId: deleteTrigger
+      summary: Delete a trigger
+      description: Delete a specific trigger by its ID.
+      tags:
+        - Triggers
+      parameters:
+        - $ref: '#/components/parameters/triggerIdParam'
+      responses:
+        '204':
+          description: The trigger was deleted successfully.
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+
+  /jobs:
+    get:
+      operationId: listJobs
+      summary: List jobs
+      description: Retrieve a list of all scheduled jobs in the current environment.
+      tags:
+        - Jobs
+      parameters:
+        - $ref: '#/components/parameters/limitParam'
+        - $ref: '#/components/parameters/offsetParam'
+      responses:
+        '200':
+          description: A list of jobs.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Job'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+    post:
+      operationId: createJob
+      summary: Create a job
+      description: >-
+        Create a new job that executes a function at a set time, interval,
+        or CRON schedule.
+      tags:
+        - Jobs
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/JobInput'
+      responses:
+        '201':
+          description: The created job.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Job'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+
+  /jobs/{jobId}:
+    get:
+      operationId: getJob
+      summary: Get a job
+      description: Retrieve details of a specific job by its ID.
+      tags:
+        - Jobs
+      parameters:
+        - $ref: '#/components/parameters/jobIdParam'
+      responses:
+        '200':
+          description: The job details.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Job'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+    patch:
+      operationId: updateJob
+      summary: Update a job
+      description: Update an existing job schedule or configuration.
+      tags:
+        - Jobs
+      parameters:
+        - $ref: '#/components/parameters/jobIdParam'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/JobInput'
+      responses:
+        '200':
+          description: The updated job.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Job'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+    delete:
+      operationId: deleteJob
+      summary: Delete a job
+      description: Delete a specific job by its ID.
+      tags:
+        - Jobs
+      parameters:
+        - $ref: '#/components/parameters/jobIdParam'
+      responses:
+        '204':
+          description: The job was deleted successfully.
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+
+  /schemas:
+    get:
+      operationId: listSchemas
+      summary: List schemas
+      description: >-
+        Retrieve a list of all shared JSON Schema definitions in the current
+        environment.
+      tags:
+        - Schemas
+      parameters:
+        - $ref: '#/components/parameters/limitParam'
+        - $ref: '#/components/parameters/offsetParam'
+      responses:
+        '200':
+          description: A list of schemas.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Schema'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+    post:
+      operationId: createSchema
+      summary: Create a schema
+      description: Create a new shared JSON Schema definition.
+      tags:
+        - Schemas
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SchemaInput'
+      responses:
+        '201':
+          description: The created schema.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Schema'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+
+  /schemas/{schemaId}:
+    get:
+      operationId: getSchema
+      summary: Get a schema
+      description: Retrieve details of a specific schema by its ID.
+      tags:
+        - Schemas
+      parameters:
+        - $ref: '#/components/parameters/schemaIdParam'
+      responses:
+        '200':
+          description: The schema details.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Schema'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+    patch:
+      operationId: updateSchema
+      summary: Update a schema
+      description: Update an existing schema definition.
+      tags:
+        - Schemas
+      parameters:
+        - $ref: '#/components/parameters/schemaIdParam'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SchemaInput'
+      responses:
+        '200':
+          description: The updated schema.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Schema'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+    delete:
+      operationId: deleteSchema
+      summary: Delete a schema
+      description: Delete a specific schema by its ID.
+      tags:
+        - Schemas
+      parameters:
+        - $ref: '#/components/parameters/schemaIdParam'
+      responses:
+        '204':
+          description: The schema was deleted successfully.
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+
+  /environments:
+    get:
+      operationId: listEnvironments
+      summary: List environments
+      description: Retrieve a list of all environments.
+      tags:
+        - Environments
+      responses:
+        '200':
+          description: A list of environments.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Environment'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+
+  /environments/{environmentId}:
+    get:
+      operationId: getEnvironment
+      summary: Get an environment
+      description: Retrieve details of a specific environment by its ID.
+      tags:
+        - Environments
+      parameters:
+        - $ref: '#/components/parameters/environmentIdParam'
+      responses:
+        '200':
+          description: The environment details.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Environment'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+
+  /assistants/{slug}/conversations:
+    get:
+      operationId: listConversations
+      summary: List conversations
+      description: Retrieve a list of all conversations for a specific assistant.
+      tags:
+        - Assistants
+      parameters:
+        - name: slug
+          in: path
+          required: true
+          description: The assistant slug identifier.
+          schema:
+            type: string
+      responses:
+        '200':
+          description: A list of conversations.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Conversation'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+    post:
+      operationId: createConversation
+      summary: Create a conversation
+      description: Create a new conversation with the specified assistant.
+      tags:
+        - Assistants
+      parameters:
+        - name: slug
+          in: path
+          required: true
+          description: The assistant slug identifier.
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ConversationInput'
+      responses:
+        '201':
+          description: The created conversation.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Conversation'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+
+  /assistants/{slug}/conversations/{conversationSlug}:
+    get:
+      operationId: getConversation
+      summary: Get a conversation
+      description: Retrieve details of a specific conversation.
+      tags:
+        - Assistants
+      parameters:
+        - name: slug
+          in: path
+          required: true
+          description: The assistant slug identifier.
+          schema:
+            type: string
+        - name: conversationSlug
+          in: path
+          required: true
+          description: The conversation slug identifier.
+          schema:
+            type: string
+      responses:
+        '200':
+          description: The conversation details.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Conversation'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+    delete:
+      operationId: deleteConversation
+      summary: Delete a conversation
+      description: Delete a specific conversation.
+      tags:
+        - Assistants
+      parameters:
+        - name: slug
+          in: path
+          required: true
+          description: The assistant slug identifier.
+          schema:
+            type: string
+        - name: conversationSlug
+          in: path
+          required: true
+          description: The conversation slug identifier.
+          schema:
+            type: string
+      responses:
+        '204':
+          description: The conversation was deleted successfully.
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: API Key
+      description: >-
+        PolyAPI uses Bearer token authentication. Include your API key in
+        the Authorization header as 'Bearer {your-api-key}'.
+
+  parameters:
+    functionIdParam:
+      name: functionId
+      in: path
+      required: true
+      description: The unique identifier of the function.
+      schema:
+        type: string
+    webhookIdParam:
+      name: webhookId
+      in: path
+      required: true
+      description: The unique identifier of the webhook.
+      schema:
+        type: string
+    variableIdParam:
+      name: variableId
+      in: path
+      required: true
+      description: The unique identifier of the variable.
+      schema:
+        type: string
+    triggerIdParam:
+      name: triggerId
+      in: path
+      required: true
+      description: The unique identifier of the trigger.
+      schema:
+        type: string
+    jobIdParam:
+      name: jobId
+      in: path
+      required: true
+      description: The unique identifier of the job.
+      schema:
+        type: string
+    schemaIdParam:
+      name: schemaId
+      in: path
+      required: true
+      description: The unique identifier of the schema.
+      schema:
+        type: string
+    environmentIdParam:
+      name: environmentId
+      in: path
+      required: true
+      description: The unique identifier of the environment.
+      schema:
+        type: string
+    limitParam:
+      name: limit
+      in: query
+      required: false
+      description: Maximum number of items to return.
+      schema:
+        type: integer
+        default: 25
+    offsetParam:
+      name: offset
+      in: query
+      required: false
+      description: Number of items to skip for pagination.
+      schema:
+        type: integer
+        default: 0
+
+  responses:
+    Unauthorized:
+      description: Authentication is required or the provided credentials are invalid.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    NotFound:
+      description: The requested resource was not found.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+
+  schemas:
+    ApiFunction:
+      type: object
+      properties:
+        id:
+          type: string
+          description: The unique identifier of the API function.
+        name:
+          type: string
+          description: The name of the API function.
+        description:
+          type: string
+          description: A description of what the API function does.
+        context:
+          type: string
+          description: The context path for organizing the function in the catalog.
+        method:
+          type: string
+          enum:
+            - GET
+            - POST
+            - PUT
+            - PATCH
+            - DELETE
+          description: The HTTP method used by the API function.
+        url:
+          type: string
+          format: uri
+          description: The target URL for the API call.
+        headers:
+          type: object
+          additionalProperties:
+            type: string
+          description: HTTP headers to include in the API call.
+        requestBody:
+          type: object
+          description: The request body schema for the API call.
+        responseSchema:
+          type: object
+          description: The expected response schema.
+        state:
+          type: string
+          enum:
+            - active
+            - inactive
+            - deprecated
+          description: The lifecycle state of the function.
+        owner:
+          type: string
+          description: The owner of the function.
+        visibility:
+          type: string
+          enum:
+            - public
+            - private
+          description: The visibility of the function.
+        createdAt:
+          type: string
+          format: date-time
+          description: Timestamp when the function was created.
+        updatedAt:
+          type: string
+          format: date-time
+          description: Timestamp when the function was last updated.
+
+    ApiFunctionInput:
+      type: object
+      required:
+        - name
+        - method
+        - url
+      properties:
+        name:
+          type: string
+          description: The name of the API function.
+        description:
+          type: string
+          description: A description of what the API function does.
+        context:
+          type: string
+          description: The context path for organizing the function.
+        method:
+          type: string
+          enum:
+            - GET
+            - POST
+            - PUT
+            - PATCH
+            - DELETE
+          description: The HTTP method for the API call.
+        url:
+          type: string
+          format: uri
+          description: The target URL for the API call.
+        headers:
+          type: object
+          additionalProperties:
+            type: string
+          description: HTTP headers to include.
+        requestBody:
+          type: object
+          description: The request body schema.
+        responseSchema:
+          type: object
+          description: The expected response schema.
+
+    ServerFunction:
+      type: object
+      properties:
+        id:
+          type: string
+          description: The unique identifier of the server function.
+        name:
+          type: string
+          description: The name of the server function.
+        description:
+          type: string
+          description: A description of what the server function does.
+        context:
+          type: string
+          description: The context path for organizing the function.
+        language:
+          type: string
+          enum:
+            - typescript
+            - python
+            - java
+            - csharp
+          description: The programming language of the function.
+        code:
+          type: string
+          description: The function source code.
+        deploymentId:
+          type: string
+          description: The deployment identifier for the function.
+        state:
+          type: string
+          enum:
+            - active
+            - inactive
+            - deprecated
+          description: The lifecycle state of the function.
+        owner:
+          type: string
+          description: The owner of the function.
+        visibility:
+          type: string
+          enum:
+            - public
+            - private
+          description: The visibility of the function.
+        createdAt:
+          type: string
+          format: date-time
+        updatedAt:
+          type: string
+          format: date-time
+
+    ServerFunctionInput:
+      type: object
+      required:
+        - name
+        - language
+        - code
+      properties:
+        name:
+          type: string
+          description: The name of the server function.
+        description:
+          type: string
+          description: A description of what the function does.
+        context:
+          type: string
+          description: The context path for organizing the function.
+        language:
+          type: string
+          enum:
+            - typescript
+            - python
+            - java
+            - csharp
+          description: The programming language.
+        code:
+          type: string
+          description: The function source code.
+
+    ClientFunction:
+      type: object
+      properties:
+        id:
+          type: string
+          description: The unique identifier of the client function.
+        name:
+          type: string
+          description: The name of the client function.
+        description:
+          type: string
+          description: A description of what the client function does.
+        context:
+          type: string
+          description: The context path for organizing the function.
+        language:
+          type: string
+          enum:
+            - typescript
+            - python
+            - java
+            - csharp
+          description: The programming language.
+        code:
+          type: string
+          description: The function source code.
+        state:
+          type: string
+          enum:
+            - active
+            - inactive
+            - deprecated
+        owner:
+          type: string
+        visibility:
+          type: string
+          enum:
+            - public
+            - private
+        createdAt:
+          type: string
+          format: date-time
+        updatedAt:
+          type: string
+          format: date-time
+
+    ClientFunctionInput:
+      type: object
+      required:
+        - name
+        - language
+        - code
+      properties:
+        name:
+          type: string
+        description:
+          type: string
+        context:
+          type: string
+        language:
+          type: string
+          enum:
+            - typescript
+            - python
+            - java
+            - csharp
+        code:
+          type: string
+
+    FunctionExecutionInput:
+      type: object
+      properties:
+        args:
+          type: array
+          items:
+            description: Function arguments, which may include PolyVariable objects for variable injection.
+          description: >-
+            The arguments to pass to the function. Variables can be injected
+            using PolyVariable objects with pathIdentifier fields.
+        polyCustom:
+          type: object
+          properties:
+            async:
+              type: boolean
+              description: Whether to execute the function asynchronously.
+          description: >-
+            Custom execution options for server functions, including async
+            execution and response handling.
+
+    FunctionExecutionResult:
+      type: object
+      properties:
+        result:
+          description: The return value of the function execution.
+        executionId:
+          type: string
+          description: The unique identifier for this execution.
+        executionTime:
+          type: number
+          description: The execution time in milliseconds.
+
+    Webhook:
+      type: object
+      properties:
+        id:
+          type: string
+          description: The unique identifier of the webhook.
+        name:
+          type: string
+          description: The name of the webhook.
+        description:
+          type: string
+          description: A description of the webhook.
+        context:
+          type: string
+          description: The context path for organizing the webhook.
+        url:
+          type: string
+          format: uri
+          description: The webhook endpoint URL.
+        authentication:
+          type: object
+          description: Authentication configuration for the webhook.
+        state:
+          type: string
+          enum:
+            - active
+            - inactive
+        createdAt:
+          type: string
+          format: date-time
+        updatedAt:
+          type: string
+          format: date-time
+
+    WebhookInput:
+      type: object
+      required:
+        - name
+      properties:
+        name:
+          type: string
+        description:
+          type: string
+        context:
+          type: string
+        authentication:
+          type: object
+          description: Authentication configuration for the webhook.
+
+    Variable:
+      type: object
+      properties:
+        id:
+          type: string
+          description: The unique identifier of the variable.
+        name:
+          type: string
+          description: The name of the variable.
+        description:
+          type: string
+          description: A description of the variable.
+        pathIdentifier:
+          type: string
+          description: >-
+            The path identifier used to reference this variable in functions
+            (e.g., 'tutorial.apiKey').
+        value:
+          type: string
+          description: The variable value (masked for secrets).
+        secret:
+          type: boolean
+          description: Whether this variable is stored as a secret.
+        visibility:
+          type: string
+          enum:
+            - public
+            - private
+        createdAt:
+          type: string
+          format: date-time
+        updatedAt:
+          type: string
+          format: date-time
+
+    VariableInput:
+      type: object
+      required:
+        - name
+        - value
+      properties:
+        name:
+          type: string
+        description:
+          type: string
+        pathIdentifier:
+          type: string
+        value:
+          type: string
+        secret:
+          type: boolean
+          default: false
+
+    Trigger:
+      type: object
+      properties:
+        id:
+          type: string
+          description: The unique identifier of the trigger.
+        name:
+          type: string
+          description: The name of the trigger.
+        description:
+          type: string
+          description: A description of the trigger.
+        sourceType:
+          type: string
+          description: The type of event source (e.g., webhook, cloud event).
+        sourceId:
+          type: string
+          description: The ID of the event source.
+        targetFunctionId:
+          type: string
+          description: The ID of the function to trigger.
+        targetFunctionType:
+          type: string
+          enum:
+            - server
+            - api
+          description: The type of function to trigger.
+        state:
+          type: string
+          enum:
+            - active
+            - inactive
+        createdAt:
+          type: string
+          format: date-time
+        updatedAt:
+          type: string
+          format: date-time
+
+    TriggerInput:
+      type: object
+      required:
+        - name
+        - sourceType
+        - sourceId
+        - targetFunctionId
+        - targetFunctionType
+      properties:
+        name:
+          type: string
+        description:
+          type: string
+        sourceType:
+          type: string
+        sourceId:
+          type: string
+        targetFunctionId:
+          type: string
+        targetFunctionType:
+          type: string
+          enum:
+            - server
+            - api
+
+    Job:
+      type: object
+      properties:
+        id:
+          type: string
+          description: The unique identifier of the job.
+        name:
+          type: string
+          description: The name of the job.
+        description:
+          type: string
+          description: A description of the job.
+        functionId:
+          type: string
+          description: The ID of the function to execute.
+        functionType:
+          type: string
+          enum:
+            - server
+            - api
+          description: The type of function to execute.
+        schedule:
+          type: string
+          description: >-
+            The CRON expression or interval defining when the job runs.
+        state:
+          type: string
+          enum:
+            - active
+            - inactive
+        lastRunAt:
+          type: string
+          format: date-time
+          description: Timestamp of the last execution.
+        nextRunAt:
+          type: string
+          format: date-time
+          description: Timestamp of the next scheduled execution.
+        createdAt:
+          type: string
+          format: date-time
+        updatedAt:
+          type: string
+          format: date-time
+
+    JobInput:
+      type: object
+      required:
+        - name
+        - functionId
+        - functionType
+        - schedule
+      properties:
+        name:
+          type: string
+        description:
+          type: string
+        functionId:
+          type: string
+        functionType:
+          type: string
+          enum:
+            - server
+            - api
+        schedule:
+          type: string
+          description: CRON expression or interval.
+
+    Schema:
+      type: object
+      properties:
+        id:
+          type: string
+          description: The unique identifier of the schema.
+        name:
+          type: string
+          description: The name of the schema.
+        description:
+          type: string
+          description: A description of the schema.
+        context:
+          type: string
+          description: The context path for organizing the schema.
+        definition:
+          type: object
+          description: The JSON Schema definition.
+        visibility:
+          type: string
+          enum:
+            - public
+            - private
+        createdAt:
+          type: string
+          format: date-time
+        updatedAt:
+          type: string
+          format: date-time
+
+    SchemaInput:
+      type: object
+      required:
+        - name
+        - definition
+      properties:
+        name:
+          type: string
+        description:
+          type: string
+        context:
+          type: string
+        definition:
+          type: object
+          description: The JSON Schema definition.
+
+    Environment:
+      type: object
+      properties:
+        id:
+          type: string
+          description: The unique identifier of the environment.
+        name:
+          type: string
+          description: The name of the environment.
+        description:
+          type: string
+          description: A description of the environment.
+        contextName:
+          type: string
+          description: The context name attribute for the environment.
+        createdAt:
+          type: string
+          format: date-time
+        updatedAt:
+          type: string
+          format: date-time
+
+    Conversation:
+      type: object
+      properties:
+        id:
+          type: string
+          description: The unique identifier of the conversation.
+        slug:
+          type: string
+          description: The slug identifier for the conversation.
+        messages:
+          type: array
+          items:
+            type: object
+            properties:
+              role:
+                type: string
+                enum:
+                  - user
+                  - assistant
+              content:
+                type: string
+        createdAt:
+          type: string
+          format: date-time
+        updatedAt:
+          type: string
+          format: date-time
+
+    ConversationInput:
+      type: object
+      required:
+        - message
+      properties:
+        message:
+          type: string
+          description: The initial message to start the conversation.
+
+    Error:
+      type: object
+      properties:
+        statusCode:
+          type: integer
+          description: The HTTP status code.
+        message:
+          type: string
+          description: A human-readable error message.
+        error:
+          type: string
+          description: The error type.
