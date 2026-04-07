@@ -74,7 +74,7 @@ paths:
   /functions/api:
     get:
       operationId: listApiFunctions
-      summary: List API functions
+      summary: PolyAPI List API functions
       description: Retrieve a list of all API functions in the current environment.
       tags:
         - API Functions
@@ -94,7 +94,7 @@ paths:
           $ref: '#/components/responses/Unauthorized'
     post:
       operationId: createApiFunction
-      summary: Create an API function
+      summary: PolyAPI Create an API function
       description: Create a new API function that wraps a third-party API call.
       tags:
         - API Functions
@@ -117,7 +117,7 @@ paths:
   /functions/api/{functionId}:
     get:
       operationId: getApiFunction
-      summary: Get an API function
+      summary: PolyAPI Get an API function
       description: Retrieve details of a specific API function by its ID.
       tags:
         - API Functions
@@ -136,7 +136,7 @@ paths:
           $ref: '#/components/responses/NotFound'
     patch:
       operationId: updateApiFunction
-      summary: Update an API function
+      summary: PolyAPI Update an API function
       description: Update an existing API function.
       tags:
         - API Functions
@@ -161,7 +161,7 @@ paths:
           $ref: '#/components/responses/NotFound'
     delete:
       operationId: deleteApiFunction
-      summary: Delete an API function
+      summary: PolyAPI Delete an API function
       description: Delete a specific API function by its ID.
       tags:
         - API Functions
@@ -178,7 +178,7 @@ paths:
   /functions/api/{functionId}/execute:
     post:
       operationId: executeApiFunction
-      summary: Execute an API function
+      summary: PolyAPI Execute an API function
       description: >-
         Execute an API function by its ID. Requires the Execute Functions
         permission. Variables can be injected using PolyVariable objects in
@@ -208,7 +208,7 @@ paths:
   /functions/server:
     get:
       operationId: listServerFunctions
-      summary: List server functions
+      summary: PolyAPI List server functions
       description: Retrieve a list of all server functions in the current environment.
       tags:
         - Server Functions
@@ -228,7 +228,7 @@ paths:
           $ref: '#/components/responses/Unauthorized'
     post:
       operationId: createServerFunction
-      summary: Create a server function
+      summary: PolyAPI Create a server function
       description: Create a new Knative serverless function.
       tags:
         - Server Functions
@@ -251,7 +251,7 @@ paths:
   /functions/server/{functionId}:
     get:
       operationId: getServerFunction
-      summary: Get a server function
+      summary: PolyAPI Get a server function
       description: Retrieve details of a specific server function by its ID.
       tags:
         - Server Functions
@@ -270,7 +270,7 @@ paths:
           $ref: '#/components/responses/NotFound'
     patch:
       operationId: updateServerFunction
-      summary: Update a server function
+      summary: PolyAPI Update a server function
       description: Update an existing server function.
       tags:
         - Server Functions
@@ -295,7 +295,7 @@ paths:
           $ref: '#/components/responses/NotFound'
     delete:
       operationId: deleteServerFunction
-      summary: Delete a server function
+      summary: PolyAPI Delete a server function
       description: Delete a specific server function by its ID.
       tags:
         - Server Functions
@@ -312,7 +312,7 @@ paths:
   /functions/server/{functionId}/execute:
     post:
       operationId: executeServerFunction
-      summary: Execute a server function
+      summary: PolyAPI Execute a server function
       description: >-
         Execute a server function by its ID. Supports asynchronous execution
         and custom response handling via the polyCustom object. Requires
@@ -342,7 +342,7 @@ paths:
   /functions/client:
     get:
       operationId: listClientFunctions
-      summary: List client functions
+      summary: PolyAPI List client functions
       description: Retrieve a list of all client functions in the current environment.
       tags:
         - Client Functions
@@ -362,7 +362,7 @@ paths:
           $ref: '#/components/responses/Unauthorized'
     post:
       operationId: createClientFunction
-      summary: Create a client function
+      summary: PolyAPI Create a client function
       description: Create a new shared client function.
       tags:
         - Client Functions
@@ -385,7 +385,7 @@ paths:
   /functions/client/{functionId}:
     get:
       operationId: getClientFunction
-      summary: Get a client function
+      summary: PolyAPI Get a client function
       description: Retrieve details of a specific client function by its ID.
       tags:
         - Client Functions
@@ -404,7 +404,7 @@ paths:
           $ref: '#/components/responses/NotFound'
     patch:
       operationId: updateClientFunction
-      summary: Update a client function
+      summary: PolyAPI Update a client function
       description: Update an existing client function.
       tags:
         - Client Functions
@@ -429,7 +429,7 @@ paths:
           $ref: '#/components/responses/NotFound'
     delete:
       operationId: deleteClientFunction
-      summary: Delete a client function
+      summary: PolyAPI Delete a client function
       description: Delete a specific client function by its ID.
       tags:
         - Client Functions
@@ -446,7 +446,7 @@ paths:
   /webhooks:
     get:
       operationId: listWebhooks
-      summary: List webhooks
+      summary: PolyAPI List webhooks
       description: Retrieve a list of all webhooks in the current environment.
       tags:
         - Webhooks
@@ -466,7 +466,7 @@ paths:
           $ref: '#/components/responses/Unauthorized'
     post:
       operationId: createWebhook
-      summary: Create a webhook
+      summary: PolyAPI Create a webhook
       description: >-
         Create a new webhook endpoint that can receive events via HTTP calls.
       tags:
@@ -490,7 +490,7 @@ paths:
   /webhooks/{webhookId}:
     get:
       operationId: getWebhook
-      summary: Get a webhook
+      summary: PolyAPI Get a webhook
       description: Retrieve details of a specific webhook by its ID.
       tags:
         - Webhooks
@@ -509,7 +509,7 @@ paths:
           $ref: '#/components/responses/NotFound'
     patch:
       operationId: updateWebhook
-      summary: Update a webhook
+      summary: PolyAPI Update a webhook
       description: Update an existing webhook.
       tags:
         - Webhooks
@@ -534,7 +534,7 @@ paths:
           $ref: '#/components/responses/NotFound'
     delete:
       operationId: deleteWebhook
-      summary: Delete a webhook
+      summary: PolyAPI Delete a webhook
       description: Delete a specific webhook by its ID.
       tags:
         - Webhooks
@@ -551,7 +551,7 @@ paths:
   /webhooks/{webhookId}/trigger:
     post:
       operationId: triggerWebhook
-      summary: Trigger a webhook
+      summary: PolyAPI Trigger a webhook
       description: >-
         Send a payload to trigger a webhook endpoint. The webhook will process
         the event and route it to any connected server functions via triggers.
@@ -581,7 +581,7 @@ paths:
   /variables:
     get:
       operationId: listVariables
-      summary: List variables
+      summary: PolyAPI List variables
       description: >-
         Retrieve a list of all variables and secrets in the current environment.
       tags:
@@ -602,7 +602,7 @@ paths:
           $ref: '#/components/responses/Unauthorized'
     post:
       operationId: createVariable
-      summary: Create a variable
+      summary: PolyAPI Create a variable
       description: >-
         Create a new variable or secret that can be securely injected into
         functions at runtime.
@@ -627,7 +627,7 @@ paths:
   /variables/{variableId}:
     get:
       operationId: getVariable
-      summary: Get a variable
+      summary: PolyAPI Get a variable
       description: Retrieve details of a specific variable by its ID.
       tags:
         - Variables
@@ -646,7 +646,7 @@ paths:
           $ref: '#/components/responses/NotFound'
     patch:
       operationId: updateVariable
-      summary: Update a variable
+      summary: PolyAPI Update a variable
       description: Update an existing variable or secret.
       tags:
         - Variables
@@ -671,7 +671,7 @@ paths:
           $ref: '#/components/responses/NotFound'
     delete:
       operationId: deleteVariable
-      summary: Delete a variable
+      summary: PolyAPI Delete a variable
       description: Delete a specific variable by its ID.
       tags:
         - Variables
@@ -688,7 +688,7 @@ paths:
   /triggers:
     get:
       operationId: listTriggers
-      summary: List triggers
+      summary: PolyAPI List triggers
       description: Retrieve a list of all triggers in the current environment.
       tags:
         - Triggers
@@ -708,7 +708,7 @@ paths:
           $ref: '#/components/responses/Unauthorized'
     post:
       operationId: createTrigger
-      summary: Create a trigger
+      summary: PolyAPI Create a trigger
       description: >-
         Create a new trigger that connects a cloud event to a function for
         event-driven execution.
@@ -733,7 +733,7 @@ paths:
   /triggers/{triggerId}:
     get:
       operationId: getTrigger
-      summary: Get a trigger
+      summary: PolyAPI Get a trigger
       description: Retrieve details of a specific trigger by its ID.
       tags:
         - Triggers
@@ -752,7 +752,7 @@ paths:
           $ref: '#/components/responses/NotFound'
     patch:
       operationId: updateTrigger
-      summary: Update a trigger
+      summary: PolyAPI Update a trigger
       description: Update an existing trigger.
       tags:
         - Triggers
@@ -777,7 +777,7 @@ paths:
           $ref: '#/components/responses/NotFound'
     delete:
       operationId: deleteTrigger
-      summary: Delete a trigger
+      summary: PolyAPI Delete a trigger
       description: Delete a specific trigger by its ID.
       tags:
         - Triggers
@@ -794,7 +794,7 @@ paths:
   /jobs:
     get:
       operationId: listJobs
-      summary: List jobs
+      summary: PolyAPI List jobs
       description: Retrieve a list of all scheduled jobs in the current environment.
       tags:
         - Jobs
@@ -814,7 +814,7 @@ paths:
           $ref: '#/components/responses/Unauthorized'
     post:
       operationId: createJob
-      summary: Create a job
+      summary: PolyAPI Create a job
       description: >-
         Create a new job that executes a function at a set time, interval,
         or CRON schedule.
@@ -839,7 +839,7 @@ paths:
   /jobs/{jobId}:
     get:
       operationId: getJob
-      summary: Get a job
+      summary: PolyAPI Get a job
       description: Retrieve details of a specific job by its ID.
       tags:
         - Jobs
@@ -858,7 +858,7 @@ paths:
           $ref: '#/components/responses/NotFound'
     patch:
       operationId: updateJob
-      summary: Update a job
+      summary: PolyAPI Update a job
       description: Update an existing job schedule or configuration.
       tags:
         - Jobs
@@ -883,7 +883,7 @@ paths:
           $ref: '#/components/responses/NotFound'
     delete:
       operationId: deleteJob
-      summary: Delete a job
+      summary: PolyAPI Delete a job
       description: Delete a specific job by its ID.
       tags:
         - Jobs
@@ -900,7 +900,7 @@ paths:
   /schemas:
     get:
       operationId: listSchemas
-      summary: List schemas
+      summary: PolyAPI List schemas
       description: >-
         Retrieve a list of all shared JSON Schema definitions in the current
         environment.
@@ -922,7 +922,7 @@ paths:
           $ref: '#/components/responses/Unauthorized'
     post:
       operationId: createSchema
-      summary: Create a schema
+      summary: PolyAPI Create a schema
       description: Create a new shared JSON Schema definition.
       tags:
         - Schemas
@@ -945,7 +945,7 @@ paths:
   /schemas/{schemaId}:
     get:
       operationId: getSchema
-      summary: Get a schema
+      summary: PolyAPI Get a schema
       description: Retrieve details of a specific schema by its ID.
       tags:
         - Schemas
@@ -964,7 +964,7 @@ paths:
           $ref: '#/components/responses/NotFound'
     patch:
       operationId: updateSchema
-      summary: Update a schema
+      summary: PolyAPI Update a schema
       description: Update an existing schema definition.
       tags:
         - Schemas
@@ -989,7 +989,7 @@ paths:
           $ref: '#/components/responses/NotFound'
     delete:
       operationId: deleteSchema
-      summary: Delete a schema
+      summary: PolyAPI Delete a schema
       description: Delete a specific schema by its ID.
       tags:
         - Schemas
@@ -1006,7 +1006,7 @@ paths:
   /environments:
     get:
       operationId: listEnvironments
-      summary: List environments
+      summary: PolyAPI List environments
       description: Retrieve a list of all environments.
       tags:
         - Environments
@@ -1025,7 +1025,7 @@ paths:
   /environments/{environmentId}:
     get:
       operationId: getEnvironment
-      summary: Get an environment
+      summary: PolyAPI Get an environment
       description: Retrieve details of a specific environment by its ID.
       tags:
         - Environments
@@ -1046,7 +1046,7 @@ paths:
   /assistants/{slug}/conversations:
     get:
       operationId: listConversations
-      summary: List conversations
+      summary: PolyAPI List conversations
       description: Retrieve a list of all conversations for a specific assistant.
       tags:
         - Assistants
@@ -1070,7 +1070,7 @@ paths:
           $ref: '#/components/responses/Unauthorized'
     post:
       operationId: createConversation
-      summary: Create a conversation
+      summary: PolyAPI Create a conversation
       description: Create a new conversation with the specified assistant.
       tags:
         - Assistants
@@ -1100,7 +1100,7 @@ paths:
   /assistants/{slug}/conversations/{conversationSlug}:
     get:
       operationId: getConversation
-      summary: Get a conversation
+      summary: PolyAPI Get a conversation
       description: Retrieve details of a specific conversation.
       tags:
         - Assistants
@@ -1130,7 +1130,7 @@ paths:
           $ref: '#/components/responses/NotFound'
     delete:
       operationId: deleteConversation
-      summary: Delete a conversation
+      summary: PolyAPI Delete a conversation
       description: Delete a specific conversation.
       tags:
         - Assistants
