@@ -6,9 +6,9 @@ apis:
     name: PolyAPI Platform API
     tags:
       - Integrations
-      - Orchestrations
       - Microservices
       - Middleware
+      - Orchestrations
     humanURL: https://polyapi.io/
     properties:
       - url: https://docs.polyapi.io/
@@ -47,9 +47,9 @@ apis:
 name: PolyAPI
 tags:
   - Integrations
-  - Orchestrations
   - Microservices
   - Middleware
+  - Orchestrations
   - Pro-Code API Composition
 type: Index
 image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg

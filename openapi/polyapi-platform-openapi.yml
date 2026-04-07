@@ -34,25 +34,18 @@ tags:
     description: >-
       Manage API functions that wrap third-party API calls and are invoked
       through the PolyAPI gateway.
-  - name: Server Functions
+  - name: Assistants
     description: >-
-      Manage Knative serverless functions that run in the PolyAPI cloud
-      infrastructure.
+      Manage AI assistants and conversations for AI-powered document assistance
+      and discovery.
+
   - name: Client Functions
     description: >-
       Manage shared client functions that run wherever they are executed.
-  - name: Webhooks
+  - name: Environments
     description: >-
-      Manage webhook endpoints that receive events via HTTP calls, with support
-      for authentication and custom listeners.
-  - name: Variables
-    description: >-
-      Manage variables and secrets that are stored securely and injected into
-      functions at runtime.
-  - name: Triggers
-    description: >-
-      Manage triggers that connect cloud events to functions for event-driven
-      execution.
+      Manage environments for organizing and deploying resources across
+      development, staging, and production.
   - name: Jobs
     description: >-
       Manage jobs that execute functions at a set time, interval, or CRON
@@ -61,15 +54,22 @@ tags:
     description: >-
       Manage shared JSON Schema definitions used to type events and application
       data.
-  - name: Environments
+  - name: Server Functions
     description: >-
-      Manage environments for organizing and deploying resources across
-      development, staging, and production.
-  - name: Assistants
+      Manage Knative serverless functions that run in the PolyAPI cloud
+      infrastructure.
+  - name: Triggers
     description: >-
-      Manage AI assistants and conversations for AI-powered document assistance
-      and discovery.
-
+      Manage triggers that connect cloud events to functions for event-driven
+      execution.
+  - name: Variables
+    description: >-
+      Manage variables and secrets that are stored securely and injected into
+      functions at runtime.
+  - name: Webhooks
+    description: >-
+      Manage webhook endpoints that receive events via HTTP calls, with support
+      for authentication and custom listeners.
 paths:
   /functions/api:
     get:
