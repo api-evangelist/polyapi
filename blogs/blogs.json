@@ -1,0 +1,13 @@
+{
+  "repo": "polyapi",
+  "feeds": [
+    {
+      "source": "https://polyapi.io/learn-more/blog/",
+      "feed_url": "https://polyapi.io/feed/",
+      "saved": 10,
+      "title": "PolyAPI"
+    }
+  ],
+  "post_count": 10,
+  "fetched": "2026-05-03T23:33:59Z"
+}
