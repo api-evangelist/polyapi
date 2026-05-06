@@ -1,0 +1,1560 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: PolyAPI Platform API
+  description: PolyAPI is a modern enterprise middleware platform that provides a unified REST API for managing cloud service
+    resources including functions, variables, webhooks, triggers, jobs, schemas, and environments. Built using AI and Kubernetes-native
+    technology, it accelerates development and simplifies the operation of integrations, orchestrations, and microservices.
+  tags:
+  - Polyapi
+  - API
+  created: '2026-05-06'
+  modified: '2026-05-06'
+capability:
+  consumes:
+  - type: http
+    namespace: polyapi
+    baseUri: https://na1.polyapi.io
+    description: PolyAPI Platform API HTTP API.
+    authentication:
+      type: bearer
+      token: '{{POLYAPI_TOKEN}}'
+    resources:
+    - name: functions-api
+      path: /functions/api
+      operations:
+      - name: listapifunctions
+        method: GET
+        description: PolyAPI List API functions
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: createapifunction
+        method: POST
+        description: PolyAPI Create an API function
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: functions-api-functionid
+      path: /functions/api/{functionId}
+      operations:
+      - name: getapifunction
+        method: GET
+        description: PolyAPI Get an API function
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: updateapifunction
+        method: PATCH
+        description: PolyAPI Update an API function
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: deleteapifunction
+        method: DELETE
+        description: PolyAPI Delete an API function
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: functions-api-functionid-execute
+      path: /functions/api/{functionId}/execute
+      operations:
+      - name: executeapifunction
+        method: POST
+        description: PolyAPI Execute an API function
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: functions-server
+      path: /functions/server
+      operations:
+      - name: listserverfunctions
+        method: GET
+        description: PolyAPI List server functions
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: createserverfunction
+        method: POST
+        description: PolyAPI Create a server function
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: functions-server-functionid
+      path: /functions/server/{functionId}
+      operations:
+      - name: getserverfunction
+        method: GET
+        description: PolyAPI Get a server function
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: updateserverfunction
+        method: PATCH
+        description: PolyAPI Update a server function
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: deleteserverfunction
+        method: DELETE
+        description: PolyAPI Delete a server function
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: functions-server-functionid-execute
+      path: /functions/server/{functionId}/execute
+      operations:
+      - name: executeserverfunction
+        method: POST
+        description: PolyAPI Execute a server function
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: functions-client
+      path: /functions/client
+      operations:
+      - name: listclientfunctions
+        method: GET
+        description: PolyAPI List client functions
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: createclientfunction
+        method: POST
+        description: PolyAPI Create a client function
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: functions-client-functionid
+      path: /functions/client/{functionId}
+      operations:
+      - name: getclientfunction
+        method: GET
+        description: PolyAPI Get a client function
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: updateclientfunction
+        method: PATCH
+        description: PolyAPI Update a client function
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: deleteclientfunction
+        method: DELETE
+        description: PolyAPI Delete a client function
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: webhooks
+      path: /webhooks
+      operations:
+      - name: listwebhooks
+        method: GET
+        description: PolyAPI List webhooks
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: createwebhook
+        method: POST
+        description: PolyAPI Create a webhook
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: webhooks-webhookid
+      path: /webhooks/{webhookId}
+      operations:
+      - name: getwebhook
+        method: GET
+        description: PolyAPI Get a webhook
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: updatewebhook
+        method: PATCH
+        description: PolyAPI Update a webhook
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: deletewebhook
+        method: DELETE
+        description: PolyAPI Delete a webhook
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: webhooks-webhookid-trigger
+      path: /webhooks/{webhookId}/trigger
+      operations:
+      - name: triggerwebhook
+        method: POST
+        description: PolyAPI Trigger a webhook
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: variables
+      path: /variables
+      operations:
+      - name: listvariables
+        method: GET
+        description: PolyAPI List variables
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: createvariable
+        method: POST
+        description: PolyAPI Create a variable
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: variables-variableid
+      path: /variables/{variableId}
+      operations:
+      - name: getvariable
+        method: GET
+        description: PolyAPI Get a variable
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: updatevariable
+        method: PATCH
+        description: PolyAPI Update a variable
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: deletevariable
+        method: DELETE
+        description: PolyAPI Delete a variable
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: triggers
+      path: /triggers
+      operations:
+      - name: listtriggers
+        method: GET
+        description: PolyAPI List triggers
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: createtrigger
+        method: POST
+        description: PolyAPI Create a trigger
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: triggers-triggerid
+      path: /triggers/{triggerId}
+      operations:
+      - name: gettrigger
+        method: GET
+        description: PolyAPI Get a trigger
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: updatetrigger
+        method: PATCH
+        description: PolyAPI Update a trigger
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: deletetrigger
+        method: DELETE
+        description: PolyAPI Delete a trigger
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: jobs
+      path: /jobs
+      operations:
+      - name: listjobs
+        method: GET
+        description: PolyAPI List jobs
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: createjob
+        method: POST
+        description: PolyAPI Create a job
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: jobs-jobid
+      path: /jobs/{jobId}
+      operations:
+      - name: getjob
+        method: GET
+        description: PolyAPI Get a job
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: updatejob
+        method: PATCH
+        description: PolyAPI Update a job
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: deletejob
+        method: DELETE
+        description: PolyAPI Delete a job
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: schemas
+      path: /schemas
+      operations:
+      - name: listschemas
+        method: GET
+        description: PolyAPI List schemas
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: createschema
+        method: POST
+        description: PolyAPI Create a schema
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: schemas-schemaid
+      path: /schemas/{schemaId}
+      operations:
+      - name: getschema
+        method: GET
+        description: PolyAPI Get a schema
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: updateschema
+        method: PATCH
+        description: PolyAPI Update a schema
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: deleteschema
+        method: DELETE
+        description: PolyAPI Delete a schema
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: environments
+      path: /environments
+      operations:
+      - name: listenvironments
+        method: GET
+        description: PolyAPI List environments
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: environments-environmentid
+      path: /environments/{environmentId}
+      operations:
+      - name: getenvironment
+        method: GET
+        description: PolyAPI Get an environment
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: assistants-slug-conversations
+      path: /assistants/{slug}/conversations
+      operations:
+      - name: listconversations
+        method: GET
+        description: PolyAPI List conversations
+        inputParameters:
+        - name: slug
+          in: path
+          type: string
+          required: true
+          description: The assistant slug identifier.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: createconversation
+        method: POST
+        description: PolyAPI Create a conversation
+        inputParameters:
+        - name: slug
+          in: path
+          type: string
+          required: true
+          description: The assistant slug identifier.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: assistants-slug-conversations-conversationslug
+      path: /assistants/{slug}/conversations/{conversationSlug}
+      operations:
+      - name: getconversation
+        method: GET
+        description: PolyAPI Get a conversation
+        inputParameters:
+        - name: slug
+          in: path
+          type: string
+          required: true
+          description: The assistant slug identifier.
+        - name: conversationSlug
+          in: path
+          type: string
+          required: true
+          description: The conversation slug identifier.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: deleteconversation
+        method: DELETE
+        description: PolyAPI Delete a conversation
+        inputParameters:
+        - name: slug
+          in: path
+          type: string
+          required: true
+          description: The assistant slug identifier.
+        - name: conversationSlug
+          in: path
+          type: string
+          required: true
+          description: The conversation slug identifier.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+  exposes:
+  - type: rest
+    port: 8080
+    namespace: polyapi-rest
+    description: REST adapter for PolyAPI Platform API.
+    resources:
+    - path: /functions/api
+      name: listapifunctions
+      operations:
+      - method: GET
+        name: listapifunctions
+        description: PolyAPI List API functions
+        call: polyapi.listapifunctions
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /functions/api
+      name: createapifunction
+      operations:
+      - method: POST
+        name: createapifunction
+        description: PolyAPI Create an API function
+        call: polyapi.createapifunction
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /functions/api/{functionId}
+      name: getapifunction
+      operations:
+      - method: GET
+        name: getapifunction
+        description: PolyAPI Get an API function
+        call: polyapi.getapifunction
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /functions/api/{functionId}
+      name: updateapifunction
+      operations:
+      - method: PATCH
+        name: updateapifunction
+        description: PolyAPI Update an API function
+        call: polyapi.updateapifunction
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /functions/api/{functionId}
+      name: deleteapifunction
+      operations:
+      - method: DELETE
+        name: deleteapifunction
+        description: PolyAPI Delete an API function
+        call: polyapi.deleteapifunction
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /functions/api/{functionId}/execute
+      name: executeapifunction
+      operations:
+      - method: POST
+        name: executeapifunction
+        description: PolyAPI Execute an API function
+        call: polyapi.executeapifunction
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /functions/server
+      name: listserverfunctions
+      operations:
+      - method: GET
+        name: listserverfunctions
+        description: PolyAPI List server functions
+        call: polyapi.listserverfunctions
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /functions/server
+      name: createserverfunction
+      operations:
+      - method: POST
+        name: createserverfunction
+        description: PolyAPI Create a server function
+        call: polyapi.createserverfunction
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /functions/server/{functionId}
+      name: getserverfunction
+      operations:
+      - method: GET
+        name: getserverfunction
+        description: PolyAPI Get a server function
+        call: polyapi.getserverfunction
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /functions/server/{functionId}
+      name: updateserverfunction
+      operations:
+      - method: PATCH
+        name: updateserverfunction
+        description: PolyAPI Update a server function
+        call: polyapi.updateserverfunction
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /functions/server/{functionId}
+      name: deleteserverfunction
+      operations:
+      - method: DELETE
+        name: deleteserverfunction
+        description: PolyAPI Delete a server function
+        call: polyapi.deleteserverfunction
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /functions/server/{functionId}/execute
+      name: executeserverfunction
+      operations:
+      - method: POST
+        name: executeserverfunction
+        description: PolyAPI Execute a server function
+        call: polyapi.executeserverfunction
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /functions/client
+      name: listclientfunctions
+      operations:
+      - method: GET
+        name: listclientfunctions
+        description: PolyAPI List client functions
+        call: polyapi.listclientfunctions
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /functions/client
+      name: createclientfunction
+      operations:
+      - method: POST
+        name: createclientfunction
+        description: PolyAPI Create a client function
+        call: polyapi.createclientfunction
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /functions/client/{functionId}
+      name: getclientfunction
+      operations:
+      - method: GET
+        name: getclientfunction
+        description: PolyAPI Get a client function
+        call: polyapi.getclientfunction
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /functions/client/{functionId}
+      name: updateclientfunction
+      operations:
+      - method: PATCH
+        name: updateclientfunction
+        description: PolyAPI Update a client function
+        call: polyapi.updateclientfunction
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /functions/client/{functionId}
+      name: deleteclientfunction
+      operations:
+      - method: DELETE
+        name: deleteclientfunction
+        description: PolyAPI Delete a client function
+        call: polyapi.deleteclientfunction
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /webhooks
+      name: listwebhooks
+      operations:
+      - method: GET
+        name: listwebhooks
+        description: PolyAPI List webhooks
+        call: polyapi.listwebhooks
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /webhooks
+      name: createwebhook
+      operations:
+      - method: POST
+        name: createwebhook
+        description: PolyAPI Create a webhook
+        call: polyapi.createwebhook
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /webhooks/{webhookId}
+      name: getwebhook
+      operations:
+      - method: GET
+        name: getwebhook
+        description: PolyAPI Get a webhook
+        call: polyapi.getwebhook
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /webhooks/{webhookId}
+      name: updatewebhook
+      operations:
+      - method: PATCH
+        name: updatewebhook
+        description: PolyAPI Update a webhook
+        call: polyapi.updatewebhook
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /webhooks/{webhookId}
+      name: deletewebhook
+      operations:
+      - method: DELETE
+        name: deletewebhook
+        description: PolyAPI Delete a webhook
+        call: polyapi.deletewebhook
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /webhooks/{webhookId}/trigger
+      name: triggerwebhook
+      operations:
+      - method: POST
+        name: triggerwebhook
+        description: PolyAPI Trigger a webhook
+        call: polyapi.triggerwebhook
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /variables
+      name: listvariables
+      operations:
+      - method: GET
+        name: listvariables
+        description: PolyAPI List variables
+        call: polyapi.listvariables
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /variables
+      name: createvariable
+      operations:
+      - method: POST
+        name: createvariable
+        description: PolyAPI Create a variable
+        call: polyapi.createvariable
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /variables/{variableId}
+      name: getvariable
+      operations:
+      - method: GET
+        name: getvariable
+        description: PolyAPI Get a variable
+        call: polyapi.getvariable
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /variables/{variableId}
+      name: updatevariable
+      operations:
+      - method: PATCH
+        name: updatevariable
+        description: PolyAPI Update a variable
+        call: polyapi.updatevariable
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /variables/{variableId}
+      name: deletevariable
+      operations:
+      - method: DELETE
+        name: deletevariable
+        description: PolyAPI Delete a variable
+        call: polyapi.deletevariable
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /triggers
+      name: listtriggers
+      operations:
+      - method: GET
+        name: listtriggers
+        description: PolyAPI List triggers
+        call: polyapi.listtriggers
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /triggers
+      name: createtrigger
+      operations:
+      - method: POST
+        name: createtrigger
+        description: PolyAPI Create a trigger
+        call: polyapi.createtrigger
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /triggers/{triggerId}
+      name: gettrigger
+      operations:
+      - method: GET
+        name: gettrigger
+        description: PolyAPI Get a trigger
+        call: polyapi.gettrigger
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /triggers/{triggerId}
+      name: updatetrigger
+      operations:
+      - method: PATCH
+        name: updatetrigger
+        description: PolyAPI Update a trigger
+        call: polyapi.updatetrigger
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /triggers/{triggerId}
+      name: deletetrigger
+      operations:
+      - method: DELETE
+        name: deletetrigger
+        description: PolyAPI Delete a trigger
+        call: polyapi.deletetrigger
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /jobs
+      name: listjobs
+      operations:
+      - method: GET
+        name: listjobs
+        description: PolyAPI List jobs
+        call: polyapi.listjobs
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /jobs
+      name: createjob
+      operations:
+      - method: POST
+        name: createjob
+        description: PolyAPI Create a job
+        call: polyapi.createjob
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /jobs/{jobId}
+      name: getjob
+      operations:
+      - method: GET
+        name: getjob
+        description: PolyAPI Get a job
+        call: polyapi.getjob
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /jobs/{jobId}
+      name: updatejob
+      operations:
+      - method: PATCH
+        name: updatejob
+        description: PolyAPI Update a job
+        call: polyapi.updatejob
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /jobs/{jobId}
+      name: deletejob
+      operations:
+      - method: DELETE
+        name: deletejob
+        description: PolyAPI Delete a job
+        call: polyapi.deletejob
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /schemas
+      name: listschemas
+      operations:
+      - method: GET
+        name: listschemas
+        description: PolyAPI List schemas
+        call: polyapi.listschemas
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /schemas
+      name: createschema
+      operations:
+      - method: POST
+        name: createschema
+        description: PolyAPI Create a schema
+        call: polyapi.createschema
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /schemas/{schemaId}
+      name: getschema
+      operations:
+      - method: GET
+        name: getschema
+        description: PolyAPI Get a schema
+        call: polyapi.getschema
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /schemas/{schemaId}
+      name: updateschema
+      operations:
+      - method: PATCH
+        name: updateschema
+        description: PolyAPI Update a schema
+        call: polyapi.updateschema
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /schemas/{schemaId}
+      name: deleteschema
+      operations:
+      - method: DELETE
+        name: deleteschema
+        description: PolyAPI Delete a schema
+        call: polyapi.deleteschema
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /environments
+      name: listenvironments
+      operations:
+      - method: GET
+        name: listenvironments
+        description: PolyAPI List environments
+        call: polyapi.listenvironments
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /environments/{environmentId}
+      name: getenvironment
+      operations:
+      - method: GET
+        name: getenvironment
+        description: PolyAPI Get an environment
+        call: polyapi.getenvironment
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /assistants/{slug}/conversations
+      name: listconversations
+      operations:
+      - method: GET
+        name: listconversations
+        description: PolyAPI List conversations
+        call: polyapi.listconversations
+        with:
+          slug: rest.slug
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /assistants/{slug}/conversations
+      name: createconversation
+      operations:
+      - method: POST
+        name: createconversation
+        description: PolyAPI Create a conversation
+        call: polyapi.createconversation
+        with:
+          slug: rest.slug
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /assistants/{slug}/conversations/{conversationSlug}
+      name: getconversation
+      operations:
+      - method: GET
+        name: getconversation
+        description: PolyAPI Get a conversation
+        call: polyapi.getconversation
+        with:
+          slug: rest.slug
+          conversationSlug: rest.conversationSlug
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /assistants/{slug}/conversations/{conversationSlug}
+      name: deleteconversation
+      operations:
+      - method: DELETE
+        name: deleteconversation
+        description: PolyAPI Delete a conversation
+        call: polyapi.deleteconversation
+        with:
+          slug: rest.slug
+          conversationSlug: rest.conversationSlug
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    port: 9090
+    namespace: polyapi-mcp
+    transport: http
+    description: MCP adapter for PolyAPI Platform API for AI agent use.
+    tools:
+    - name: listapifunctions
+      description: PolyAPI List API functions
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: polyapi.listapifunctions
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: createapifunction
+      description: PolyAPI Create an API function
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: polyapi.createapifunction
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: getapifunction
+      description: PolyAPI Get an API function
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: polyapi.getapifunction
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: updateapifunction
+      description: PolyAPI Update an API function
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: polyapi.updateapifunction
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: deleteapifunction
+      description: PolyAPI Delete an API function
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: polyapi.deleteapifunction
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: executeapifunction
+      description: PolyAPI Execute an API function
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: polyapi.executeapifunction
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: listserverfunctions
+      description: PolyAPI List server functions
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: polyapi.listserverfunctions
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: createserverfunction
+      description: PolyAPI Create a server function
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: polyapi.createserverfunction
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: getserverfunction
+      description: PolyAPI Get a server function
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: polyapi.getserverfunction
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: updateserverfunction
+      description: PolyAPI Update a server function
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: polyapi.updateserverfunction
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: deleteserverfunction
+      description: PolyAPI Delete a server function
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: polyapi.deleteserverfunction
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: executeserverfunction
+      description: PolyAPI Execute a server function
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: polyapi.executeserverfunction
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: listclientfunctions
+      description: PolyAPI List client functions
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: polyapi.listclientfunctions
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: createclientfunction
+      description: PolyAPI Create a client function
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: polyapi.createclientfunction
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: getclientfunction
+      description: PolyAPI Get a client function
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: polyapi.getclientfunction
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: updateclientfunction
+      description: PolyAPI Update a client function
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: polyapi.updateclientfunction
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: deleteclientfunction
+      description: PolyAPI Delete a client function
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: polyapi.deleteclientfunction
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: listwebhooks
+      description: PolyAPI List webhooks
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: polyapi.listwebhooks
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: createwebhook
+      description: PolyAPI Create a webhook
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: polyapi.createwebhook
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: getwebhook
+      description: PolyAPI Get a webhook
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: polyapi.getwebhook
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: updatewebhook
+      description: PolyAPI Update a webhook
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: polyapi.updatewebhook
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: deletewebhook
+      description: PolyAPI Delete a webhook
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: polyapi.deletewebhook
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: triggerwebhook
+      description: PolyAPI Trigger a webhook
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: polyapi.triggerwebhook
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: listvariables
+      description: PolyAPI List variables
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: polyapi.listvariables
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: createvariable
+      description: PolyAPI Create a variable
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: polyapi.createvariable
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: getvariable
+      description: PolyAPI Get a variable
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: polyapi.getvariable
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: updatevariable
+      description: PolyAPI Update a variable
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: polyapi.updatevariable
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: deletevariable
+      description: PolyAPI Delete a variable
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: polyapi.deletevariable
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: listtriggers
+      description: PolyAPI List triggers
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: polyapi.listtriggers
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: createtrigger
+      description: PolyAPI Create a trigger
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: polyapi.createtrigger
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: gettrigger
+      description: PolyAPI Get a trigger
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: polyapi.gettrigger
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: updatetrigger
+      description: PolyAPI Update a trigger
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: polyapi.updatetrigger
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: deletetrigger
+      description: PolyAPI Delete a trigger
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: polyapi.deletetrigger
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: listjobs
+      description: PolyAPI List jobs
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: polyapi.listjobs
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: createjob
+      description: PolyAPI Create a job
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: polyapi.createjob
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: getjob
+      description: PolyAPI Get a job
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: polyapi.getjob
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: updatejob
+      description: PolyAPI Update a job
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: polyapi.updatejob
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: deletejob
+      description: PolyAPI Delete a job
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: polyapi.deletejob
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: listschemas
+      description: PolyAPI List schemas
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: polyapi.listschemas
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: createschema
+      description: PolyAPI Create a schema
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: polyapi.createschema
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: getschema
+      description: PolyAPI Get a schema
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: polyapi.getschema
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: updateschema
+      description: PolyAPI Update a schema
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: polyapi.updateschema
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: deleteschema
+      description: PolyAPI Delete a schema
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: polyapi.deleteschema
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: listenvironments
+      description: PolyAPI List environments
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: polyapi.listenvironments
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: getenvironment
+      description: PolyAPI Get an environment
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: polyapi.getenvironment
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: listconversations
+      description: PolyAPI List conversations
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: polyapi.listconversations
+      with:
+        slug: tools.slug
+      inputParameters:
+      - name: slug
+        type: string
+        description: The assistant slug identifier.
+        required: true
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: createconversation
+      description: PolyAPI Create a conversation
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: polyapi.createconversation
+      with:
+        slug: tools.slug
+      inputParameters:
+      - name: slug
+        type: string
+        description: The assistant slug identifier.
+        required: true
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: getconversation
+      description: PolyAPI Get a conversation
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: polyapi.getconversation
+      with:
+        slug: tools.slug
+        conversationSlug: tools.conversationSlug
+      inputParameters:
+      - name: slug
+        type: string
+        description: The assistant slug identifier.
+        required: true
+      - name: conversationSlug
+        type: string
+        description: The conversation slug identifier.
+        required: true
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: deleteconversation
+      description: PolyAPI Delete a conversation
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: polyapi.deleteconversation
+      with:
+        slug: tools.slug
+        conversationSlug: tools.conversationSlug
+      inputParameters:
+      - name: slug
+        type: string
+        description: The assistant slug identifier.
+        required: true
+      - name: conversationSlug
+        type: string
+        description: The conversation slug identifier.
+        required: true
+      outputParameters:
+      - type: object
+        mapping: $.
+binds:
+- namespace: env
+  keys:
+    POLYAPI_TOKEN: POLYAPI_TOKEN
