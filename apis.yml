@@ -170,7 +170,7 @@ common:
     description: 'null'
   - url: https://polyapi.io/platform/system-status/
     name: System Status - PolyAPI
-    type: Status
+    type: StatusPage
     description: 'null'
   - url: https://polyapi.io/solutions/case-studies/
     name: Case Studies - PolyAPI
