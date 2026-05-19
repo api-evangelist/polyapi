@@ -1,0 +1,197 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: PolyAPI Platform API — Client Functions
+  description: 'PolyAPI Platform API — Client Functions. 5 operations. Lead operation: PolyAPI List client functions. Self-contained
+    Naftiko capability covering one Polyapi business surface.'
+  tags:
+  - Polyapi
+  - Client Functions
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    POLYAPI_API_KEY: POLYAPI_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: platform-client-functions
+    baseUri: https://na1.polyapi.io
+    description: PolyAPI Platform API — Client Functions business capability. Self-contained, no shared references.
+    resources:
+    - name: functions-client
+      path: /functions/client
+      operations:
+      - name: listclientfunctions
+        method: GET
+        description: PolyAPI List client functions
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: createclientfunction
+        method: POST
+        description: PolyAPI Create a client function
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: functions-client-functionId
+      path: /functions/client/{functionId}
+      operations:
+      - name: getclientfunction
+        method: GET
+        description: PolyAPI Get a client function
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: updateclientfunction
+        method: PATCH
+        description: PolyAPI Update a client function
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+      - name: deleteclientfunction
+        method: DELETE
+        description: PolyAPI Delete a client function
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    authentication:
+      type: bearer
+      token: '{{env.POLYAPI_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: platform-client-functions-rest
+    port: 8080
+    description: REST adapter for PolyAPI Platform API — Client Functions. One Spectral-compliant resource per consumed operation,
+      prefixed with /v1.
+    resources:
+    - path: /v1/functions/client
+      name: functions-client
+      description: REST surface for functions-client.
+      operations:
+      - method: GET
+        name: listclientfunctions
+        description: PolyAPI List client functions
+        call: platform-client-functions.listclientfunctions
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: createclientfunction
+        description: PolyAPI Create a client function
+        call: platform-client-functions.createclientfunction
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/functions/client/{functionid}
+      name: functions-client-functionid
+      description: REST surface for functions-client-functionId.
+      operations:
+      - method: GET
+        name: getclientfunction
+        description: PolyAPI Get a client function
+        call: platform-client-functions.getclientfunction
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PATCH
+        name: updateclientfunction
+        description: PolyAPI Update a client function
+        call: platform-client-functions.updateclientfunction
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: DELETE
+        name: deleteclientfunction
+        description: PolyAPI Delete a client function
+        call: platform-client-functions.deleteclientfunction
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: platform-client-functions-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for PolyAPI Platform API — Client Functions. One tool per consumed operation, routed inline through
+      this capability's consumes block.
+    tools:
+    - name: polyapi-list-client-functions
+      description: PolyAPI List client functions
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: platform-client-functions.listclientfunctions
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: polyapi-create-client-function
+      description: PolyAPI Create a client function
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: platform-client-functions.createclientfunction
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: polyapi-get-client-function
+      description: PolyAPI Get a client function
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: platform-client-functions.getclientfunction
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: polyapi-update-client-function
+      description: PolyAPI Update a client function
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: platform-client-functions.updateclientfunction
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: polyapi-delete-client-function
+      description: PolyAPI Delete a client function
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: platform-client-functions.deleteclientfunction
+      outputParameters:
+      - type: object
+        mapping: $.

@@ -1,0 +1,102 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: PolyAPI Platform API — Environments
+  description: 'PolyAPI Platform API — Environments. 2 operations. Lead operation: PolyAPI List environments. Self-contained
+    Naftiko capability covering one Polyapi business surface.'
+  tags:
+  - Polyapi
+  - Environments
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    POLYAPI_API_KEY: POLYAPI_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: platform-environments
+    baseUri: https://na1.polyapi.io
+    description: PolyAPI Platform API — Environments business capability. Self-contained, no shared references.
+    resources:
+    - name: environments
+      path: /environments
+      operations:
+      - name: listenvironments
+        method: GET
+        description: PolyAPI List environments
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: environments-environmentId
+      path: /environments/{environmentId}
+      operations:
+      - name: getenvironment
+        method: GET
+        description: PolyAPI Get an environment
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    authentication:
+      type: bearer
+      token: '{{env.POLYAPI_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: platform-environments-rest
+    port: 8080
+    description: REST adapter for PolyAPI Platform API — Environments. One Spectral-compliant resource per consumed operation,
+      prefixed with /v1.
+    resources:
+    - path: /v1/environments
+      name: environments
+      description: REST surface for environments.
+      operations:
+      - method: GET
+        name: listenvironments
+        description: PolyAPI List environments
+        call: platform-environments.listenvironments
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/environments/{environmentid}
+      name: environments-environmentid
+      description: REST surface for environments-environmentId.
+      operations:
+      - method: GET
+        name: getenvironment
+        description: PolyAPI Get an environment
+        call: platform-environments.getenvironment
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: platform-environments-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for PolyAPI Platform API — Environments. One tool per consumed operation, routed inline through
+      this capability's consumes block.
+    tools:
+    - name: polyapi-list-environments
+      description: PolyAPI List environments
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: platform-environments.listenvironments
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: polyapi-get-environment
+      description: PolyAPI Get an environment
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: platform-environments.getenvironment
+      outputParameters:
+      - type: object
+        mapping: $.

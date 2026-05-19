@@ -1,0 +1,197 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: PolyAPI Platform API — Schemas
+  description: 'PolyAPI Platform API — Schemas. 5 operations. Lead operation: PolyAPI List schemas. Self-contained Naftiko
+    capability covering one Polyapi business surface.'
+  tags:
+  - Polyapi
+  - Schemas
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    POLYAPI_API_KEY: POLYAPI_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: platform-schemas
+    baseUri: https://na1.polyapi.io
+    description: PolyAPI Platform API — Schemas business capability. Self-contained, no shared references.
+    resources:
+    - name: schemas
+      path: /schemas
+      operations:
+      - name: listschemas
+        method: GET
+        description: PolyAPI List schemas
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: createschema
+        method: POST
+        description: PolyAPI Create a schema
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: schemas-schemaId
+      path: /schemas/{schemaId}
+      operations:
+      - name: getschema
+        method: GET
+        description: PolyAPI Get a schema
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: updateschema
+        method: PATCH
+        description: PolyAPI Update a schema
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+      - name: deleteschema
+        method: DELETE
+        description: PolyAPI Delete a schema
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    authentication:
+      type: bearer
+      token: '{{env.POLYAPI_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: platform-schemas-rest
+    port: 8080
+    description: REST adapter for PolyAPI Platform API — Schemas. One Spectral-compliant resource per consumed operation,
+      prefixed with /v1.
+    resources:
+    - path: /v1/schemas
+      name: schemas
+      description: REST surface for schemas.
+      operations:
+      - method: GET
+        name: listschemas
+        description: PolyAPI List schemas
+        call: platform-schemas.listschemas
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: createschema
+        description: PolyAPI Create a schema
+        call: platform-schemas.createschema
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/schemas/{schemaid}
+      name: schemas-schemaid
+      description: REST surface for schemas-schemaId.
+      operations:
+      - method: GET
+        name: getschema
+        description: PolyAPI Get a schema
+        call: platform-schemas.getschema
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PATCH
+        name: updateschema
+        description: PolyAPI Update a schema
+        call: platform-schemas.updateschema
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: DELETE
+        name: deleteschema
+        description: PolyAPI Delete a schema
+        call: platform-schemas.deleteschema
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: platform-schemas-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for PolyAPI Platform API — Schemas. One tool per consumed operation, routed inline through this
+      capability's consumes block.
+    tools:
+    - name: polyapi-list-schemas
+      description: PolyAPI List schemas
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: platform-schemas.listschemas
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: polyapi-create-schema
+      description: PolyAPI Create a schema
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: platform-schemas.createschema
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: polyapi-get-schema
+      description: PolyAPI Get a schema
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: platform-schemas.getschema
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: polyapi-update-schema
+      description: PolyAPI Update a schema
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: platform-schemas.updateschema
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: polyapi-delete-schema
+      description: PolyAPI Delete a schema
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: platform-schemas.deleteschema
+      outputParameters:
+      - type: object
+        mapping: $.

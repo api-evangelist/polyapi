@@ -1,0 +1,239 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: PolyAPI Platform API — Server Functions
+  description: 'PolyAPI Platform API — Server Functions. 6 operations. Lead operation: PolyAPI List server functions. Self-contained
+    Naftiko capability covering one Polyapi business surface.'
+  tags:
+  - Polyapi
+  - Server Functions
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    POLYAPI_API_KEY: POLYAPI_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: platform-server-functions
+    baseUri: https://na1.polyapi.io
+    description: PolyAPI Platform API — Server Functions business capability. Self-contained, no shared references.
+    resources:
+    - name: functions-server
+      path: /functions/server
+      operations:
+      - name: listserverfunctions
+        method: GET
+        description: PolyAPI List server functions
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: createserverfunction
+        method: POST
+        description: PolyAPI Create a server function
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: functions-server-functionId
+      path: /functions/server/{functionId}
+      operations:
+      - name: getserverfunction
+        method: GET
+        description: PolyAPI Get a server function
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: updateserverfunction
+        method: PATCH
+        description: PolyAPI Update a server function
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+      - name: deleteserverfunction
+        method: DELETE
+        description: PolyAPI Delete a server function
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: functions-server-functionId-execute
+      path: /functions/server/{functionId}/execute
+      operations:
+      - name: executeserverfunction
+        method: POST
+        description: PolyAPI Execute a server function
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    authentication:
+      type: bearer
+      token: '{{env.POLYAPI_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: platform-server-functions-rest
+    port: 8080
+    description: REST adapter for PolyAPI Platform API — Server Functions. One Spectral-compliant resource per consumed operation,
+      prefixed with /v1.
+    resources:
+    - path: /v1/functions/server
+      name: functions-server
+      description: REST surface for functions-server.
+      operations:
+      - method: GET
+        name: listserverfunctions
+        description: PolyAPI List server functions
+        call: platform-server-functions.listserverfunctions
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: createserverfunction
+        description: PolyAPI Create a server function
+        call: platform-server-functions.createserverfunction
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/functions/server/{functionid}
+      name: functions-server-functionid
+      description: REST surface for functions-server-functionId.
+      operations:
+      - method: GET
+        name: getserverfunction
+        description: PolyAPI Get a server function
+        call: platform-server-functions.getserverfunction
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PATCH
+        name: updateserverfunction
+        description: PolyAPI Update a server function
+        call: platform-server-functions.updateserverfunction
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: DELETE
+        name: deleteserverfunction
+        description: PolyAPI Delete a server function
+        call: platform-server-functions.deleteserverfunction
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/functions/server/{functionid}/execute
+      name: functions-server-functionid-execute
+      description: REST surface for functions-server-functionId-execute.
+      operations:
+      - method: POST
+        name: executeserverfunction
+        description: PolyAPI Execute a server function
+        call: platform-server-functions.executeserverfunction
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: platform-server-functions-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for PolyAPI Platform API — Server Functions. One tool per consumed operation, routed inline through
+      this capability's consumes block.
+    tools:
+    - name: polyapi-list-server-functions
+      description: PolyAPI List server functions
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: platform-server-functions.listserverfunctions
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: polyapi-create-server-function
+      description: PolyAPI Create a server function
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: platform-server-functions.createserverfunction
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: polyapi-get-server-function
+      description: PolyAPI Get a server function
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: platform-server-functions.getserverfunction
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: polyapi-update-server-function
+      description: PolyAPI Update a server function
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: platform-server-functions.updateserverfunction
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: polyapi-delete-server-function
+      description: PolyAPI Delete a server function
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: platform-server-functions.deleteserverfunction
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: polyapi-execute-server-function
+      description: PolyAPI Execute a server function
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: platform-server-functions.executeserverfunction
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.

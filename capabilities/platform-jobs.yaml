@@ -1,0 +1,197 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: PolyAPI Platform API — Jobs
+  description: 'PolyAPI Platform API — Jobs. 5 operations. Lead operation: PolyAPI List jobs. Self-contained Naftiko capability
+    covering one Polyapi business surface.'
+  tags:
+  - Polyapi
+  - Jobs
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    POLYAPI_API_KEY: POLYAPI_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: platform-jobs
+    baseUri: https://na1.polyapi.io
+    description: PolyAPI Platform API — Jobs business capability. Self-contained, no shared references.
+    resources:
+    - name: jobs
+      path: /jobs
+      operations:
+      - name: listjobs
+        method: GET
+        description: PolyAPI List jobs
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: createjob
+        method: POST
+        description: PolyAPI Create a job
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: jobs-jobId
+      path: /jobs/{jobId}
+      operations:
+      - name: getjob
+        method: GET
+        description: PolyAPI Get a job
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: updatejob
+        method: PATCH
+        description: PolyAPI Update a job
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+      - name: deletejob
+        method: DELETE
+        description: PolyAPI Delete a job
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    authentication:
+      type: bearer
+      token: '{{env.POLYAPI_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: platform-jobs-rest
+    port: 8080
+    description: REST adapter for PolyAPI Platform API — Jobs. One Spectral-compliant resource per consumed operation, prefixed
+      with /v1.
+    resources:
+    - path: /v1/jobs
+      name: jobs
+      description: REST surface for jobs.
+      operations:
+      - method: GET
+        name: listjobs
+        description: PolyAPI List jobs
+        call: platform-jobs.listjobs
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: createjob
+        description: PolyAPI Create a job
+        call: platform-jobs.createjob
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/jobs/{jobid}
+      name: jobs-jobid
+      description: REST surface for jobs-jobId.
+      operations:
+      - method: GET
+        name: getjob
+        description: PolyAPI Get a job
+        call: platform-jobs.getjob
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PATCH
+        name: updatejob
+        description: PolyAPI Update a job
+        call: platform-jobs.updatejob
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: DELETE
+        name: deletejob
+        description: PolyAPI Delete a job
+        call: platform-jobs.deletejob
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: platform-jobs-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for PolyAPI Platform API — Jobs. One tool per consumed operation, routed inline through this
+      capability's consumes block.
+    tools:
+    - name: polyapi-list-jobs
+      description: PolyAPI List jobs
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: platform-jobs.listjobs
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: polyapi-create-job
+      description: PolyAPI Create a job
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: platform-jobs.createjob
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: polyapi-get-job
+      description: PolyAPI Get a job
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: platform-jobs.getjob
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: polyapi-update-job
+      description: PolyAPI Update a job
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: platform-jobs.updatejob
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: polyapi-delete-job
+      description: PolyAPI Delete a job
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: platform-jobs.deletejob
+      outputParameters:
+      - type: object
+        mapping: $.
