@@ -260,6 +260,8 @@ common:
     name: Sign Up For Poly - PolyAPI
     type: SignUp
     description: 'null'
+  - type: LLMsTxt
+    url: https://na1.polyapi.io/llms.txt
 created: '2025-06-05T00:00:00.000Z'
 modified: '2026-05-19'
 position: Consumer
