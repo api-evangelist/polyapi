@@ -2,12 +2,20 @@
   "repo": "polyapi",
   "feeds": [
     {
-      "source": "https://polyapi.io/learn-more/blog/",
+      "source": "https://polyapi.io/learn-more/blog/feed/",
       "feed_url": "https://polyapi.io/learn-more/blog/feed/",
-      "title": "Blog - PolyAPI",
-      "saved": 6
+      "title": "",
+      "saved": 0,
+      "method": "feed"
+    },
+    {
+      "source": "https://polyapi.io/learn-more/blog/",
+      "feed_url": "https://polyapi.io/feed/",
+      "title": "",
+      "saved": 0,
+      "method": "discovered"
     }
   ],
   "post_count": 16,
-  "fetched": "2026-05-17T20:20:35Z"
+  "fetched": "2026-06-01T23:35:02Z"
 }
