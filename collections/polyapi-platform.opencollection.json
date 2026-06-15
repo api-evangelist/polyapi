@@ -1,0 +1,1095 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "PolyAPI Platform API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "API Functions",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "PolyAPI List API functions",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://na1.polyapi.io/functions/api",
+            "params": [
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Maximum number of items to return."
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "Number of items to skip for pagination."
+              }
+            ]
+          },
+          "docs": "Retrieve a list of all API functions in the current environment."
+        },
+        {
+          "info": {
+            "name": "PolyAPI Create an API function",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://na1.polyapi.io/functions/api",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a new API function that wraps a third-party API call."
+        },
+        {
+          "info": {
+            "name": "PolyAPI Get an API function",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://na1.polyapi.io/functions/api/:functionId",
+            "params": [
+              {
+                "name": "functionId",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of the function."
+              }
+            ]
+          },
+          "docs": "Retrieve details of a specific API function by its ID."
+        },
+        {
+          "info": {
+            "name": "PolyAPI Update an API function",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://na1.polyapi.io/functions/api/:functionId",
+            "params": [
+              {
+                "name": "functionId",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of the function."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update an existing API function."
+        },
+        {
+          "info": {
+            "name": "PolyAPI Delete an API function",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://na1.polyapi.io/functions/api/:functionId",
+            "params": [
+              {
+                "name": "functionId",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of the function."
+              }
+            ]
+          },
+          "docs": "Delete a specific API function by its ID."
+        },
+        {
+          "info": {
+            "name": "PolyAPI Execute an API function",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://na1.polyapi.io/functions/api/:functionId/execute",
+            "params": [
+              {
+                "name": "functionId",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of the function."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Execute an API function by its ID. Requires the Execute Functions permission. Variables can be injected using PolyVariable objects in the request body."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Server Functions",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "PolyAPI List server functions",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://na1.polyapi.io/functions/server",
+            "params": [
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Maximum number of items to return."
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "Number of items to skip for pagination."
+              }
+            ]
+          },
+          "docs": "Retrieve a list of all server functions in the current environment."
+        },
+        {
+          "info": {
+            "name": "PolyAPI Create a server function",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://na1.polyapi.io/functions/server",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a new Knative serverless function."
+        },
+        {
+          "info": {
+            "name": "PolyAPI Get a server function",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://na1.polyapi.io/functions/server/:functionId",
+            "params": [
+              {
+                "name": "functionId",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of the function."
+              }
+            ]
+          },
+          "docs": "Retrieve details of a specific server function by its ID."
+        },
+        {
+          "info": {
+            "name": "PolyAPI Update a server function",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://na1.polyapi.io/functions/server/:functionId",
+            "params": [
+              {
+                "name": "functionId",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of the function."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update an existing server function."
+        },
+        {
+          "info": {
+            "name": "PolyAPI Delete a server function",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://na1.polyapi.io/functions/server/:functionId",
+            "params": [
+              {
+                "name": "functionId",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of the function."
+              }
+            ]
+          },
+          "docs": "Delete a specific server function by its ID."
+        },
+        {
+          "info": {
+            "name": "PolyAPI Execute a server function",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://na1.polyapi.io/functions/server/:functionId/execute",
+            "params": [
+              {
+                "name": "functionId",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of the function."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Execute a server function by its ID. Supports asynchronous execution and custom response handling via the polyCustom object. Requires the Execute Functions permission."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Client Functions",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "PolyAPI List client functions",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://na1.polyapi.io/functions/client",
+            "params": [
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Maximum number of items to return."
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "Number of items to skip for pagination."
+              }
+            ]
+          },
+          "docs": "Retrieve a list of all client functions in the current environment."
+        },
+        {
+          "info": {
+            "name": "PolyAPI Create a client function",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://na1.polyapi.io/functions/client",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a new shared client function."
+        },
+        {
+          "info": {
+            "name": "PolyAPI Get a client function",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://na1.polyapi.io/functions/client/:functionId",
+            "params": [
+              {
+                "name": "functionId",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of the function."
+              }
+            ]
+          },
+          "docs": "Retrieve details of a specific client function by its ID."
+        },
+        {
+          "info": {
+            "name": "PolyAPI Update a client function",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://na1.polyapi.io/functions/client/:functionId",
+            "params": [
+              {
+                "name": "functionId",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of the function."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update an existing client function."
+        },
+        {
+          "info": {
+            "name": "PolyAPI Delete a client function",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://na1.polyapi.io/functions/client/:functionId",
+            "params": [
+              {
+                "name": "functionId",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of the function."
+              }
+            ]
+          },
+          "docs": "Delete a specific client function by its ID."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Webhooks",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "PolyAPI List webhooks",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://na1.polyapi.io/webhooks",
+            "params": [
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Maximum number of items to return."
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "Number of items to skip for pagination."
+              }
+            ]
+          },
+          "docs": "Retrieve a list of all webhooks in the current environment."
+        },
+        {
+          "info": {
+            "name": "PolyAPI Create a webhook",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://na1.polyapi.io/webhooks",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a new webhook endpoint that can receive events via HTTP calls."
+        },
+        {
+          "info": {
+            "name": "PolyAPI Get a webhook",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://na1.polyapi.io/webhooks/:webhookId",
+            "params": [
+              {
+                "name": "webhookId",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of the webhook."
+              }
+            ]
+          },
+          "docs": "Retrieve details of a specific webhook by its ID."
+        },
+        {
+          "info": {
+            "name": "PolyAPI Update a webhook",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://na1.polyapi.io/webhooks/:webhookId",
+            "params": [
+              {
+                "name": "webhookId",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of the webhook."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update an existing webhook."
+        },
+        {
+          "info": {
+            "name": "PolyAPI Delete a webhook",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://na1.polyapi.io/webhooks/:webhookId",
+            "params": [
+              {
+                "name": "webhookId",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of the webhook."
+              }
+            ]
+          },
+          "docs": "Delete a specific webhook by its ID."
+        },
+        {
+          "info": {
+            "name": "PolyAPI Trigger a webhook",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://na1.polyapi.io/webhooks/:webhookId/trigger",
+            "params": [
+              {
+                "name": "webhookId",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of the webhook."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Send a payload to trigger a webhook endpoint. The webhook will process the event and route it to any connected server functions via triggers."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Variables",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "PolyAPI List variables",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://na1.polyapi.io/variables",
+            "params": [
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Maximum number of items to return."
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "Number of items to skip for pagination."
+              }
+            ]
+          },
+          "docs": "Retrieve a list of all variables and secrets in the current environment."
+        },
+        {
+          "info": {
+            "name": "PolyAPI Create a variable",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://na1.polyapi.io/variables",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a new variable or secret that can be securely injected into functions at runtime."
+        },
+        {
+          "info": {
+            "name": "PolyAPI Get a variable",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://na1.polyapi.io/variables/:variableId",
+            "params": [
+              {
+                "name": "variableId",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of the variable."
+              }
+            ]
+          },
+          "docs": "Retrieve details of a specific variable by its ID."
+        },
+        {
+          "info": {
+            "name": "PolyAPI Update a variable",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://na1.polyapi.io/variables/:variableId",
+            "params": [
+              {
+                "name": "variableId",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of the variable."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update an existing variable or secret."
+        },
+        {
+          "info": {
+            "name": "PolyAPI Delete a variable",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://na1.polyapi.io/variables/:variableId",
+            "params": [
+              {
+                "name": "variableId",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of the variable."
+              }
+            ]
+          },
+          "docs": "Delete a specific variable by its ID."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Triggers",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "PolyAPI List triggers",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://na1.polyapi.io/triggers",
+            "params": [
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Maximum number of items to return."
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "Number of items to skip for pagination."
+              }
+            ]
+          },
+          "docs": "Retrieve a list of all triggers in the current environment."
+        },
+        {
+          "info": {
+            "name": "PolyAPI Create a trigger",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://na1.polyapi.io/triggers",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a new trigger that connects a cloud event to a function for event-driven execution."
+        },
+        {
+          "info": {
+            "name": "PolyAPI Get a trigger",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://na1.polyapi.io/triggers/:triggerId",
+            "params": [
+              {
+                "name": "triggerId",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of the trigger."
+              }
+            ]
+          },
+          "docs": "Retrieve details of a specific trigger by its ID."
+        },
+        {
+          "info": {
+            "name": "PolyAPI Update a trigger",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://na1.polyapi.io/triggers/:triggerId",
+            "params": [
+              {
+                "name": "triggerId",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of the trigger."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update an existing trigger."
+        },
+        {
+          "info": {
+            "name": "PolyAPI Delete a trigger",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://na1.polyapi.io/triggers/:triggerId",
+            "params": [
+              {
+                "name": "triggerId",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of the trigger."
+              }
+            ]
+          },
+          "docs": "Delete a specific trigger by its ID."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Jobs",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "PolyAPI List jobs",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://na1.polyapi.io/jobs",
+            "params": [
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Maximum number of items to return."
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "Number of items to skip for pagination."
+              }
+            ]
+          },
+          "docs": "Retrieve a list of all scheduled jobs in the current environment."
+        },
+        {
+          "info": {
+            "name": "PolyAPI Create a job",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://na1.polyapi.io/jobs",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a new job that executes a function at a set time, interval, or CRON schedule."
+        },
+        {
+          "info": {
+            "name": "PolyAPI Get a job",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://na1.polyapi.io/jobs/:jobId",
+            "params": [
+              {
+                "name": "jobId",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of the job."
+              }
+            ]
+          },
+          "docs": "Retrieve details of a specific job by its ID."
+        },
+        {
+          "info": {
+            "name": "PolyAPI Update a job",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://na1.polyapi.io/jobs/:jobId",
+            "params": [
+              {
+                "name": "jobId",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of the job."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update an existing job schedule or configuration."
+        },
+        {
+          "info": {
+            "name": "PolyAPI Delete a job",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://na1.polyapi.io/jobs/:jobId",
+            "params": [
+              {
+                "name": "jobId",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of the job."
+              }
+            ]
+          },
+          "docs": "Delete a specific job by its ID."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Schemas",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "PolyAPI List schemas",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://na1.polyapi.io/schemas",
+            "params": [
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Maximum number of items to return."
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "Number of items to skip for pagination."
+              }
+            ]
+          },
+          "docs": "Retrieve a list of all shared JSON Schema definitions in the current environment."
+        },
+        {
+          "info": {
+            "name": "PolyAPI Create a schema",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://na1.polyapi.io/schemas",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a new shared JSON Schema definition."
+        },
+        {
+          "info": {
+            "name": "PolyAPI Get a schema",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://na1.polyapi.io/schemas/:schemaId",
+            "params": [
+              {
+                "name": "schemaId",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of the schema."
+              }
+            ]
+          },
+          "docs": "Retrieve details of a specific schema by its ID."
+        },
+        {
+          "info": {
+            "name": "PolyAPI Update a schema",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://na1.polyapi.io/schemas/:schemaId",
+            "params": [
+              {
+                "name": "schemaId",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of the schema."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update an existing schema definition."
+        },
+        {
+          "info": {
+            "name": "PolyAPI Delete a schema",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://na1.polyapi.io/schemas/:schemaId",
+            "params": [
+              {
+                "name": "schemaId",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of the schema."
+              }
+            ]
+          },
+          "docs": "Delete a specific schema by its ID."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Environments",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "PolyAPI List environments",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://na1.polyapi.io/environments"
+          },
+          "docs": "Retrieve a list of all environments."
+        },
+        {
+          "info": {
+            "name": "PolyAPI Get an environment",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://na1.polyapi.io/environments/:environmentId",
+            "params": [
+              {
+                "name": "environmentId",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of the environment."
+              }
+            ]
+          },
+          "docs": "Retrieve details of a specific environment by its ID."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Assistants",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "PolyAPI List conversations",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://na1.polyapi.io/assistants/:slug/conversations",
+            "params": [
+              {
+                "name": "slug",
+                "value": "",
+                "type": "path",
+                "description": "The assistant slug identifier."
+              }
+            ]
+          },
+          "docs": "Retrieve a list of all conversations for a specific assistant."
+        },
+        {
+          "info": {
+            "name": "PolyAPI Create a conversation",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://na1.polyapi.io/assistants/:slug/conversations",
+            "params": [
+              {
+                "name": "slug",
+                "value": "",
+                "type": "path",
+                "description": "The assistant slug identifier."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a new conversation with the specified assistant."
+        },
+        {
+          "info": {
+            "name": "PolyAPI Get a conversation",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://na1.polyapi.io/assistants/:slug/conversations/:conversationSlug",
+            "params": [
+              {
+                "name": "slug",
+                "value": "",
+                "type": "path",
+                "description": "The assistant slug identifier."
+              },
+              {
+                "name": "conversationSlug",
+                "value": "",
+                "type": "path",
+                "description": "The conversation slug identifier."
+              }
+            ]
+          },
+          "docs": "Retrieve details of a specific conversation."
+        },
+        {
+          "info": {
+            "name": "PolyAPI Delete a conversation",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://na1.polyapi.io/assistants/:slug/conversations/:conversationSlug",
+            "params": [
+              {
+                "name": "slug",
+                "value": "",
+                "type": "path",
+                "description": "The assistant slug identifier."
+              },
+              {
+                "name": "conversationSlug",
+                "value": "",
+                "type": "path",
+                "description": "The conversation slug identifier."
+              }
+            ]
+          },
+          "docs": "Delete a specific conversation."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
