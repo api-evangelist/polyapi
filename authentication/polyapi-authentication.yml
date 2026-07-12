@@ -1,0 +1,15 @@
+generated: '2026-07-11'
+method: derived
+source: openapi/polyapi-platform-openapi.yml
+summary:
+  types:
+  - http
+schemes:
+- name: bearerAuth
+  type: http
+  scheme: bearer
+  bearerFormat: API Key
+  description: PolyAPI uses Bearer token authentication. Include your API key in the Authorization
+    header as 'Bearer {your-api-key}'.
+  sources:
+  - openapi/polyapi-platform-openapi.yml
