@@ -1,0 +1,204 @@
+openapi: 3.1.0
+info:
+  title: PolyAPI Platform API Functions Assistants API
+  description: PolyAPI is a modern enterprise middleware platform that provides a unified REST API for managing cloud service resources including functions, variables, webhooks, triggers, jobs, schemas, and environments. Built using AI and Kubernetes-native technology, it accelerates development and simplifies the operation of integrations, orchestrations, and microservices.
+  version: 1.0.0
+  contact:
+    name: PolyAPI
+    url: https://polyapi.io/
+  license:
+    name: Proprietary
+    url: https://polyapi.io/
+  termsOfService: https://polyapi.io/
+servers:
+- url: https://na1.polyapi.io
+  description: North America (AWS us-west-2)
+- url: https://eu1.polyapi.io
+  description: Europe (AWS eu-west-1)
+security:
+- bearerAuth: []
+tags:
+- name: Assistants
+  description: Manage AI assistants and conversations for AI-powered document assistance and discovery.
+paths:
+  /assistants/{slug}/conversations:
+    get:
+      operationId: listConversations
+      summary: PolyAPI List conversations
+      description: Retrieve a list of all conversations for a specific assistant.
+      tags:
+      - Assistants
+      parameters:
+      - name: slug
+        in: path
+        required: true
+        description: The assistant slug identifier.
+        schema:
+          type: string
+      responses:
+        '200':
+          description: A list of conversations.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Conversation'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+    post:
+      operationId: createConversation
+      summary: PolyAPI Create a conversation
+      description: Create a new conversation with the specified assistant.
+      tags:
+      - Assistants
+      parameters:
+      - name: slug
+        in: path
+        required: true
+        description: The assistant slug identifier.
+        schema:
+          type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ConversationInput'
+      responses:
+        '201':
+          description: The created conversation.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Conversation'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+  /assistants/{slug}/conversations/{conversationSlug}:
+    get:
+      operationId: getConversation
+      summary: PolyAPI Get a conversation
+      description: Retrieve details of a specific conversation.
+      tags:
+      - Assistants
+      parameters:
+      - name: slug
+        in: path
+        required: true
+        description: The assistant slug identifier.
+        schema:
+          type: string
+      - name: conversationSlug
+        in: path
+        required: true
+        description: The conversation slug identifier.
+        schema:
+          type: string
+      responses:
+        '200':
+          description: The conversation details.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Conversation'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+    delete:
+      operationId: deleteConversation
+      summary: PolyAPI Delete a conversation
+      description: Delete a specific conversation.
+      tags:
+      - Assistants
+      parameters:
+      - name: slug
+        in: path
+        required: true
+        description: The assistant slug identifier.
+        schema:
+          type: string
+      - name: conversationSlug
+        in: path
+        required: true
+        description: The conversation slug identifier.
+        schema:
+          type: string
+      responses:
+        '204':
+          description: The conversation was deleted successfully.
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+components:
+  schemas:
+    Error:
+      type: object
+      properties:
+        statusCode:
+          type: integer
+          description: The HTTP status code.
+        message:
+          type: string
+          description: A human-readable error message.
+        error:
+          type: string
+          description: The error type.
+    Conversation:
+      type: object
+      properties:
+        id:
+          type: string
+          description: The unique identifier of the conversation.
+        slug:
+          type: string
+          description: The slug identifier for the conversation.
+        messages:
+          type: array
+          items:
+            type: object
+            properties:
+              role:
+                type: string
+                enum:
+                - user
+                - assistant
+              content:
+                type: string
+        createdAt:
+          type: string
+          format: date-time
+        updatedAt:
+          type: string
+          format: date-time
+    ConversationInput:
+      type: object
+      required:
+      - message
+      properties:
+        message:
+          type: string
+          description: The initial message to start the conversation.
+  responses:
+    Unauthorized:
+      description: Authentication is required or the provided credentials are invalid.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    NotFound:
+      description: The requested resource was not found.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: API Key
+      description: PolyAPI uses Bearer token authentication. Include your API key in the Authorization header as 'Bearer {your-api-key}'.
+externalDocs:
+  description: PolyAPI Documentation
+  url: https://docs.polyapi.io/

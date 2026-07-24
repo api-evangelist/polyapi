@@ -1,0 +1,252 @@
+openapi: 3.1.0
+info:
+  title: PolyAPI Platform API Functions Client Functions API
+  description: PolyAPI is a modern enterprise middleware platform that provides a unified REST API for managing cloud service resources including functions, variables, webhooks, triggers, jobs, schemas, and environments. Built using AI and Kubernetes-native technology, it accelerates development and simplifies the operation of integrations, orchestrations, and microservices.
+  version: 1.0.0
+  contact:
+    name: PolyAPI
+    url: https://polyapi.io/
+  license:
+    name: Proprietary
+    url: https://polyapi.io/
+  termsOfService: https://polyapi.io/
+servers:
+- url: https://na1.polyapi.io
+  description: North America (AWS us-west-2)
+- url: https://eu1.polyapi.io
+  description: Europe (AWS eu-west-1)
+security:
+- bearerAuth: []
+tags:
+- name: Client Functions
+  description: Manage shared client functions that run wherever they are executed.
+paths:
+  /functions/client:
+    get:
+      operationId: listClientFunctions
+      summary: PolyAPI List client functions
+      description: Retrieve a list of all client functions in the current environment.
+      tags:
+      - Client Functions
+      parameters:
+      - $ref: '#/components/parameters/limitParam'
+      - $ref: '#/components/parameters/offsetParam'
+      responses:
+        '200':
+          description: A list of client functions.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ClientFunction'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+    post:
+      operationId: createClientFunction
+      summary: PolyAPI Create a client function
+      description: Create a new shared client function.
+      tags:
+      - Client Functions
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ClientFunctionInput'
+      responses:
+        '201':
+          description: The created client function.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ClientFunction'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+  /functions/client/{functionId}:
+    get:
+      operationId: getClientFunction
+      summary: PolyAPI Get a client function
+      description: Retrieve details of a specific client function by its ID.
+      tags:
+      - Client Functions
+      parameters:
+      - $ref: '#/components/parameters/functionIdParam'
+      responses:
+        '200':
+          description: The client function details.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ClientFunction'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+    patch:
+      operationId: updateClientFunction
+      summary: PolyAPI Update a client function
+      description: Update an existing client function.
+      tags:
+      - Client Functions
+      parameters:
+      - $ref: '#/components/parameters/functionIdParam'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ClientFunctionInput'
+      responses:
+        '200':
+          description: The updated client function.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ClientFunction'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+    delete:
+      operationId: deleteClientFunction
+      summary: PolyAPI Delete a client function
+      description: Delete a specific client function by its ID.
+      tags:
+      - Client Functions
+      parameters:
+      - $ref: '#/components/parameters/functionIdParam'
+      responses:
+        '204':
+          description: The client function was deleted successfully.
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+components:
+  parameters:
+    offsetParam:
+      name: offset
+      in: query
+      required: false
+      description: Number of items to skip for pagination.
+      schema:
+        type: integer
+        default: 0
+    limitParam:
+      name: limit
+      in: query
+      required: false
+      description: Maximum number of items to return.
+      schema:
+        type: integer
+        default: 25
+    functionIdParam:
+      name: functionId
+      in: path
+      required: true
+      description: The unique identifier of the function.
+      schema:
+        type: string
+  schemas:
+    Error:
+      type: object
+      properties:
+        statusCode:
+          type: integer
+          description: The HTTP status code.
+        message:
+          type: string
+          description: A human-readable error message.
+        error:
+          type: string
+          description: The error type.
+    ClientFunctionInput:
+      type: object
+      required:
+      - name
+      - language
+      - code
+      properties:
+        name:
+          type: string
+        description:
+          type: string
+        context:
+          type: string
+        language:
+          type: string
+          enum:
+          - typescript
+          - python
+          - java
+          - csharp
+        code:
+          type: string
+    ClientFunction:
+      type: object
+      properties:
+        id:
+          type: string
+          description: The unique identifier of the client function.
+        name:
+          type: string
+          description: The name of the client function.
+        description:
+          type: string
+          description: A description of what the client function does.
+        context:
+          type: string
+          description: The context path for organizing the function.
+        language:
+          type: string
+          enum:
+          - typescript
+          - python
+          - java
+          - csharp
+          description: The programming language.
+        code:
+          type: string
+          description: The function source code.
+        state:
+          type: string
+          enum:
+          - active
+          - inactive
+          - deprecated
+        owner:
+          type: string
+        visibility:
+          type: string
+          enum:
+          - public
+          - private
+        createdAt:
+          type: string
+          format: date-time
+        updatedAt:
+          type: string
+          format: date-time
+  responses:
+    Unauthorized:
+      description: Authentication is required or the provided credentials are invalid.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    NotFound:
+      description: The requested resource was not found.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: API Key
+      description: PolyAPI uses Bearer token authentication. Include your API key in the Authorization header as 'Bearer {your-api-key}'.
+externalDocs:
+  description: PolyAPI Documentation
+  url: https://docs.polyapi.io/

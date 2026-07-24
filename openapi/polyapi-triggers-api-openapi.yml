@@ -1,0 +1,247 @@
+openapi: 3.1.0
+info:
+  title: PolyAPI Platform API Functions Triggers API
+  description: PolyAPI is a modern enterprise middleware platform that provides a unified REST API for managing cloud service resources including functions, variables, webhooks, triggers, jobs, schemas, and environments. Built using AI and Kubernetes-native technology, it accelerates development and simplifies the operation of integrations, orchestrations, and microservices.
+  version: 1.0.0
+  contact:
+    name: PolyAPI
+    url: https://polyapi.io/
+  license:
+    name: Proprietary
+    url: https://polyapi.io/
+  termsOfService: https://polyapi.io/
+servers:
+- url: https://na1.polyapi.io
+  description: North America (AWS us-west-2)
+- url: https://eu1.polyapi.io
+  description: Europe (AWS eu-west-1)
+security:
+- bearerAuth: []
+tags:
+- name: Triggers
+  description: Manage triggers that connect cloud events to functions for event-driven execution.
+paths:
+  /triggers:
+    get:
+      operationId: listTriggers
+      summary: PolyAPI List triggers
+      description: Retrieve a list of all triggers in the current environment.
+      tags:
+      - Triggers
+      parameters:
+      - $ref: '#/components/parameters/limitParam'
+      - $ref: '#/components/parameters/offsetParam'
+      responses:
+        '200':
+          description: A list of triggers.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Trigger'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+    post:
+      operationId: createTrigger
+      summary: PolyAPI Create a trigger
+      description: Create a new trigger that connects a cloud event to a function for event-driven execution.
+      tags:
+      - Triggers
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TriggerInput'
+      responses:
+        '201':
+          description: The created trigger.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Trigger'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+  /triggers/{triggerId}:
+    get:
+      operationId: getTrigger
+      summary: PolyAPI Get a trigger
+      description: Retrieve details of a specific trigger by its ID.
+      tags:
+      - Triggers
+      parameters:
+      - $ref: '#/components/parameters/triggerIdParam'
+      responses:
+        '200':
+          description: The trigger details.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Trigger'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+    patch:
+      operationId: updateTrigger
+      summary: PolyAPI Update a trigger
+      description: Update an existing trigger.
+      tags:
+      - Triggers
+      parameters:
+      - $ref: '#/components/parameters/triggerIdParam'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TriggerInput'
+      responses:
+        '200':
+          description: The updated trigger.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Trigger'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+    delete:
+      operationId: deleteTrigger
+      summary: PolyAPI Delete a trigger
+      description: Delete a specific trigger by its ID.
+      tags:
+      - Triggers
+      parameters:
+      - $ref: '#/components/parameters/triggerIdParam'
+      responses:
+        '204':
+          description: The trigger was deleted successfully.
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+components:
+  parameters:
+    offsetParam:
+      name: offset
+      in: query
+      required: false
+      description: Number of items to skip for pagination.
+      schema:
+        type: integer
+        default: 0
+    limitParam:
+      name: limit
+      in: query
+      required: false
+      description: Maximum number of items to return.
+      schema:
+        type: integer
+        default: 25
+    triggerIdParam:
+      name: triggerId
+      in: path
+      required: true
+      description: The unique identifier of the trigger.
+      schema:
+        type: string
+  schemas:
+    Error:
+      type: object
+      properties:
+        statusCode:
+          type: integer
+          description: The HTTP status code.
+        message:
+          type: string
+          description: A human-readable error message.
+        error:
+          type: string
+          description: The error type.
+    TriggerInput:
+      type: object
+      required:
+      - name
+      - sourceType
+      - sourceId
+      - targetFunctionId
+      - targetFunctionType
+      properties:
+        name:
+          type: string
+        description:
+          type: string
+        sourceType:
+          type: string
+        sourceId:
+          type: string
+        targetFunctionId:
+          type: string
+        targetFunctionType:
+          type: string
+          enum:
+          - server
+          - api
+    Trigger:
+      type: object
+      properties:
+        id:
+          type: string
+          description: The unique identifier of the trigger.
+        name:
+          type: string
+          description: The name of the trigger.
+        description:
+          type: string
+          description: A description of the trigger.
+        sourceType:
+          type: string
+          description: The type of event source (e.g., webhook, cloud event).
+        sourceId:
+          type: string
+          description: The ID of the event source.
+        targetFunctionId:
+          type: string
+          description: The ID of the function to trigger.
+        targetFunctionType:
+          type: string
+          enum:
+          - server
+          - api
+          description: The type of function to trigger.
+        state:
+          type: string
+          enum:
+          - active
+          - inactive
+        createdAt:
+          type: string
+          format: date-time
+        updatedAt:
+          type: string
+          format: date-time
+  responses:
+    Unauthorized:
+      description: Authentication is required or the provided credentials are invalid.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    NotFound:
+      description: The requested resource was not found.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: API Key
+      description: PolyAPI uses Bearer token authentication. Include your API key in the Authorization header as 'Bearer {your-api-key}'.
+externalDocs:
+  description: PolyAPI Documentation
+  url: https://docs.polyapi.io/

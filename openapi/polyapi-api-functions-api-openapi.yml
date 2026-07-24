@@ -1,0 +1,340 @@
+openapi: 3.1.0
+info:
+  title: PolyAPI Platform API Functions API
+  description: PolyAPI is a modern enterprise middleware platform that provides a unified REST API for managing cloud service resources including functions, variables, webhooks, triggers, jobs, schemas, and environments. Built using AI and Kubernetes-native technology, it accelerates development and simplifies the operation of integrations, orchestrations, and microservices.
+  version: 1.0.0
+  contact:
+    name: PolyAPI
+    url: https://polyapi.io/
+  license:
+    name: Proprietary
+    url: https://polyapi.io/
+  termsOfService: https://polyapi.io/
+servers:
+- url: https://na1.polyapi.io
+  description: North America (AWS us-west-2)
+- url: https://eu1.polyapi.io
+  description: Europe (AWS eu-west-1)
+security:
+- bearerAuth: []
+tags:
+- name: API Functions
+  description: Manage API functions that wrap third-party API calls and are invoked through the PolyAPI gateway.
+paths:
+  /functions/api:
+    get:
+      operationId: listApiFunctions
+      summary: PolyAPI List API functions
+      description: Retrieve a list of all API functions in the current environment.
+      tags:
+      - API Functions
+      parameters:
+      - $ref: '#/components/parameters/limitParam'
+      - $ref: '#/components/parameters/offsetParam'
+      responses:
+        '200':
+          description: A list of API functions.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ApiFunction'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+    post:
+      operationId: createApiFunction
+      summary: PolyAPI Create an API function
+      description: Create a new API function that wraps a third-party API call.
+      tags:
+      - API Functions
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ApiFunctionInput'
+      responses:
+        '201':
+          description: The created API function.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiFunction'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+  /functions/api/{functionId}:
+    get:
+      operationId: getApiFunction
+      summary: PolyAPI Get an API function
+      description: Retrieve details of a specific API function by its ID.
+      tags:
+      - API Functions
+      parameters:
+      - $ref: '#/components/parameters/functionIdParam'
+      responses:
+        '200':
+          description: The API function details.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiFunction'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+    patch:
+      operationId: updateApiFunction
+      summary: PolyAPI Update an API function
+      description: Update an existing API function.
+      tags:
+      - API Functions
+      parameters:
+      - $ref: '#/components/parameters/functionIdParam'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ApiFunctionInput'
+      responses:
+        '200':
+          description: The updated API function.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiFunction'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+    delete:
+      operationId: deleteApiFunction
+      summary: PolyAPI Delete an API function
+      description: Delete a specific API function by its ID.
+      tags:
+      - API Functions
+      parameters:
+      - $ref: '#/components/parameters/functionIdParam'
+      responses:
+        '204':
+          description: The API function was deleted successfully.
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+  /functions/api/{functionId}/execute:
+    post:
+      operationId: executeApiFunction
+      summary: PolyAPI Execute an API function
+      description: Execute an API function by its ID. Requires the Execute Functions permission. Variables can be injected using PolyVariable objects in the request body.
+      tags:
+      - API Functions
+      parameters:
+      - $ref: '#/components/parameters/functionIdParam'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/FunctionExecutionInput'
+      responses:
+        '200':
+          description: The execution result.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FunctionExecutionResult'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+components:
+  schemas:
+    FunctionExecutionInput:
+      type: object
+      properties:
+        args:
+          type: array
+          items:
+            description: Function arguments, which may include PolyVariable objects for variable injection.
+          description: The arguments to pass to the function. Variables can be injected using PolyVariable objects with pathIdentifier fields.
+        polyCustom:
+          type: object
+          properties:
+            async:
+              type: boolean
+              description: Whether to execute the function asynchronously.
+          description: Custom execution options for server functions, including async execution and response handling.
+    Error:
+      type: object
+      properties:
+        statusCode:
+          type: integer
+          description: The HTTP status code.
+        message:
+          type: string
+          description: A human-readable error message.
+        error:
+          type: string
+          description: The error type.
+    ApiFunctionInput:
+      type: object
+      required:
+      - name
+      - method
+      - url
+      properties:
+        name:
+          type: string
+          description: The name of the API function.
+        description:
+          type: string
+          description: A description of what the API function does.
+        context:
+          type: string
+          description: The context path for organizing the function.
+        method:
+          type: string
+          enum:
+          - GET
+          - POST
+          - PUT
+          - PATCH
+          - DELETE
+          description: The HTTP method for the API call.
+        url:
+          type: string
+          format: uri
+          description: The target URL for the API call.
+        headers:
+          type: object
+          additionalProperties:
+            type: string
+          description: HTTP headers to include.
+        requestBody:
+          type: object
+          description: The request body schema.
+        responseSchema:
+          type: object
+          description: The expected response schema.
+    ApiFunction:
+      type: object
+      properties:
+        id:
+          type: string
+          description: The unique identifier of the API function.
+        name:
+          type: string
+          description: The name of the API function.
+        description:
+          type: string
+          description: A description of what the API function does.
+        context:
+          type: string
+          description: The context path for organizing the function in the catalog.
+        method:
+          type: string
+          enum:
+          - GET
+          - POST
+          - PUT
+          - PATCH
+          - DELETE
+          description: The HTTP method used by the API function.
+        url:
+          type: string
+          format: uri
+          description: The target URL for the API call.
+        headers:
+          type: object
+          additionalProperties:
+            type: string
+          description: HTTP headers to include in the API call.
+        requestBody:
+          type: object
+          description: The request body schema for the API call.
+        responseSchema:
+          type: object
+          description: The expected response schema.
+        state:
+          type: string
+          enum:
+          - active
+          - inactive
+          - deprecated
+          description: The lifecycle state of the function.
+        owner:
+          type: string
+          description: The owner of the function.
+        visibility:
+          type: string
+          enum:
+          - public
+          - private
+          description: The visibility of the function.
+        createdAt:
+          type: string
+          format: date-time
+          description: Timestamp when the function was created.
+        updatedAt:
+          type: string
+          format: date-time
+          description: Timestamp when the function was last updated.
+    FunctionExecutionResult:
+      type: object
+      properties:
+        result:
+          description: The return value of the function execution.
+        executionId:
+          type: string
+          description: The unique identifier for this execution.
+        executionTime:
+          type: number
+          description: The execution time in milliseconds.
+  parameters:
+    offsetParam:
+      name: offset
+      in: query
+      required: false
+      description: Number of items to skip for pagination.
+      schema:
+        type: integer
+        default: 0
+    limitParam:
+      name: limit
+      in: query
+      required: false
+      description: Maximum number of items to return.
+      schema:
+        type: integer
+        default: 25
+    functionIdParam:
+      name: functionId
+      in: path
+      required: true
+      description: The unique identifier of the function.
+      schema:
+        type: string
+  responses:
+    Unauthorized:
+      description: Authentication is required or the provided credentials are invalid.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    NotFound:
+      description: The requested resource was not found.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: API Key
+      description: PolyAPI uses Bearer token authentication. Include your API key in the Authorization header as 'Bearer {your-api-key}'.
+externalDocs:
+  description: PolyAPI Documentation
+  url: https://docs.polyapi.io/

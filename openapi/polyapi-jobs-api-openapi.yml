@@ -1,0 +1,250 @@
+openapi: 3.1.0
+info:
+  title: PolyAPI Platform API Functions Jobs API
+  description: PolyAPI is a modern enterprise middleware platform that provides a unified REST API for managing cloud service resources including functions, variables, webhooks, triggers, jobs, schemas, and environments. Built using AI and Kubernetes-native technology, it accelerates development and simplifies the operation of integrations, orchestrations, and microservices.
+  version: 1.0.0
+  contact:
+    name: PolyAPI
+    url: https://polyapi.io/
+  license:
+    name: Proprietary
+    url: https://polyapi.io/
+  termsOfService: https://polyapi.io/
+servers:
+- url: https://na1.polyapi.io
+  description: North America (AWS us-west-2)
+- url: https://eu1.polyapi.io
+  description: Europe (AWS eu-west-1)
+security:
+- bearerAuth: []
+tags:
+- name: Jobs
+  description: Manage jobs that execute functions at a set time, interval, or CRON schedule.
+paths:
+  /jobs:
+    get:
+      operationId: listJobs
+      summary: PolyAPI List jobs
+      description: Retrieve a list of all scheduled jobs in the current environment.
+      tags:
+      - Jobs
+      parameters:
+      - $ref: '#/components/parameters/limitParam'
+      - $ref: '#/components/parameters/offsetParam'
+      responses:
+        '200':
+          description: A list of jobs.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Job'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+    post:
+      operationId: createJob
+      summary: PolyAPI Create a job
+      description: Create a new job that executes a function at a set time, interval, or CRON schedule.
+      tags:
+      - Jobs
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/JobInput'
+      responses:
+        '201':
+          description: The created job.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Job'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+  /jobs/{jobId}:
+    get:
+      operationId: getJob
+      summary: PolyAPI Get a job
+      description: Retrieve details of a specific job by its ID.
+      tags:
+      - Jobs
+      parameters:
+      - $ref: '#/components/parameters/jobIdParam'
+      responses:
+        '200':
+          description: The job details.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Job'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+    patch:
+      operationId: updateJob
+      summary: PolyAPI Update a job
+      description: Update an existing job schedule or configuration.
+      tags:
+      - Jobs
+      parameters:
+      - $ref: '#/components/parameters/jobIdParam'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/JobInput'
+      responses:
+        '200':
+          description: The updated job.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Job'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+    delete:
+      operationId: deleteJob
+      summary: PolyAPI Delete a job
+      description: Delete a specific job by its ID.
+      tags:
+      - Jobs
+      parameters:
+      - $ref: '#/components/parameters/jobIdParam'
+      responses:
+        '204':
+          description: The job was deleted successfully.
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+components:
+  schemas:
+    Job:
+      type: object
+      properties:
+        id:
+          type: string
+          description: The unique identifier of the job.
+        name:
+          type: string
+          description: The name of the job.
+        description:
+          type: string
+          description: A description of the job.
+        functionId:
+          type: string
+          description: The ID of the function to execute.
+        functionType:
+          type: string
+          enum:
+          - server
+          - api
+          description: The type of function to execute.
+        schedule:
+          type: string
+          description: The CRON expression or interval defining when the job runs.
+        state:
+          type: string
+          enum:
+          - active
+          - inactive
+        lastRunAt:
+          type: string
+          format: date-time
+          description: Timestamp of the last execution.
+        nextRunAt:
+          type: string
+          format: date-time
+          description: Timestamp of the next scheduled execution.
+        createdAt:
+          type: string
+          format: date-time
+        updatedAt:
+          type: string
+          format: date-time
+    JobInput:
+      type: object
+      required:
+      - name
+      - functionId
+      - functionType
+      - schedule
+      properties:
+        name:
+          type: string
+        description:
+          type: string
+        functionId:
+          type: string
+        functionType:
+          type: string
+          enum:
+          - server
+          - api
+        schedule:
+          type: string
+          description: CRON expression or interval.
+    Error:
+      type: object
+      properties:
+        statusCode:
+          type: integer
+          description: The HTTP status code.
+        message:
+          type: string
+          description: A human-readable error message.
+        error:
+          type: string
+          description: The error type.
+  parameters:
+    offsetParam:
+      name: offset
+      in: query
+      required: false
+      description: Number of items to skip for pagination.
+      schema:
+        type: integer
+        default: 0
+    limitParam:
+      name: limit
+      in: query
+      required: false
+      description: Maximum number of items to return.
+      schema:
+        type: integer
+        default: 25
+    jobIdParam:
+      name: jobId
+      in: path
+      required: true
+      description: The unique identifier of the job.
+      schema:
+        type: string
+  responses:
+    Unauthorized:
+      description: Authentication is required or the provided credentials are invalid.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    NotFound:
+      description: The requested resource was not found.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: API Key
+      description: PolyAPI uses Bearer token authentication. Include your API key in the Authorization header as 'Bearer {your-api-key}'.
+externalDocs:
+  description: PolyAPI Documentation
+  url: https://docs.polyapi.io/

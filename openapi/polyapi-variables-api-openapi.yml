@@ -1,0 +1,234 @@
+openapi: 3.1.0
+info:
+  title: PolyAPI Platform API Functions Variables API
+  description: PolyAPI is a modern enterprise middleware platform that provides a unified REST API for managing cloud service resources including functions, variables, webhooks, triggers, jobs, schemas, and environments. Built using AI and Kubernetes-native technology, it accelerates development and simplifies the operation of integrations, orchestrations, and microservices.
+  version: 1.0.0
+  contact:
+    name: PolyAPI
+    url: https://polyapi.io/
+  license:
+    name: Proprietary
+    url: https://polyapi.io/
+  termsOfService: https://polyapi.io/
+servers:
+- url: https://na1.polyapi.io
+  description: North America (AWS us-west-2)
+- url: https://eu1.polyapi.io
+  description: Europe (AWS eu-west-1)
+security:
+- bearerAuth: []
+tags:
+- name: Variables
+  description: Manage variables and secrets that are stored securely and injected into functions at runtime.
+paths:
+  /variables:
+    get:
+      operationId: listVariables
+      summary: PolyAPI List variables
+      description: Retrieve a list of all variables and secrets in the current environment.
+      tags:
+      - Variables
+      parameters:
+      - $ref: '#/components/parameters/limitParam'
+      - $ref: '#/components/parameters/offsetParam'
+      responses:
+        '200':
+          description: A list of variables.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Variable'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+    post:
+      operationId: createVariable
+      summary: PolyAPI Create a variable
+      description: Create a new variable or secret that can be securely injected into functions at runtime.
+      tags:
+      - Variables
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/VariableInput'
+      responses:
+        '201':
+          description: The created variable.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Variable'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+  /variables/{variableId}:
+    get:
+      operationId: getVariable
+      summary: PolyAPI Get a variable
+      description: Retrieve details of a specific variable by its ID.
+      tags:
+      - Variables
+      parameters:
+      - $ref: '#/components/parameters/variableIdParam'
+      responses:
+        '200':
+          description: The variable details.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Variable'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+    patch:
+      operationId: updateVariable
+      summary: PolyAPI Update a variable
+      description: Update an existing variable or secret.
+      tags:
+      - Variables
+      parameters:
+      - $ref: '#/components/parameters/variableIdParam'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/VariableInput'
+      responses:
+        '200':
+          description: The updated variable.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Variable'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+    delete:
+      operationId: deleteVariable
+      summary: PolyAPI Delete a variable
+      description: Delete a specific variable by its ID.
+      tags:
+      - Variables
+      parameters:
+      - $ref: '#/components/parameters/variableIdParam'
+      responses:
+        '204':
+          description: The variable was deleted successfully.
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+components:
+  parameters:
+    offsetParam:
+      name: offset
+      in: query
+      required: false
+      description: Number of items to skip for pagination.
+      schema:
+        type: integer
+        default: 0
+    variableIdParam:
+      name: variableId
+      in: path
+      required: true
+      description: The unique identifier of the variable.
+      schema:
+        type: string
+    limitParam:
+      name: limit
+      in: query
+      required: false
+      description: Maximum number of items to return.
+      schema:
+        type: integer
+        default: 25
+  schemas:
+    Error:
+      type: object
+      properties:
+        statusCode:
+          type: integer
+          description: The HTTP status code.
+        message:
+          type: string
+          description: A human-readable error message.
+        error:
+          type: string
+          description: The error type.
+    Variable:
+      type: object
+      properties:
+        id:
+          type: string
+          description: The unique identifier of the variable.
+        name:
+          type: string
+          description: The name of the variable.
+        description:
+          type: string
+          description: A description of the variable.
+        pathIdentifier:
+          type: string
+          description: The path identifier used to reference this variable in functions (e.g., 'tutorial.apiKey').
+        value:
+          type: string
+          description: The variable value (masked for secrets).
+        secret:
+          type: boolean
+          description: Whether this variable is stored as a secret.
+        visibility:
+          type: string
+          enum:
+          - public
+          - private
+        createdAt:
+          type: string
+          format: date-time
+        updatedAt:
+          type: string
+          format: date-time
+    VariableInput:
+      type: object
+      required:
+      - name
+      - value
+      properties:
+        name:
+          type: string
+        description:
+          type: string
+        pathIdentifier:
+          type: string
+        value:
+          type: string
+        secret:
+          type: boolean
+          default: false
+  responses:
+    Unauthorized:
+      description: Authentication is required or the provided credentials are invalid.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    NotFound:
+      description: The requested resource was not found.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: API Key
+      description: PolyAPI uses Bearer token authentication. Include your API key in the Authorization header as 'Bearer {your-api-key}'.
+externalDocs:
+  description: PolyAPI Documentation
+  url: https://docs.polyapi.io/

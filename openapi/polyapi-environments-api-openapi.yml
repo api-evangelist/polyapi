@@ -1,0 +1,126 @@
+openapi: 3.1.0
+info:
+  title: PolyAPI Platform API Functions Environments API
+  description: PolyAPI is a modern enterprise middleware platform that provides a unified REST API for managing cloud service resources including functions, variables, webhooks, triggers, jobs, schemas, and environments. Built using AI and Kubernetes-native technology, it accelerates development and simplifies the operation of integrations, orchestrations, and microservices.
+  version: 1.0.0
+  contact:
+    name: PolyAPI
+    url: https://polyapi.io/
+  license:
+    name: Proprietary
+    url: https://polyapi.io/
+  termsOfService: https://polyapi.io/
+servers:
+- url: https://na1.polyapi.io
+  description: North America (AWS us-west-2)
+- url: https://eu1.polyapi.io
+  description: Europe (AWS eu-west-1)
+security:
+- bearerAuth: []
+tags:
+- name: Environments
+  description: Manage environments for organizing and deploying resources across development, staging, and production.
+paths:
+  /environments:
+    get:
+      operationId: listEnvironments
+      summary: PolyAPI List environments
+      description: Retrieve a list of all environments.
+      tags:
+      - Environments
+      responses:
+        '200':
+          description: A list of environments.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Environment'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+  /environments/{environmentId}:
+    get:
+      operationId: getEnvironment
+      summary: PolyAPI Get an environment
+      description: Retrieve details of a specific environment by its ID.
+      tags:
+      - Environments
+      parameters:
+      - $ref: '#/components/parameters/environmentIdParam'
+      responses:
+        '200':
+          description: The environment details.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Environment'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+components:
+  schemas:
+    Environment:
+      type: object
+      properties:
+        id:
+          type: string
+          description: The unique identifier of the environment.
+        name:
+          type: string
+          description: The name of the environment.
+        description:
+          type: string
+          description: A description of the environment.
+        contextName:
+          type: string
+          description: The context name attribute for the environment.
+        createdAt:
+          type: string
+          format: date-time
+        updatedAt:
+          type: string
+          format: date-time
+    Error:
+      type: object
+      properties:
+        statusCode:
+          type: integer
+          description: The HTTP status code.
+        message:
+          type: string
+          description: A human-readable error message.
+        error:
+          type: string
+          description: The error type.
+  responses:
+    Unauthorized:
+      description: Authentication is required or the provided credentials are invalid.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    NotFound:
+      description: The requested resource was not found.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+  parameters:
+    environmentIdParam:
+      name: environmentId
+      in: path
+      required: true
+      description: The unique identifier of the environment.
+      schema:
+        type: string
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: API Key
+      description: PolyAPI uses Bearer token authentication. Include your API key in the Authorization header as 'Bearer {your-api-key}'.
+externalDocs:
+  description: PolyAPI Documentation
+  url: https://docs.polyapi.io/

@@ -1,0 +1,259 @@
+openapi: 3.1.0
+info:
+  title: PolyAPI Platform API Functions Webhooks API
+  description: PolyAPI is a modern enterprise middleware platform that provides a unified REST API for managing cloud service resources including functions, variables, webhooks, triggers, jobs, schemas, and environments. Built using AI and Kubernetes-native technology, it accelerates development and simplifies the operation of integrations, orchestrations, and microservices.
+  version: 1.0.0
+  contact:
+    name: PolyAPI
+    url: https://polyapi.io/
+  license:
+    name: Proprietary
+    url: https://polyapi.io/
+  termsOfService: https://polyapi.io/
+servers:
+- url: https://na1.polyapi.io
+  description: North America (AWS us-west-2)
+- url: https://eu1.polyapi.io
+  description: Europe (AWS eu-west-1)
+security:
+- bearerAuth: []
+tags:
+- name: Webhooks
+  description: Manage webhook endpoints that receive events via HTTP calls, with support for authentication and custom listeners.
+paths:
+  /webhooks:
+    get:
+      operationId: listWebhooks
+      summary: PolyAPI List webhooks
+      description: Retrieve a list of all webhooks in the current environment.
+      tags:
+      - Webhooks
+      parameters:
+      - $ref: '#/components/parameters/limitParam'
+      - $ref: '#/components/parameters/offsetParam'
+      responses:
+        '200':
+          description: A list of webhooks.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Webhook'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+    post:
+      operationId: createWebhook
+      summary: PolyAPI Create a webhook
+      description: Create a new webhook endpoint that can receive events via HTTP calls.
+      tags:
+      - Webhooks
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/WebhookInput'
+      responses:
+        '201':
+          description: The created webhook.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Webhook'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+  /webhooks/{webhookId}:
+    get:
+      operationId: getWebhook
+      summary: PolyAPI Get a webhook
+      description: Retrieve details of a specific webhook by its ID.
+      tags:
+      - Webhooks
+      parameters:
+      - $ref: '#/components/parameters/webhookIdParam'
+      responses:
+        '200':
+          description: The webhook details.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Webhook'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+    patch:
+      operationId: updateWebhook
+      summary: PolyAPI Update a webhook
+      description: Update an existing webhook.
+      tags:
+      - Webhooks
+      parameters:
+      - $ref: '#/components/parameters/webhookIdParam'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/WebhookInput'
+      responses:
+        '200':
+          description: The updated webhook.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Webhook'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+    delete:
+      operationId: deleteWebhook
+      summary: PolyAPI Delete a webhook
+      description: Delete a specific webhook by its ID.
+      tags:
+      - Webhooks
+      parameters:
+      - $ref: '#/components/parameters/webhookIdParam'
+      responses:
+        '204':
+          description: The webhook was deleted successfully.
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+  /webhooks/{webhookId}/trigger:
+    post:
+      operationId: triggerWebhook
+      summary: PolyAPI Trigger a webhook
+      description: Send a payload to trigger a webhook endpoint. The webhook will process the event and route it to any connected server functions via triggers.
+      tags:
+      - Webhooks
+      parameters:
+      - $ref: '#/components/parameters/webhookIdParam'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              description: The webhook event payload.
+      responses:
+        '200':
+          description: The webhook was triggered successfully.
+          content:
+            application/json:
+              schema:
+                type: object
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+components:
+  schemas:
+    Webhook:
+      type: object
+      properties:
+        id:
+          type: string
+          description: The unique identifier of the webhook.
+        name:
+          type: string
+          description: The name of the webhook.
+        description:
+          type: string
+          description: A description of the webhook.
+        context:
+          type: string
+          description: The context path for organizing the webhook.
+        url:
+          type: string
+          format: uri
+          description: The webhook endpoint URL.
+        authentication:
+          type: object
+          description: Authentication configuration for the webhook.
+        state:
+          type: string
+          enum:
+          - active
+          - inactive
+        createdAt:
+          type: string
+          format: date-time
+        updatedAt:
+          type: string
+          format: date-time
+    Error:
+      type: object
+      properties:
+        statusCode:
+          type: integer
+          description: The HTTP status code.
+        message:
+          type: string
+          description: A human-readable error message.
+        error:
+          type: string
+          description: The error type.
+    WebhookInput:
+      type: object
+      required:
+      - name
+      properties:
+        name:
+          type: string
+        description:
+          type: string
+        context:
+          type: string
+        authentication:
+          type: object
+          description: Authentication configuration for the webhook.
+  parameters:
+    offsetParam:
+      name: offset
+      in: query
+      required: false
+      description: Number of items to skip for pagination.
+      schema:
+        type: integer
+        default: 0
+    webhookIdParam:
+      name: webhookId
+      in: path
+      required: true
+      description: The unique identifier of the webhook.
+      schema:
+        type: string
+    limitParam:
+      name: limit
+      in: query
+      required: false
+      description: Maximum number of items to return.
+      schema:
+        type: integer
+        default: 25
+  responses:
+    Unauthorized:
+      description: Authentication is required or the provided credentials are invalid.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    NotFound:
+      description: The requested resource was not found.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: API Key
+      description: PolyAPI uses Bearer token authentication. Include your API key in the Authorization header as 'Bearer {your-api-key}'.
+externalDocs:
+  description: PolyAPI Documentation
+  url: https://docs.polyapi.io/
