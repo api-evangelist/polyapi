@@ -1,46 +1,341 @@
 aid: polyapi
 url: https://raw.githubusercontent.com/api-evangelist/polyapi/refs/heads/main/apis.yml
 apis:
-  - aid: polyapi:polyapi
-    name: PolyAPI Platform API
-    tags:
-      - Integrations
-      - Microservices
-      - Middleware
-      - Orchestrations
-    humanURL: https://polyapi.io/
-    properties:
-      - url: https://docs.polyapi.io/
-        type: Documentation
-      - url: openapi/polyapi-platform-openapi.yml
-        type: OpenAPI
-      - url: json-schema/api-function.json
-        type: JSONSchema
-      - url: json-schema/server-function.json
-        type: JSONSchema
-      - url: json-schema/client-function.json
-        type: JSONSchema
-      - url: json-schema/webhook.json
-        type: JSONSchema
-      - url: json-schema/variable.json
-        type: JSONSchema
-      - url: json-schema/trigger.json
-        type: JSONSchema
-      - url: json-schema/job.json
-        type: JSONSchema
-      - url: json-schema/schema.json
-        type: JSONSchema
-      - url: json-schema/environment.json
-        type: JSONSchema
-      - url: json-schema/assistant.json
-        type: JSONSchema
-      - url: json-ld/polyapi-context.jsonld
-        type: JSONLD
-    description: >-
-      PolyAPI is a modern enterprise middleware platform that provides a unified REST API for managing cloud service
-      resources including functions, variables, webhooks, triggers, jobs, schemas, and environments. Built using AI and
-      Kubernetes-native technology, it accelerates development and simplifies the operation of integrations,
-      orchestrations, and microservices with TypeScript, Python, Java, and C#.
+- aid: polyapi:polyapi-api-functions-api
+  name: PolyAPI API Functions API
+  description: >-
+    Manage API functions that wrap third-party API calls and are invoked through the PolyAPI gateway.
+  humanURL: https://polyapi.io/
+  tags:
+  - API Functions
+  properties:
+  - type: OpenAPI
+    url: openapi/polyapi-api-functions-api-openapi.yml
+  - type: Documentation
+    url: https://docs.polyapi.io/
+  - type: JSONSchema
+    url: json-schema/api-function.json
+  - type: JSONSchema
+    url: json-schema/server-function.json
+  - type: JSONSchema
+    url: json-schema/client-function.json
+  - type: JSONSchema
+    url: json-schema/webhook.json
+  - type: JSONSchema
+    url: json-schema/variable.json
+  - type: JSONSchema
+    url: json-schema/trigger.json
+  - type: JSONSchema
+    url: json-schema/job.json
+  - type: JSONSchema
+    url: json-schema/schema.json
+  - type: JSONSchema
+    url: json-schema/environment.json
+  - type: JSONSchema
+    url: json-schema/assistant.json
+  - type: JSONLD
+    url: json-ld/polyapi-context.jsonld
+- aid: polyapi:polyapi-assistants-api
+  name: PolyAPI Assistants API
+  description: Manage AI assistants and conversations for AI-powered document assistance and discovery.
+  humanURL: https://polyapi.io/
+  tags:
+  - Assistants
+  properties:
+  - type: OpenAPI
+    url: openapi/polyapi-assistants-api-openapi.yml
+  - type: Documentation
+    url: https://docs.polyapi.io/
+  - type: JSONSchema
+    url: json-schema/api-function.json
+  - type: JSONSchema
+    url: json-schema/server-function.json
+  - type: JSONSchema
+    url: json-schema/client-function.json
+  - type: JSONSchema
+    url: json-schema/webhook.json
+  - type: JSONSchema
+    url: json-schema/variable.json
+  - type: JSONSchema
+    url: json-schema/trigger.json
+  - type: JSONSchema
+    url: json-schema/job.json
+  - type: JSONSchema
+    url: json-schema/schema.json
+  - type: JSONSchema
+    url: json-schema/environment.json
+  - type: JSONSchema
+    url: json-schema/assistant.json
+  - type: JSONLD
+    url: json-ld/polyapi-context.jsonld
+- aid: polyapi:polyapi-client-functions-api
+  name: PolyAPI Client Functions API
+  description: Manage shared client functions that run wherever they are executed.
+  humanURL: https://polyapi.io/
+  tags:
+  - Client Functions
+  properties:
+  - type: OpenAPI
+    url: openapi/polyapi-client-functions-api-openapi.yml
+  - type: Documentation
+    url: https://docs.polyapi.io/
+  - type: JSONSchema
+    url: json-schema/api-function.json
+  - type: JSONSchema
+    url: json-schema/server-function.json
+  - type: JSONSchema
+    url: json-schema/client-function.json
+  - type: JSONSchema
+    url: json-schema/webhook.json
+  - type: JSONSchema
+    url: json-schema/variable.json
+  - type: JSONSchema
+    url: json-schema/trigger.json
+  - type: JSONSchema
+    url: json-schema/job.json
+  - type: JSONSchema
+    url: json-schema/schema.json
+  - type: JSONSchema
+    url: json-schema/environment.json
+  - type: JSONSchema
+    url: json-schema/assistant.json
+  - type: JSONLD
+    url: json-ld/polyapi-context.jsonld
+- aid: polyapi:polyapi-environments-api
+  name: PolyAPI Environments API
+  description: >-
+    Manage environments for organizing and deploying resources across development, staging, and production.
+  humanURL: https://polyapi.io/
+  tags:
+  - Environments
+  properties:
+  - type: OpenAPI
+    url: openapi/polyapi-environments-api-openapi.yml
+  - type: Documentation
+    url: https://docs.polyapi.io/
+  - type: JSONSchema
+    url: json-schema/api-function.json
+  - type: JSONSchema
+    url: json-schema/server-function.json
+  - type: JSONSchema
+    url: json-schema/client-function.json
+  - type: JSONSchema
+    url: json-schema/webhook.json
+  - type: JSONSchema
+    url: json-schema/variable.json
+  - type: JSONSchema
+    url: json-schema/trigger.json
+  - type: JSONSchema
+    url: json-schema/job.json
+  - type: JSONSchema
+    url: json-schema/schema.json
+  - type: JSONSchema
+    url: json-schema/environment.json
+  - type: JSONSchema
+    url: json-schema/assistant.json
+  - type: JSONLD
+    url: json-ld/polyapi-context.jsonld
+- aid: polyapi:polyapi-jobs-api
+  name: PolyAPI Jobs API
+  description: Manage jobs that execute functions at a set time, interval, or CRON schedule.
+  humanURL: https://polyapi.io/
+  tags:
+  - Jobs
+  properties:
+  - type: OpenAPI
+    url: openapi/polyapi-jobs-api-openapi.yml
+  - type: Documentation
+    url: https://docs.polyapi.io/
+  - type: JSONSchema
+    url: json-schema/api-function.json
+  - type: JSONSchema
+    url: json-schema/server-function.json
+  - type: JSONSchema
+    url: json-schema/client-function.json
+  - type: JSONSchema
+    url: json-schema/webhook.json
+  - type: JSONSchema
+    url: json-schema/variable.json
+  - type: JSONSchema
+    url: json-schema/trigger.json
+  - type: JSONSchema
+    url: json-schema/job.json
+  - type: JSONSchema
+    url: json-schema/schema.json
+  - type: JSONSchema
+    url: json-schema/environment.json
+  - type: JSONSchema
+    url: json-schema/assistant.json
+  - type: JSONLD
+    url: json-ld/polyapi-context.jsonld
+- aid: polyapi:polyapi-schemas-api
+  name: PolyAPI Schemas API
+  description: Manage shared JSON Schema definitions used to type events and application data.
+  humanURL: https://polyapi.io/
+  tags:
+  - Schemas
+  properties:
+  - type: OpenAPI
+    url: openapi/polyapi-schemas-api-openapi.yml
+  - type: Documentation
+    url: https://docs.polyapi.io/
+  - type: JSONSchema
+    url: json-schema/api-function.json
+  - type: JSONSchema
+    url: json-schema/server-function.json
+  - type: JSONSchema
+    url: json-schema/client-function.json
+  - type: JSONSchema
+    url: json-schema/webhook.json
+  - type: JSONSchema
+    url: json-schema/variable.json
+  - type: JSONSchema
+    url: json-schema/trigger.json
+  - type: JSONSchema
+    url: json-schema/job.json
+  - type: JSONSchema
+    url: json-schema/schema.json
+  - type: JSONSchema
+    url: json-schema/environment.json
+  - type: JSONSchema
+    url: json-schema/assistant.json
+  - type: JSONLD
+    url: json-ld/polyapi-context.jsonld
+- aid: polyapi:polyapi-server-functions-api
+  name: PolyAPI Server Functions API
+  description: Manage Knative serverless functions that run in the PolyAPI cloud infrastructure.
+  humanURL: https://polyapi.io/
+  tags:
+  - Server Functions
+  properties:
+  - type: OpenAPI
+    url: openapi/polyapi-server-functions-api-openapi.yml
+  - type: Documentation
+    url: https://docs.polyapi.io/
+  - type: JSONSchema
+    url: json-schema/api-function.json
+  - type: JSONSchema
+    url: json-schema/server-function.json
+  - type: JSONSchema
+    url: json-schema/client-function.json
+  - type: JSONSchema
+    url: json-schema/webhook.json
+  - type: JSONSchema
+    url: json-schema/variable.json
+  - type: JSONSchema
+    url: json-schema/trigger.json
+  - type: JSONSchema
+    url: json-schema/job.json
+  - type: JSONSchema
+    url: json-schema/schema.json
+  - type: JSONSchema
+    url: json-schema/environment.json
+  - type: JSONSchema
+    url: json-schema/assistant.json
+  - type: JSONLD
+    url: json-ld/polyapi-context.jsonld
+- aid: polyapi:polyapi-triggers-api
+  name: PolyAPI Triggers API
+  description: Manage triggers that connect cloud events to functions for event-driven execution.
+  humanURL: https://polyapi.io/
+  tags:
+  - Triggers
+  properties:
+  - type: OpenAPI
+    url: openapi/polyapi-triggers-api-openapi.yml
+  - type: Documentation
+    url: https://docs.polyapi.io/
+  - type: JSONSchema
+    url: json-schema/api-function.json
+  - type: JSONSchema
+    url: json-schema/server-function.json
+  - type: JSONSchema
+    url: json-schema/client-function.json
+  - type: JSONSchema
+    url: json-schema/webhook.json
+  - type: JSONSchema
+    url: json-schema/variable.json
+  - type: JSONSchema
+    url: json-schema/trigger.json
+  - type: JSONSchema
+    url: json-schema/job.json
+  - type: JSONSchema
+    url: json-schema/schema.json
+  - type: JSONSchema
+    url: json-schema/environment.json
+  - type: JSONSchema
+    url: json-schema/assistant.json
+  - type: JSONLD
+    url: json-ld/polyapi-context.jsonld
+- aid: polyapi:polyapi-variables-api
+  name: PolyAPI Variables API
+  description: >-
+    Manage variables and secrets that are stored securely and injected into functions at runtime.
+  humanURL: https://polyapi.io/
+  tags:
+  - Variables
+  properties:
+  - type: OpenAPI
+    url: openapi/polyapi-variables-api-openapi.yml
+  - type: Documentation
+    url: https://docs.polyapi.io/
+  - type: JSONSchema
+    url: json-schema/api-function.json
+  - type: JSONSchema
+    url: json-schema/server-function.json
+  - type: JSONSchema
+    url: json-schema/client-function.json
+  - type: JSONSchema
+    url: json-schema/webhook.json
+  - type: JSONSchema
+    url: json-schema/variable.json
+  - type: JSONSchema
+    url: json-schema/trigger.json
+  - type: JSONSchema
+    url: json-schema/job.json
+  - type: JSONSchema
+    url: json-schema/schema.json
+  - type: JSONSchema
+    url: json-schema/environment.json
+  - type: JSONSchema
+    url: json-schema/assistant.json
+  - type: JSONLD
+    url: json-ld/polyapi-context.jsonld
+- aid: polyapi:polyapi-webhooks-api
+  name: PolyAPI Webhooks API
+  description: >-
+    Manage webhook endpoints that receive events via HTTP calls, with support for authentication and custom
+    listeners.
+  humanURL: https://polyapi.io/
+  tags:
+  - Webhooks
+  properties:
+  - type: OpenAPI
+    url: openapi/polyapi-webhooks-api-openapi.yml
+  - type: Documentation
+    url: https://docs.polyapi.io/
+  - type: JSONSchema
+    url: json-schema/api-function.json
+  - type: JSONSchema
+    url: json-schema/server-function.json
+  - type: JSONSchema
+    url: json-schema/client-function.json
+  - type: JSONSchema
+    url: json-schema/webhook.json
+  - type: JSONSchema
+    url: json-schema/variable.json
+  - type: JSONSchema
+    url: json-schema/trigger.json
+  - type: JSONSchema
+    url: json-schema/job.json
+  - type: JSONSchema
+    url: json-schema/schema.json
+  - type: JSONSchema
+    url: json-schema/environment.json
+  - type: JSONSchema
+    url: json-schema/assistant.json
+  - type: JSONLD
+    url: json-ld/polyapi-context.jsonld
 name: PolyAPI
 tags:
   - Integrations
@@ -49,9 +344,24 @@ tags:
   - Orchestrations
   - Pro-Code API Composition
 type: Index
-image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+accessModel:
+  pricing: freemium
+  onboarding: self-serve
+  trial: false
+  try_now: true
+  public: false
+  label: Freemium · Self-serve signup
+  confidence: high
+  source:
+  - plans
+  - authentication
+  generated: '2026-07-22'
+  method: derived
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/polyapi.png
 access: 3rd-Party
 common:
+  - type: PostmanWorkspace
+    url: https://www.postman.com/kinlaneapi/polyapi/overview
   - type: AgenticAccess
     url: agentic-access/polyapi-agentic-access.yml
   - type: DomainSecurity
