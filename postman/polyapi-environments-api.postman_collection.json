@@ -1,0 +1,347 @@
+{
+  "info": {
+    "_postman_id": "cef7416e-7726-47d4-a7e1-b0013ed9ca47",
+    "name": "PolyAPI Platform API Functions Environments API",
+    "description": "PolyAPI is a modern enterprise middleware platform that provides a unified REST API for managing cloud service resources including functions, variables, webhooks, triggers, jobs, schemas, and environments. Built using AI and Kubernetes-native technology, it accelerates development and simplifies the operation of integrations, orchestrations, and microservices.\n\nContact Support:\n Name: PolyAPI",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T02:38:53.000Z",
+    "updatedAt": "2026-07-28T02:38:53.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-cef7416e-7726-47d4-a7e1-b0013ed9ca47"
+  },
+  "item": [
+    {
+      "name": "environments",
+      "item": [
+        {
+          "name": "{environmentId}",
+          "item": [
+            {
+              "name": "PolyAPI Get an environment",
+              "id": "05505eb8-2cc1-4c29-8fc4-e52859781e85",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/environments/:environmentId",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "environments",
+                    ":environmentId"
+                  ],
+                  "variable": [
+                    {
+                      "id": "90ba3600-9dcb-45bb-a53b-41e170702222",
+                      "key": "environmentId",
+                      "value": "<string>",
+                      "description": "(Required) The unique identifier of the environment."
+                    }
+                  ]
+                },
+                "description": "Retrieve details of a specific environment by its ID."
+              },
+              "response": [
+                {
+                  "id": "d1a66801-23d3-4260-b3d7-f11ffb9889fe",
+                  "name": "The environment details.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/environments/:environmentId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "environments",
+                        ":environmentId"
+                      ],
+                      "variable": [
+                        {
+                          "key": "environmentId"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"id\": \"<string>\",\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"contextName\": \"<string>\",\n  \"createdAt\": \"<dateTime>\",\n  \"updatedAt\": \"<dateTime>\"\n}",
+                  "createdAt": "2026-07-28T02:38:53.000Z",
+                  "updatedAt": "2026-07-28T02:38:53.000Z",
+                  "uid": "35240-d1a66801-23d3-4260-b3d7-f11ffb9889fe"
+                },
+                {
+                  "id": "3c7d9979-133c-43cc-89f5-0e06a712bc2d",
+                  "name": "Authentication is required or the provided credentials are invalid.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/environments/:environmentId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "environments",
+                        ":environmentId"
+                      ],
+                      "variable": [
+                        {
+                          "key": "environmentId"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"statusCode\": \"<integer>\",\n  \"message\": \"<string>\",\n  \"error\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T02:38:53.000Z",
+                  "updatedAt": "2026-07-28T02:38:53.000Z",
+                  "uid": "35240-3c7d9979-133c-43cc-89f5-0e06a712bc2d"
+                },
+                {
+                  "id": "b4ee6837-6067-490c-afd7-a643b42e7554",
+                  "name": "The requested resource was not found.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/environments/:environmentId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "environments",
+                        ":environmentId"
+                      ],
+                      "variable": [
+                        {
+                          "key": "environmentId"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Not Found",
+                  "code": 404,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"statusCode\": \"<integer>\",\n  \"message\": \"<string>\",\n  \"error\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T02:38:53.000Z",
+                  "updatedAt": "2026-07-28T02:38:53.000Z",
+                  "uid": "35240-b4ee6837-6067-490c-afd7-a643b42e7554"
+                }
+              ],
+              "createdAt": "2026-07-28T02:38:53.000Z",
+              "updatedAt": "2026-07-28T02:38:53.000Z",
+              "uid": "35240-05505eb8-2cc1-4c29-8fc4-e52859781e85"
+            }
+          ],
+          "id": "614a60e4-e0c9-4ecf-97db-b23abb51b78e",
+          "createdAt": "2026-07-28T02:38:53.000Z",
+          "updatedAt": "2026-07-28T02:38:53.000Z",
+          "uid": "35240-614a60e4-e0c9-4ecf-97db-b23abb51b78e"
+        },
+        {
+          "name": "PolyAPI List environments",
+          "id": "dbcd660d-f548-4b42-a5d9-9d550b360534",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/environments",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "environments"
+              ]
+            },
+            "description": "Retrieve a list of all environments."
+          },
+          "response": [
+            {
+              "id": "906b14e9-7453-4931-9edc-452b14968d9d",
+              "name": "A list of environments.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/environments",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "environments"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "[\n  {\n    \"id\": \"<string>\",\n    \"name\": \"<string>\",\n    \"description\": \"<string>\",\n    \"contextName\": \"<string>\",\n    \"createdAt\": \"<dateTime>\",\n    \"updatedAt\": \"<dateTime>\"\n  },\n  {\n    \"id\": \"<string>\",\n    \"name\": \"<string>\",\n    \"description\": \"<string>\",\n    \"contextName\": \"<string>\",\n    \"createdAt\": \"<dateTime>\",\n    \"updatedAt\": \"<dateTime>\"\n  }\n]",
+              "createdAt": "2026-07-28T02:38:53.000Z",
+              "updatedAt": "2026-07-28T02:38:53.000Z",
+              "uid": "35240-906b14e9-7453-4931-9edc-452b14968d9d"
+            },
+            {
+              "id": "119c912f-da38-4ad9-82bf-12602a20672a",
+              "name": "Authentication is required or the provided credentials are invalid.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/environments",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "environments"
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"statusCode\": \"<integer>\",\n  \"message\": \"<string>\",\n  \"error\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T02:38:53.000Z",
+              "updatedAt": "2026-07-28T02:38:53.000Z",
+              "uid": "35240-119c912f-da38-4ad9-82bf-12602a20672a"
+            }
+          ],
+          "createdAt": "2026-07-28T02:38:53.000Z",
+          "updatedAt": "2026-07-28T02:38:53.000Z",
+          "uid": "35240-dbcd660d-f548-4b42-a5d9-9d550b360534"
+        }
+      ],
+      "id": "84e5a88e-93e8-470a-a37c-7aed195c062e",
+      "createdAt": "2026-07-28T02:38:53.000Z",
+      "updatedAt": "2026-07-28T02:38:53.000Z",
+      "uid": "35240-84e5a88e-93e8-470a-a37c-7aed195c062e"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://na1.polyapi.io"
+    }
+  ]
+}

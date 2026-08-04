@@ -1,0 +1,32 @@
+{
+  "provider": "polyapi",
+  "sources": [
+    "polyapi-api-functions-api-openapi.yml",
+    "polyapi-assistants-api-openapi.yml",
+    "polyapi-client-functions-api-openapi.yml",
+    "polyapi-environments-api-openapi.yml",
+    "polyapi-jobs-api-openapi.yml",
+    "polyapi-schemas-api-openapi.yml",
+    "polyapi-server-functions-api-openapi.yml",
+    "polyapi-triggers-api-openapi.yml",
+    "polyapi-variables-api-openapi.yml",
+    "polyapi-webhooks-api-openapi.yml"
+  ],
+  "outputs": [
+    "polyapi-api-functions-api-openapi.yml",
+    "polyapi-assistants-api-openapi.yml",
+    "polyapi-client-functions-api-openapi.yml",
+    "polyapi-environments-api-openapi.yml",
+    "polyapi-jobs-api-openapi.yml",
+    "polyapi-schemas-api-openapi.yml",
+    "polyapi-server-functions-api-openapi.yml",
+    "polyapi-triggers-api-openapi.yml",
+    "polyapi-variables-api-openapi.yml",
+    "polyapi-webhooks-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}

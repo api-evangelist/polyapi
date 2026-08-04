@@ -1,0 +1,791 @@
+{
+  "info": {
+    "_postman_id": "96195b4b-09a3-41d0-885d-b76b8ec45374",
+    "name": "PolyAPI Platform API Functions Assistants API",
+    "description": "PolyAPI is a modern enterprise middleware platform that provides a unified REST API for managing cloud service resources including functions, variables, webhooks, triggers, jobs, schemas, and environments. Built using AI and Kubernetes-native technology, it accelerates development and simplifies the operation of integrations, orchestrations, and microservices.\n\nContact Support:\n Name: PolyAPI",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T02:38:51.000Z",
+    "updatedAt": "2026-07-28T02:38:51.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-96195b4b-09a3-41d0-885d-b76b8ec45374"
+  },
+  "item": [
+    {
+      "name": "assistants",
+      "item": [
+        {
+          "name": "{slug}",
+          "item": [
+            {
+              "name": "conversations",
+              "item": [
+                {
+                  "name": "{conversationSlug}",
+                  "item": [
+                    {
+                      "name": "PolyAPI Get a conversation",
+                      "id": "4a5d33b0-d74b-4956-9207-ca35b0924fc2",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/assistants/:slug/conversations/:conversationSlug",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "assistants",
+                            ":slug",
+                            "conversations",
+                            ":conversationSlug"
+                          ],
+                          "variable": [
+                            {
+                              "id": "9ce1661e-e6bb-4b6d-ac03-ae0e247f3b72",
+                              "key": "slug",
+                              "value": "<string>",
+                              "description": "(Required) The assistant slug identifier."
+                            },
+                            {
+                              "id": "5d597754-5de5-4b38-b1dd-8e36dc9a2309",
+                              "key": "conversationSlug",
+                              "value": "<string>",
+                              "description": "(Required) The conversation slug identifier."
+                            }
+                          ]
+                        },
+                        "description": "Retrieve details of a specific conversation."
+                      },
+                      "response": [
+                        {
+                          "id": "44f01643-78a4-403a-bcb9-6896442d4d1e",
+                          "name": "The conversation details.",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/assistants/:slug/conversations/:conversationSlug",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "assistants",
+                                ":slug",
+                                "conversations",
+                                ":conversationSlug"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "slug"
+                                },
+                                {
+                                  "key": "conversationSlug"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"id\": \"<string>\",\n  \"slug\": \"<string>\",\n  \"messages\": [\n    {\n      \"role\": \"user\",\n      \"content\": \"<string>\"\n    },\n    {\n      \"role\": \"assistant\",\n      \"content\": \"<string>\"\n    }\n  ],\n  \"createdAt\": \"<dateTime>\",\n  \"updatedAt\": \"<dateTime>\"\n}",
+                          "createdAt": "2026-07-28T02:38:51.000Z",
+                          "updatedAt": "2026-07-28T02:38:51.000Z",
+                          "uid": "35240-44f01643-78a4-403a-bcb9-6896442d4d1e"
+                        },
+                        {
+                          "id": "386379ae-c1f5-4b8a-a909-39663b4298b8",
+                          "name": "Authentication is required or the provided credentials are invalid.",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/assistants/:slug/conversations/:conversationSlug",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "assistants",
+                                ":slug",
+                                "conversations",
+                                ":conversationSlug"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "slug"
+                                },
+                                {
+                                  "key": "conversationSlug"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Unauthorized",
+                          "code": 401,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"statusCode\": \"<integer>\",\n  \"message\": \"<string>\",\n  \"error\": \"<string>\"\n}",
+                          "createdAt": "2026-07-28T02:38:51.000Z",
+                          "updatedAt": "2026-07-28T02:38:51.000Z",
+                          "uid": "35240-386379ae-c1f5-4b8a-a909-39663b4298b8"
+                        },
+                        {
+                          "id": "7db495e9-83dd-4214-8d42-43a568776e67",
+                          "name": "The requested resource was not found.",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/assistants/:slug/conversations/:conversationSlug",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "assistants",
+                                ":slug",
+                                "conversations",
+                                ":conversationSlug"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "slug"
+                                },
+                                {
+                                  "key": "conversationSlug"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Not Found",
+                          "code": 404,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"statusCode\": \"<integer>\",\n  \"message\": \"<string>\",\n  \"error\": \"<string>\"\n}",
+                          "createdAt": "2026-07-28T02:38:51.000Z",
+                          "updatedAt": "2026-07-28T02:38:51.000Z",
+                          "uid": "35240-7db495e9-83dd-4214-8d42-43a568776e67"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T02:38:51.000Z",
+                      "updatedAt": "2026-07-28T02:38:51.000Z",
+                      "uid": "35240-4a5d33b0-d74b-4956-9207-ca35b0924fc2"
+                    },
+                    {
+                      "name": "PolyAPI Delete a conversation",
+                      "id": "2e4845db-6485-4535-8710-b4535ab2cc8d",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "DELETE",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/assistants/:slug/conversations/:conversationSlug",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "assistants",
+                            ":slug",
+                            "conversations",
+                            ":conversationSlug"
+                          ],
+                          "variable": [
+                            {
+                              "id": "67c445f8-bd1c-41ac-87f5-2135d8c60da2",
+                              "key": "slug",
+                              "value": "<string>",
+                              "description": "(Required) The assistant slug identifier."
+                            },
+                            {
+                              "id": "afc51812-c4a6-4b35-9dbc-238954e060b5",
+                              "key": "conversationSlug",
+                              "value": "<string>",
+                              "description": "(Required) The conversation slug identifier."
+                            }
+                          ]
+                        },
+                        "description": "Delete a specific conversation."
+                      },
+                      "response": [
+                        {
+                          "id": "f26313a9-8bf3-4932-aa4f-59c86b8b3444",
+                          "name": "The conversation was deleted successfully.",
+                          "originalRequest": {
+                            "method": "DELETE",
+                            "header": [
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/assistants/:slug/conversations/:conversationSlug",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "assistants",
+                                ":slug",
+                                "conversations",
+                                ":conversationSlug"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "slug"
+                                },
+                                {
+                                  "key": "conversationSlug"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "No Content",
+                          "code": 204,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T02:38:51.000Z",
+                          "updatedAt": "2026-07-28T02:38:51.000Z",
+                          "uid": "35240-f26313a9-8bf3-4932-aa4f-59c86b8b3444"
+                        },
+                        {
+                          "id": "248baa13-fce1-4295-b78e-8df6f76ba46d",
+                          "name": "Authentication is required or the provided credentials are invalid.",
+                          "originalRequest": {
+                            "method": "DELETE",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/assistants/:slug/conversations/:conversationSlug",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "assistants",
+                                ":slug",
+                                "conversations",
+                                ":conversationSlug"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "slug"
+                                },
+                                {
+                                  "key": "conversationSlug"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Unauthorized",
+                          "code": 401,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"statusCode\": \"<integer>\",\n  \"message\": \"<string>\",\n  \"error\": \"<string>\"\n}",
+                          "createdAt": "2026-07-28T02:38:51.000Z",
+                          "updatedAt": "2026-07-28T02:38:51.000Z",
+                          "uid": "35240-248baa13-fce1-4295-b78e-8df6f76ba46d"
+                        },
+                        {
+                          "id": "bf889ba6-28d1-4398-80ae-37213b34939a",
+                          "name": "The requested resource was not found.",
+                          "originalRequest": {
+                            "method": "DELETE",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/assistants/:slug/conversations/:conversationSlug",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "assistants",
+                                ":slug",
+                                "conversations",
+                                ":conversationSlug"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "slug"
+                                },
+                                {
+                                  "key": "conversationSlug"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Not Found",
+                          "code": 404,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"statusCode\": \"<integer>\",\n  \"message\": \"<string>\",\n  \"error\": \"<string>\"\n}",
+                          "createdAt": "2026-07-28T02:38:51.000Z",
+                          "updatedAt": "2026-07-28T02:38:51.000Z",
+                          "uid": "35240-bf889ba6-28d1-4398-80ae-37213b34939a"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T02:38:51.000Z",
+                      "updatedAt": "2026-07-28T02:38:51.000Z",
+                      "uid": "35240-2e4845db-6485-4535-8710-b4535ab2cc8d"
+                    }
+                  ],
+                  "id": "1a45ddb5-6a6c-4433-b0e7-68731705a320",
+                  "createdAt": "2026-07-28T02:38:51.000Z",
+                  "updatedAt": "2026-07-28T02:38:51.000Z",
+                  "uid": "35240-1a45ddb5-6a6c-4433-b0e7-68731705a320"
+                },
+                {
+                  "name": "PolyAPI List conversations",
+                  "id": "88053fd2-4764-4b2b-a3b0-8dd4f8d9721d",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/assistants/:slug/conversations",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "assistants",
+                        ":slug",
+                        "conversations"
+                      ],
+                      "variable": [
+                        {
+                          "id": "95fba143-3e23-41c2-903a-3cc05e8a75dc",
+                          "key": "slug",
+                          "value": "<string>",
+                          "description": "(Required) The assistant slug identifier."
+                        }
+                      ]
+                    },
+                    "description": "Retrieve a list of all conversations for a specific assistant."
+                  },
+                  "response": [
+                    {
+                      "id": "492436b4-0848-4aa8-811a-0e82652565a3",
+                      "name": "A list of conversations.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/assistants/:slug/conversations",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "assistants",
+                            ":slug",
+                            "conversations"
+                          ],
+                          "variable": [
+                            {
+                              "key": "slug"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "[\n  {\n    \"id\": \"<string>\",\n    \"slug\": \"<string>\",\n    \"messages\": [\n      {\n        \"role\": \"user\",\n        \"content\": \"<string>\"\n      },\n      {\n        \"role\": \"user\",\n        \"content\": \"<string>\"\n      }\n    ],\n    \"createdAt\": \"<dateTime>\",\n    \"updatedAt\": \"<dateTime>\"\n  },\n  {\n    \"id\": \"<string>\",\n    \"slug\": \"<string>\",\n    \"messages\": [\n      {\n        \"role\": \"assistant\",\n        \"content\": \"<string>\"\n      },\n      {\n        \"role\": \"assistant\",\n        \"content\": \"<string>\"\n      }\n    ],\n    \"createdAt\": \"<dateTime>\",\n    \"updatedAt\": \"<dateTime>\"\n  }\n]",
+                      "createdAt": "2026-07-28T02:38:51.000Z",
+                      "updatedAt": "2026-07-28T02:38:51.000Z",
+                      "uid": "35240-492436b4-0848-4aa8-811a-0e82652565a3"
+                    },
+                    {
+                      "id": "bc0e07f7-1763-4fdf-b304-1561523998d0",
+                      "name": "Authentication is required or the provided credentials are invalid.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/assistants/:slug/conversations",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "assistants",
+                            ":slug",
+                            "conversations"
+                          ],
+                          "variable": [
+                            {
+                              "key": "slug"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"statusCode\": \"<integer>\",\n  \"message\": \"<string>\",\n  \"error\": \"<string>\"\n}",
+                      "createdAt": "2026-07-28T02:38:51.000Z",
+                      "updatedAt": "2026-07-28T02:38:51.000Z",
+                      "uid": "35240-bc0e07f7-1763-4fdf-b304-1561523998d0"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T02:38:51.000Z",
+                  "updatedAt": "2026-07-28T02:38:51.000Z",
+                  "uid": "35240-88053fd2-4764-4b2b-a3b0-8dd4f8d9721d"
+                },
+                {
+                  "name": "PolyAPI Create a conversation",
+                  "id": "961c3814-7a94-4672-84e9-0c0bd1b922ad",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"message\": \"<string>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/assistants/:slug/conversations",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "assistants",
+                        ":slug",
+                        "conversations"
+                      ],
+                      "variable": [
+                        {
+                          "id": "9a8b05e4-37b8-42a6-bcc5-9fda3b6590da",
+                          "key": "slug",
+                          "value": "<string>",
+                          "description": "(Required) The assistant slug identifier."
+                        }
+                      ]
+                    },
+                    "description": "Create a new conversation with the specified assistant."
+                  },
+                  "response": [
+                    {
+                      "id": "d3ae0cca-ec69-4e3e-94e6-d1ff8e8f614d",
+                      "name": "The created conversation.",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"message\": \"<string>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/assistants/:slug/conversations",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "assistants",
+                            ":slug",
+                            "conversations"
+                          ],
+                          "variable": [
+                            {
+                              "key": "slug"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Created",
+                      "code": 201,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"id\": \"<string>\",\n  \"slug\": \"<string>\",\n  \"messages\": [\n    {\n      \"role\": \"user\",\n      \"content\": \"<string>\"\n    },\n    {\n      \"role\": \"assistant\",\n      \"content\": \"<string>\"\n    }\n  ],\n  \"createdAt\": \"<dateTime>\",\n  \"updatedAt\": \"<dateTime>\"\n}",
+                      "createdAt": "2026-07-28T02:38:51.000Z",
+                      "updatedAt": "2026-07-28T02:38:51.000Z",
+                      "uid": "35240-d3ae0cca-ec69-4e3e-94e6-d1ff8e8f614d"
+                    },
+                    {
+                      "id": "eced817e-5fd7-474e-b9ef-d44c1b2fb044",
+                      "name": "Authentication is required or the provided credentials are invalid.",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"message\": \"<string>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/assistants/:slug/conversations",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "assistants",
+                            ":slug",
+                            "conversations"
+                          ],
+                          "variable": [
+                            {
+                              "key": "slug"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"statusCode\": \"<integer>\",\n  \"message\": \"<string>\",\n  \"error\": \"<string>\"\n}",
+                      "createdAt": "2026-07-28T02:38:51.000Z",
+                      "updatedAt": "2026-07-28T02:38:51.000Z",
+                      "uid": "35240-eced817e-5fd7-474e-b9ef-d44c1b2fb044"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T02:38:51.000Z",
+                  "updatedAt": "2026-07-28T02:38:51.000Z",
+                  "uid": "35240-961c3814-7a94-4672-84e9-0c0bd1b922ad"
+                }
+              ],
+              "id": "1e3b8590-4025-4f65-9799-93a207083a20",
+              "createdAt": "2026-07-28T02:38:51.000Z",
+              "updatedAt": "2026-07-28T02:38:51.000Z",
+              "uid": "35240-1e3b8590-4025-4f65-9799-93a207083a20"
+            }
+          ],
+          "id": "e2ed825b-b164-40d9-9b87-20fd739b14ac",
+          "createdAt": "2026-07-28T02:38:51.000Z",
+          "updatedAt": "2026-07-28T02:38:51.000Z",
+          "uid": "35240-e2ed825b-b164-40d9-9b87-20fd739b14ac"
+        }
+      ],
+      "id": "25622923-6f76-4d29-ba43-f6616a3aaf35",
+      "createdAt": "2026-07-28T02:38:51.000Z",
+      "updatedAt": "2026-07-28T02:38:51.000Z",
+      "uid": "35240-25622923-6f76-4d29-ba43-f6616a3aaf35"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://na1.polyapi.io"
+    }
+  ]
+}

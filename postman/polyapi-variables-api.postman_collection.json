@@ -1,0 +1,955 @@
+{
+  "info": {
+    "_postman_id": "0fd8be23-9331-4a1d-bd5b-8ed688435710",
+    "name": "PolyAPI Platform API Functions Variables API",
+    "description": "PolyAPI is a modern enterprise middleware platform that provides a unified REST API for managing cloud service resources including functions, variables, webhooks, triggers, jobs, schemas, and environments. Built using AI and Kubernetes-native technology, it accelerates development and simplifies the operation of integrations, orchestrations, and microservices.\n\nContact Support:\n Name: PolyAPI",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T02:39:00.000Z",
+    "updatedAt": "2026-07-28T02:39:00.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-0fd8be23-9331-4a1d-bd5b-8ed688435710"
+  },
+  "item": [
+    {
+      "name": "variables",
+      "item": [
+        {
+          "name": "{variableId}",
+          "item": [
+            {
+              "name": "PolyAPI Get a variable",
+              "id": "5803e55b-e8ba-459e-8b5d-d96cb1b777bf",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/variables/:variableId",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "variables",
+                    ":variableId"
+                  ],
+                  "variable": [
+                    {
+                      "id": "cecec9f7-eaf9-4879-adc1-78cfc0bac8f3",
+                      "key": "variableId",
+                      "value": "<string>",
+                      "description": "(Required) The unique identifier of the variable."
+                    }
+                  ]
+                },
+                "description": "Retrieve details of a specific variable by its ID."
+              },
+              "response": [
+                {
+                  "id": "1495bd6b-58cb-4e12-8600-b5501e37c463",
+                  "name": "The variable details.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/variables/:variableId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "variables",
+                        ":variableId"
+                      ],
+                      "variable": [
+                        {
+                          "key": "variableId"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"id\": \"<string>\",\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"pathIdentifier\": \"<string>\",\n  \"value\": \"<string>\",\n  \"secret\": \"<boolean>\",\n  \"visibility\": \"private\",\n  \"createdAt\": \"<dateTime>\",\n  \"updatedAt\": \"<dateTime>\"\n}",
+                  "createdAt": "2026-07-28T02:39:00.000Z",
+                  "updatedAt": "2026-07-28T02:39:00.000Z",
+                  "uid": "35240-1495bd6b-58cb-4e12-8600-b5501e37c463"
+                },
+                {
+                  "id": "c2512cee-1368-46e8-ade4-fe130e9fd37c",
+                  "name": "Authentication is required or the provided credentials are invalid.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/variables/:variableId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "variables",
+                        ":variableId"
+                      ],
+                      "variable": [
+                        {
+                          "key": "variableId"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"statusCode\": \"<integer>\",\n  \"message\": \"<string>\",\n  \"error\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T02:39:00.000Z",
+                  "updatedAt": "2026-07-28T02:39:00.000Z",
+                  "uid": "35240-c2512cee-1368-46e8-ade4-fe130e9fd37c"
+                },
+                {
+                  "id": "ccff4f51-1630-4bfd-9735-5007d92a30dd",
+                  "name": "The requested resource was not found.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/variables/:variableId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "variables",
+                        ":variableId"
+                      ],
+                      "variable": [
+                        {
+                          "key": "variableId"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Not Found",
+                  "code": 404,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"statusCode\": \"<integer>\",\n  \"message\": \"<string>\",\n  \"error\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T02:39:00.000Z",
+                  "updatedAt": "2026-07-28T02:39:00.000Z",
+                  "uid": "35240-ccff4f51-1630-4bfd-9735-5007d92a30dd"
+                }
+              ],
+              "createdAt": "2026-07-28T02:39:00.000Z",
+              "updatedAt": "2026-07-28T02:39:00.000Z",
+              "uid": "35240-5803e55b-e8ba-459e-8b5d-d96cb1b777bf"
+            },
+            {
+              "name": "PolyAPI Update a variable",
+              "id": "b92a0c8d-9eca-44f4-8fea-2511fb888dce",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "PATCH",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"value\": \"<string>\",\n  \"description\": \"<string>\",\n  \"pathIdentifier\": \"<string>\",\n  \"secret\": false\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/variables/:variableId",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "variables",
+                    ":variableId"
+                  ],
+                  "variable": [
+                    {
+                      "id": "238ec3e2-d873-4525-9c75-3e202cb76ce6",
+                      "key": "variableId",
+                      "value": "<string>",
+                      "description": "(Required) The unique identifier of the variable."
+                    }
+                  ]
+                },
+                "description": "Update an existing variable or secret."
+              },
+              "response": [
+                {
+                  "id": "e1b24070-29ec-448b-949a-9c9208908cb0",
+                  "name": "The updated variable.",
+                  "originalRequest": {
+                    "method": "PATCH",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"name\": \"<string>\",\n  \"value\": \"<string>\",\n  \"description\": \"<string>\",\n  \"pathIdentifier\": \"<string>\",\n  \"secret\": false\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/variables/:variableId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "variables",
+                        ":variableId"
+                      ],
+                      "variable": [
+                        {
+                          "key": "variableId"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"id\": \"<string>\",\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"pathIdentifier\": \"<string>\",\n  \"value\": \"<string>\",\n  \"secret\": \"<boolean>\",\n  \"visibility\": \"private\",\n  \"createdAt\": \"<dateTime>\",\n  \"updatedAt\": \"<dateTime>\"\n}",
+                  "createdAt": "2026-07-28T02:39:00.000Z",
+                  "updatedAt": "2026-07-28T02:39:00.000Z",
+                  "uid": "35240-e1b24070-29ec-448b-949a-9c9208908cb0"
+                },
+                {
+                  "id": "d0447820-08b5-47e5-8e29-360a450e3ba8",
+                  "name": "Authentication is required or the provided credentials are invalid.",
+                  "originalRequest": {
+                    "method": "PATCH",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"name\": \"<string>\",\n  \"value\": \"<string>\",\n  \"description\": \"<string>\",\n  \"pathIdentifier\": \"<string>\",\n  \"secret\": false\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/variables/:variableId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "variables",
+                        ":variableId"
+                      ],
+                      "variable": [
+                        {
+                          "key": "variableId"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"statusCode\": \"<integer>\",\n  \"message\": \"<string>\",\n  \"error\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T02:39:00.000Z",
+                  "updatedAt": "2026-07-28T02:39:00.000Z",
+                  "uid": "35240-d0447820-08b5-47e5-8e29-360a450e3ba8"
+                },
+                {
+                  "id": "a29ecf11-4bd6-4d48-859e-00ae02ad30b6",
+                  "name": "The requested resource was not found.",
+                  "originalRequest": {
+                    "method": "PATCH",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"name\": \"<string>\",\n  \"value\": \"<string>\",\n  \"description\": \"<string>\",\n  \"pathIdentifier\": \"<string>\",\n  \"secret\": false\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/variables/:variableId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "variables",
+                        ":variableId"
+                      ],
+                      "variable": [
+                        {
+                          "key": "variableId"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Not Found",
+                  "code": 404,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"statusCode\": \"<integer>\",\n  \"message\": \"<string>\",\n  \"error\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T02:39:00.000Z",
+                  "updatedAt": "2026-07-28T02:39:00.000Z",
+                  "uid": "35240-a29ecf11-4bd6-4d48-859e-00ae02ad30b6"
+                }
+              ],
+              "createdAt": "2026-07-28T02:39:00.000Z",
+              "updatedAt": "2026-07-28T02:39:00.000Z",
+              "uid": "35240-b92a0c8d-9eca-44f4-8fea-2511fb888dce"
+            },
+            {
+              "name": "PolyAPI Delete a variable",
+              "id": "3a20eca5-c701-4c49-86f4-2a0a4ea5e4e3",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "DELETE",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/variables/:variableId",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "variables",
+                    ":variableId"
+                  ],
+                  "variable": [
+                    {
+                      "id": "6d101ecb-d4b7-43d3-93fd-ca8879eaef5a",
+                      "key": "variableId",
+                      "value": "<string>",
+                      "description": "(Required) The unique identifier of the variable."
+                    }
+                  ]
+                },
+                "description": "Delete a specific variable by its ID."
+              },
+              "response": [
+                {
+                  "id": "6a712df8-939d-4b76-9a57-36d1824ac38b",
+                  "name": "The variable was deleted successfully.",
+                  "originalRequest": {
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/variables/:variableId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "variables",
+                        ":variableId"
+                      ],
+                      "variable": [
+                        {
+                          "key": "variableId"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "No Content",
+                  "code": 204,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-07-28T02:39:00.000Z",
+                  "updatedAt": "2026-07-28T02:39:00.000Z",
+                  "uid": "35240-6a712df8-939d-4b76-9a57-36d1824ac38b"
+                },
+                {
+                  "id": "f056ab54-3f59-42c5-a9f2-e9d83e25d026",
+                  "name": "Authentication is required or the provided credentials are invalid.",
+                  "originalRequest": {
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/variables/:variableId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "variables",
+                        ":variableId"
+                      ],
+                      "variable": [
+                        {
+                          "key": "variableId"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"statusCode\": \"<integer>\",\n  \"message\": \"<string>\",\n  \"error\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T02:39:00.000Z",
+                  "updatedAt": "2026-07-28T02:39:00.000Z",
+                  "uid": "35240-f056ab54-3f59-42c5-a9f2-e9d83e25d026"
+                },
+                {
+                  "id": "3dd01cf3-9656-48f5-ae12-85e30ddc4412",
+                  "name": "The requested resource was not found.",
+                  "originalRequest": {
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/variables/:variableId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "variables",
+                        ":variableId"
+                      ],
+                      "variable": [
+                        {
+                          "key": "variableId"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Not Found",
+                  "code": 404,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"statusCode\": \"<integer>\",\n  \"message\": \"<string>\",\n  \"error\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T02:39:00.000Z",
+                  "updatedAt": "2026-07-28T02:39:00.000Z",
+                  "uid": "35240-3dd01cf3-9656-48f5-ae12-85e30ddc4412"
+                }
+              ],
+              "createdAt": "2026-07-28T02:39:00.000Z",
+              "updatedAt": "2026-07-28T02:39:00.000Z",
+              "uid": "35240-3a20eca5-c701-4c49-86f4-2a0a4ea5e4e3"
+            }
+          ],
+          "id": "7a31b47f-c18e-45c0-b4e7-42fde8cd2460",
+          "createdAt": "2026-07-28T02:39:00.000Z",
+          "updatedAt": "2026-07-28T02:39:00.000Z",
+          "uid": "35240-7a31b47f-c18e-45c0-b4e7-42fde8cd2460"
+        },
+        {
+          "name": "PolyAPI List variables",
+          "id": "4b43a063-5f0a-4412-9bc2-d033bb0b5030",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/variables?limit=25&offset=0",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "variables"
+              ],
+              "query": [
+                {
+                  "description": "Maximum number of items to return.",
+                  "key": "limit",
+                  "value": "25"
+                },
+                {
+                  "description": "Number of items to skip for pagination.",
+                  "key": "offset",
+                  "value": "0"
+                }
+              ]
+            },
+            "description": "Retrieve a list of all variables and secrets in the current environment."
+          },
+          "response": [
+            {
+              "id": "b70b3249-7525-446f-900b-e3e3c20960bd",
+              "name": "A list of variables.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/variables?limit=25&offset=0",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "variables"
+                  ],
+                  "query": [
+                    {
+                      "description": "Maximum number of items to return.",
+                      "key": "limit",
+                      "value": "25"
+                    },
+                    {
+                      "description": "Number of items to skip for pagination.",
+                      "key": "offset",
+                      "value": "0"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "[\n  {\n    \"id\": \"<string>\",\n    \"name\": \"<string>\",\n    \"description\": \"<string>\",\n    \"pathIdentifier\": \"<string>\",\n    \"value\": \"<string>\",\n    \"secret\": \"<boolean>\",\n    \"visibility\": \"private\",\n    \"createdAt\": \"<dateTime>\",\n    \"updatedAt\": \"<dateTime>\"\n  },\n  {\n    \"id\": \"<string>\",\n    \"name\": \"<string>\",\n    \"description\": \"<string>\",\n    \"pathIdentifier\": \"<string>\",\n    \"value\": \"<string>\",\n    \"secret\": \"<boolean>\",\n    \"visibility\": \"public\",\n    \"createdAt\": \"<dateTime>\",\n    \"updatedAt\": \"<dateTime>\"\n  }\n]",
+              "createdAt": "2026-07-28T02:39:00.000Z",
+              "updatedAt": "2026-07-28T02:39:00.000Z",
+              "uid": "35240-b70b3249-7525-446f-900b-e3e3c20960bd"
+            },
+            {
+              "id": "c58cd0d9-b26e-46a6-bfd0-b6dc4dfd32ec",
+              "name": "Authentication is required or the provided credentials are invalid.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/variables?limit=25&offset=0",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "variables"
+                  ],
+                  "query": [
+                    {
+                      "description": "Maximum number of items to return.",
+                      "key": "limit",
+                      "value": "25"
+                    },
+                    {
+                      "description": "Number of items to skip for pagination.",
+                      "key": "offset",
+                      "value": "0"
+                    }
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"statusCode\": \"<integer>\",\n  \"message\": \"<string>\",\n  \"error\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T02:39:00.000Z",
+              "updatedAt": "2026-07-28T02:39:00.000Z",
+              "uid": "35240-c58cd0d9-b26e-46a6-bfd0-b6dc4dfd32ec"
+            }
+          ],
+          "createdAt": "2026-07-28T02:39:00.000Z",
+          "updatedAt": "2026-07-28T02:39:00.000Z",
+          "uid": "35240-4b43a063-5f0a-4412-9bc2-d033bb0b5030"
+        },
+        {
+          "name": "PolyAPI Create a variable",
+          "id": "23f03416-7439-4f44-8c02-b00687b4351d",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"<string>\",\n  \"value\": \"<string>\",\n  \"description\": \"<string>\",\n  \"pathIdentifier\": \"<string>\",\n  \"secret\": false\n}",
+              "options": {
+                "raw": {
+                  "headerFamily": "json",
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/variables",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "variables"
+              ]
+            },
+            "description": "Create a new variable or secret that can be securely injected into functions at runtime."
+          },
+          "response": [
+            {
+              "id": "9d7fc0e7-b720-4864-9a7f-8ba7744a850a",
+              "name": "The created variable.",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"value\": \"<string>\",\n  \"description\": \"<string>\",\n  \"pathIdentifier\": \"<string>\",\n  \"secret\": false\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/variables",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "variables"
+                  ]
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"id\": \"<string>\",\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"pathIdentifier\": \"<string>\",\n  \"value\": \"<string>\",\n  \"secret\": \"<boolean>\",\n  \"visibility\": \"private\",\n  \"createdAt\": \"<dateTime>\",\n  \"updatedAt\": \"<dateTime>\"\n}",
+              "createdAt": "2026-07-28T02:39:00.000Z",
+              "updatedAt": "2026-07-28T02:39:00.000Z",
+              "uid": "35240-9d7fc0e7-b720-4864-9a7f-8ba7744a850a"
+            },
+            {
+              "id": "9e1f9829-eafd-4ade-9264-bdb1caa0199b",
+              "name": "Authentication is required or the provided credentials are invalid.",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"value\": \"<string>\",\n  \"description\": \"<string>\",\n  \"pathIdentifier\": \"<string>\",\n  \"secret\": false\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/variables",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "variables"
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"statusCode\": \"<integer>\",\n  \"message\": \"<string>\",\n  \"error\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T02:39:00.000Z",
+              "updatedAt": "2026-07-28T02:39:00.000Z",
+              "uid": "35240-9e1f9829-eafd-4ade-9264-bdb1caa0199b"
+            }
+          ],
+          "createdAt": "2026-07-28T02:39:00.000Z",
+          "updatedAt": "2026-07-28T02:39:00.000Z",
+          "uid": "35240-23f03416-7439-4f44-8c02-b00687b4351d"
+        }
+      ],
+      "id": "8cc3674b-c615-432e-93b4-6dfb33a1720f",
+      "createdAt": "2026-07-28T02:39:00.000Z",
+      "updatedAt": "2026-07-28T02:39:00.000Z",
+      "uid": "35240-8cc3674b-c615-432e-93b4-6dfb33a1720f"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://na1.polyapi.io"
+    }
+  ]
+}

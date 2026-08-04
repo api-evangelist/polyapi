@@ -1,0 +1,955 @@
+{
+  "info": {
+    "_postman_id": "5da1faf0-14af-4b7a-a8ed-4218645ffcaa",
+    "name": "PolyAPI Platform API Functions Triggers API",
+    "description": "PolyAPI is a modern enterprise middleware platform that provides a unified REST API for managing cloud service resources including functions, variables, webhooks, triggers, jobs, schemas, and environments. Built using AI and Kubernetes-native technology, it accelerates development and simplifies the operation of integrations, orchestrations, and microservices.\n\nContact Support:\n Name: PolyAPI",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T02:38:58.000Z",
+    "updatedAt": "2026-07-28T02:38:58.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-5da1faf0-14af-4b7a-a8ed-4218645ffcaa"
+  },
+  "item": [
+    {
+      "name": "triggers",
+      "item": [
+        {
+          "name": "{triggerId}",
+          "item": [
+            {
+              "name": "PolyAPI Get a trigger",
+              "id": "0be363ee-8659-4834-9094-3f69f071e446",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/triggers/:triggerId",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "triggers",
+                    ":triggerId"
+                  ],
+                  "variable": [
+                    {
+                      "id": "5cdd7cf7-2a06-4216-ac2a-64b10d0ca089",
+                      "key": "triggerId",
+                      "value": "<string>",
+                      "description": "(Required) The unique identifier of the trigger."
+                    }
+                  ]
+                },
+                "description": "Retrieve details of a specific trigger by its ID."
+              },
+              "response": [
+                {
+                  "id": "f50b2c26-28c0-41a9-aff5-6e92e6aa90e5",
+                  "name": "The trigger details.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/triggers/:triggerId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "triggers",
+                        ":triggerId"
+                      ],
+                      "variable": [
+                        {
+                          "key": "triggerId"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"id\": \"<string>\",\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"sourceType\": \"<string>\",\n  \"sourceId\": \"<string>\",\n  \"targetFunctionId\": \"<string>\",\n  \"targetFunctionType\": \"api\",\n  \"state\": \"inactive\",\n  \"createdAt\": \"<dateTime>\",\n  \"updatedAt\": \"<dateTime>\"\n}",
+                  "createdAt": "2026-07-28T02:38:59.000Z",
+                  "updatedAt": "2026-07-28T02:38:59.000Z",
+                  "uid": "35240-f50b2c26-28c0-41a9-aff5-6e92e6aa90e5"
+                },
+                {
+                  "id": "ec976210-002e-4006-bbc6-9fd6a874fde1",
+                  "name": "Authentication is required or the provided credentials are invalid.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/triggers/:triggerId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "triggers",
+                        ":triggerId"
+                      ],
+                      "variable": [
+                        {
+                          "key": "triggerId"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"statusCode\": \"<integer>\",\n  \"message\": \"<string>\",\n  \"error\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T02:38:59.000Z",
+                  "updatedAt": "2026-07-28T02:38:59.000Z",
+                  "uid": "35240-ec976210-002e-4006-bbc6-9fd6a874fde1"
+                },
+                {
+                  "id": "4ef55f0e-c297-4053-b42a-3aa5920474ed",
+                  "name": "The requested resource was not found.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/triggers/:triggerId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "triggers",
+                        ":triggerId"
+                      ],
+                      "variable": [
+                        {
+                          "key": "triggerId"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Not Found",
+                  "code": 404,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"statusCode\": \"<integer>\",\n  \"message\": \"<string>\",\n  \"error\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T02:38:59.000Z",
+                  "updatedAt": "2026-07-28T02:38:59.000Z",
+                  "uid": "35240-4ef55f0e-c297-4053-b42a-3aa5920474ed"
+                }
+              ],
+              "createdAt": "2026-07-28T02:38:59.000Z",
+              "updatedAt": "2026-07-28T02:38:59.000Z",
+              "uid": "35240-0be363ee-8659-4834-9094-3f69f071e446"
+            },
+            {
+              "name": "PolyAPI Update a trigger",
+              "id": "dd5a9a07-15c1-4faf-8975-731f640aded4",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "PATCH",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"sourceType\": \"<string>\",\n  \"sourceId\": \"<string>\",\n  \"targetFunctionId\": \"<string>\",\n  \"targetFunctionType\": \"server\",\n  \"description\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/triggers/:triggerId",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "triggers",
+                    ":triggerId"
+                  ],
+                  "variable": [
+                    {
+                      "id": "3f9b7558-ff26-4e14-8f86-5125c3170265",
+                      "key": "triggerId",
+                      "value": "<string>",
+                      "description": "(Required) The unique identifier of the trigger."
+                    }
+                  ]
+                },
+                "description": "Update an existing trigger."
+              },
+              "response": [
+                {
+                  "id": "a5b9f799-28dd-4df7-9368-973b49eb0483",
+                  "name": "The updated trigger.",
+                  "originalRequest": {
+                    "method": "PATCH",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"name\": \"<string>\",\n  \"sourceType\": \"<string>\",\n  \"sourceId\": \"<string>\",\n  \"targetFunctionId\": \"<string>\",\n  \"targetFunctionType\": \"server\",\n  \"description\": \"<string>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/triggers/:triggerId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "triggers",
+                        ":triggerId"
+                      ],
+                      "variable": [
+                        {
+                          "key": "triggerId"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"id\": \"<string>\",\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"sourceType\": \"<string>\",\n  \"sourceId\": \"<string>\",\n  \"targetFunctionId\": \"<string>\",\n  \"targetFunctionType\": \"api\",\n  \"state\": \"inactive\",\n  \"createdAt\": \"<dateTime>\",\n  \"updatedAt\": \"<dateTime>\"\n}",
+                  "createdAt": "2026-07-28T02:38:59.000Z",
+                  "updatedAt": "2026-07-28T02:38:59.000Z",
+                  "uid": "35240-a5b9f799-28dd-4df7-9368-973b49eb0483"
+                },
+                {
+                  "id": "230d6ccb-d4da-4dbf-836e-20853b1cd665",
+                  "name": "Authentication is required or the provided credentials are invalid.",
+                  "originalRequest": {
+                    "method": "PATCH",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"name\": \"<string>\",\n  \"sourceType\": \"<string>\",\n  \"sourceId\": \"<string>\",\n  \"targetFunctionId\": \"<string>\",\n  \"targetFunctionType\": \"server\",\n  \"description\": \"<string>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/triggers/:triggerId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "triggers",
+                        ":triggerId"
+                      ],
+                      "variable": [
+                        {
+                          "key": "triggerId"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"statusCode\": \"<integer>\",\n  \"message\": \"<string>\",\n  \"error\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T02:38:59.000Z",
+                  "updatedAt": "2026-07-28T02:38:59.000Z",
+                  "uid": "35240-230d6ccb-d4da-4dbf-836e-20853b1cd665"
+                },
+                {
+                  "id": "2c1013c9-a830-4396-92a1-662b05444fb9",
+                  "name": "The requested resource was not found.",
+                  "originalRequest": {
+                    "method": "PATCH",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"name\": \"<string>\",\n  \"sourceType\": \"<string>\",\n  \"sourceId\": \"<string>\",\n  \"targetFunctionId\": \"<string>\",\n  \"targetFunctionType\": \"server\",\n  \"description\": \"<string>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/triggers/:triggerId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "triggers",
+                        ":triggerId"
+                      ],
+                      "variable": [
+                        {
+                          "key": "triggerId"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Not Found",
+                  "code": 404,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"statusCode\": \"<integer>\",\n  \"message\": \"<string>\",\n  \"error\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T02:38:59.000Z",
+                  "updatedAt": "2026-07-28T02:38:59.000Z",
+                  "uid": "35240-2c1013c9-a830-4396-92a1-662b05444fb9"
+                }
+              ],
+              "createdAt": "2026-07-28T02:38:59.000Z",
+              "updatedAt": "2026-07-28T02:38:59.000Z",
+              "uid": "35240-dd5a9a07-15c1-4faf-8975-731f640aded4"
+            },
+            {
+              "name": "PolyAPI Delete a trigger",
+              "id": "b12bfe87-a0ad-4caf-9c13-177e2308229c",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "DELETE",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/triggers/:triggerId",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "triggers",
+                    ":triggerId"
+                  ],
+                  "variable": [
+                    {
+                      "id": "dfc99ee2-19da-4d4e-97de-aa812f1f7639",
+                      "key": "triggerId",
+                      "value": "<string>",
+                      "description": "(Required) The unique identifier of the trigger."
+                    }
+                  ]
+                },
+                "description": "Delete a specific trigger by its ID."
+              },
+              "response": [
+                {
+                  "id": "9c5763e7-e274-4bf0-aa1d-3493e64dcd92",
+                  "name": "The trigger was deleted successfully.",
+                  "originalRequest": {
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/triggers/:triggerId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "triggers",
+                        ":triggerId"
+                      ],
+                      "variable": [
+                        {
+                          "key": "triggerId"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "No Content",
+                  "code": 204,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-07-28T02:38:59.000Z",
+                  "updatedAt": "2026-07-28T02:38:59.000Z",
+                  "uid": "35240-9c5763e7-e274-4bf0-aa1d-3493e64dcd92"
+                },
+                {
+                  "id": "421167fa-af52-489b-968e-9af3b0a0fc92",
+                  "name": "Authentication is required or the provided credentials are invalid.",
+                  "originalRequest": {
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/triggers/:triggerId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "triggers",
+                        ":triggerId"
+                      ],
+                      "variable": [
+                        {
+                          "key": "triggerId"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"statusCode\": \"<integer>\",\n  \"message\": \"<string>\",\n  \"error\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T02:38:59.000Z",
+                  "updatedAt": "2026-07-28T02:38:59.000Z",
+                  "uid": "35240-421167fa-af52-489b-968e-9af3b0a0fc92"
+                },
+                {
+                  "id": "7a2c8747-f254-456d-b2b3-0aef79732999",
+                  "name": "The requested resource was not found.",
+                  "originalRequest": {
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/triggers/:triggerId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "triggers",
+                        ":triggerId"
+                      ],
+                      "variable": [
+                        {
+                          "key": "triggerId"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Not Found",
+                  "code": 404,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"statusCode\": \"<integer>\",\n  \"message\": \"<string>\",\n  \"error\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T02:38:59.000Z",
+                  "updatedAt": "2026-07-28T02:38:59.000Z",
+                  "uid": "35240-7a2c8747-f254-456d-b2b3-0aef79732999"
+                }
+              ],
+              "createdAt": "2026-07-28T02:38:59.000Z",
+              "updatedAt": "2026-07-28T02:38:59.000Z",
+              "uid": "35240-b12bfe87-a0ad-4caf-9c13-177e2308229c"
+            }
+          ],
+          "id": "4efd8356-bfd8-4b89-91f3-7ab362a6f2cf",
+          "createdAt": "2026-07-28T02:38:59.000Z",
+          "updatedAt": "2026-07-28T02:38:59.000Z",
+          "uid": "35240-4efd8356-bfd8-4b89-91f3-7ab362a6f2cf"
+        },
+        {
+          "name": "PolyAPI List triggers",
+          "id": "a5d244a4-793f-46bc-8e01-14c57f5dcc64",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/triggers?limit=25&offset=0",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "triggers"
+              ],
+              "query": [
+                {
+                  "description": "Maximum number of items to return.",
+                  "key": "limit",
+                  "value": "25"
+                },
+                {
+                  "description": "Number of items to skip for pagination.",
+                  "key": "offset",
+                  "value": "0"
+                }
+              ]
+            },
+            "description": "Retrieve a list of all triggers in the current environment."
+          },
+          "response": [
+            {
+              "id": "dd1c2a30-aad0-4cc0-9032-e14c7227d965",
+              "name": "A list of triggers.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/triggers?limit=25&offset=0",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "triggers"
+                  ],
+                  "query": [
+                    {
+                      "description": "Maximum number of items to return.",
+                      "key": "limit",
+                      "value": "25"
+                    },
+                    {
+                      "description": "Number of items to skip for pagination.",
+                      "key": "offset",
+                      "value": "0"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "[\n  {\n    \"id\": \"<string>\",\n    \"name\": \"<string>\",\n    \"description\": \"<string>\",\n    \"sourceType\": \"<string>\",\n    \"sourceId\": \"<string>\",\n    \"targetFunctionId\": \"<string>\",\n    \"targetFunctionType\": \"api\",\n    \"state\": \"inactive\",\n    \"createdAt\": \"<dateTime>\",\n    \"updatedAt\": \"<dateTime>\"\n  },\n  {\n    \"id\": \"<string>\",\n    \"name\": \"<string>\",\n    \"description\": \"<string>\",\n    \"sourceType\": \"<string>\",\n    \"sourceId\": \"<string>\",\n    \"targetFunctionId\": \"<string>\",\n    \"targetFunctionType\": \"api\",\n    \"state\": \"inactive\",\n    \"createdAt\": \"<dateTime>\",\n    \"updatedAt\": \"<dateTime>\"\n  }\n]",
+              "createdAt": "2026-07-28T02:38:59.000Z",
+              "updatedAt": "2026-07-28T02:38:59.000Z",
+              "uid": "35240-dd1c2a30-aad0-4cc0-9032-e14c7227d965"
+            },
+            {
+              "id": "fd47c675-0957-4e6d-b3d0-d4d416609bf9",
+              "name": "Authentication is required or the provided credentials are invalid.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/triggers?limit=25&offset=0",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "triggers"
+                  ],
+                  "query": [
+                    {
+                      "description": "Maximum number of items to return.",
+                      "key": "limit",
+                      "value": "25"
+                    },
+                    {
+                      "description": "Number of items to skip for pagination.",
+                      "key": "offset",
+                      "value": "0"
+                    }
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"statusCode\": \"<integer>\",\n  \"message\": \"<string>\",\n  \"error\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T02:38:59.000Z",
+              "updatedAt": "2026-07-28T02:38:59.000Z",
+              "uid": "35240-fd47c675-0957-4e6d-b3d0-d4d416609bf9"
+            }
+          ],
+          "createdAt": "2026-07-28T02:38:59.000Z",
+          "updatedAt": "2026-07-28T02:38:59.000Z",
+          "uid": "35240-a5d244a4-793f-46bc-8e01-14c57f5dcc64"
+        },
+        {
+          "name": "PolyAPI Create a trigger",
+          "id": "c34dca66-cc57-400d-a8ff-03930e32f3b8",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"<string>\",\n  \"sourceType\": \"<string>\",\n  \"sourceId\": \"<string>\",\n  \"targetFunctionId\": \"<string>\",\n  \"targetFunctionType\": \"server\",\n  \"description\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "headerFamily": "json",
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/triggers",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "triggers"
+              ]
+            },
+            "description": "Create a new trigger that connects a cloud event to a function for event-driven execution."
+          },
+          "response": [
+            {
+              "id": "51fc3c00-6974-4f75-b086-6098594bd305",
+              "name": "The created trigger.",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"sourceType\": \"<string>\",\n  \"sourceId\": \"<string>\",\n  \"targetFunctionId\": \"<string>\",\n  \"targetFunctionType\": \"server\",\n  \"description\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/triggers",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "triggers"
+                  ]
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"id\": \"<string>\",\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"sourceType\": \"<string>\",\n  \"sourceId\": \"<string>\",\n  \"targetFunctionId\": \"<string>\",\n  \"targetFunctionType\": \"api\",\n  \"state\": \"inactive\",\n  \"createdAt\": \"<dateTime>\",\n  \"updatedAt\": \"<dateTime>\"\n}",
+              "createdAt": "2026-07-28T02:38:59.000Z",
+              "updatedAt": "2026-07-28T02:38:59.000Z",
+              "uid": "35240-51fc3c00-6974-4f75-b086-6098594bd305"
+            },
+            {
+              "id": "00135899-1888-4a1e-8a30-8e7b4ba9fde4",
+              "name": "Authentication is required or the provided credentials are invalid.",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"sourceType\": \"<string>\",\n  \"sourceId\": \"<string>\",\n  \"targetFunctionId\": \"<string>\",\n  \"targetFunctionType\": \"server\",\n  \"description\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/triggers",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "triggers"
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"statusCode\": \"<integer>\",\n  \"message\": \"<string>\",\n  \"error\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T02:38:59.000Z",
+              "updatedAt": "2026-07-28T02:38:59.000Z",
+              "uid": "35240-00135899-1888-4a1e-8a30-8e7b4ba9fde4"
+            }
+          ],
+          "createdAt": "2026-07-28T02:38:59.000Z",
+          "updatedAt": "2026-07-28T02:38:59.000Z",
+          "uid": "35240-c34dca66-cc57-400d-a8ff-03930e32f3b8"
+        }
+      ],
+      "id": "d74b47d0-d0ba-468c-89c7-9fbb91f652dd",
+      "createdAt": "2026-07-28T02:38:59.000Z",
+      "updatedAt": "2026-07-28T02:38:59.000Z",
+      "uid": "35240-d74b47d0-d0ba-468c-89c7-9fbb91f652dd"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://na1.polyapi.io"
+    }
+  ]
+}

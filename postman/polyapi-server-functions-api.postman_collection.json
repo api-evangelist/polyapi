@@ -1,0 +1,1239 @@
+{
+  "info": {
+    "_postman_id": "89524eed-6bc1-4b31-95ff-ec0af37f391e",
+    "name": "PolyAPI Platform API Functions Server Functions API",
+    "description": "PolyAPI is a modern enterprise middleware platform that provides a unified REST API for managing cloud service resources including functions, variables, webhooks, triggers, jobs, schemas, and environments. Built using AI and Kubernetes-native technology, it accelerates development and simplifies the operation of integrations, orchestrations, and microservices.\n\nContact Support:\n Name: PolyAPI",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T02:38:57.000Z",
+    "updatedAt": "2026-07-28T02:38:57.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-89524eed-6bc1-4b31-95ff-ec0af37f391e"
+  },
+  "item": [
+    {
+      "name": "functions",
+      "item": [
+        {
+          "name": "server",
+          "item": [
+            {
+              "name": "{functionId}",
+              "item": [
+                {
+                  "name": "execute",
+                  "item": [
+                    {
+                      "name": "PolyAPI Execute a server function",
+                      "id": "303b9448-2d2c-4f65-b9b5-4a099d44df15",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"args\": [\n    {\n      \"description\": \"Function arguments, which may include PolyVariable objects for variable injection.\"\n    },\n    {\n      \"description\": \"Function arguments, which may include PolyVariable objects for variable injection.\"\n    }\n  ],\n  \"polyCustom\": {\n    \"async\": \"<boolean>\"\n  }\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/functions/server/:functionId/execute",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "functions",
+                            "server",
+                            ":functionId",
+                            "execute"
+                          ],
+                          "variable": [
+                            {
+                              "id": "00333eb2-f794-4841-8b16-a1daa8332878",
+                              "key": "functionId",
+                              "value": "<string>",
+                              "description": "(Required) The unique identifier of the function."
+                            }
+                          ]
+                        },
+                        "description": "Execute a server function by its ID. Supports asynchronous execution and custom response handling via the polyCustom object. Requires the Execute Functions permission."
+                      },
+                      "response": [
+                        {
+                          "id": "a03e54cf-2eff-469e-9d89-daa1f888ad59",
+                          "name": "The execution result.",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"args\": [\n    {\n      \"description\": \"Function arguments, which may include PolyVariable objects for variable injection.\"\n    },\n    {\n      \"description\": \"Function arguments, which may include PolyVariable objects for variable injection.\"\n    }\n  ],\n  \"polyCustom\": {\n    \"async\": \"<boolean>\"\n  }\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/functions/server/:functionId/execute",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "functions",
+                                "server",
+                                ":functionId",
+                                "execute"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "functionId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"result\": {\n    \"description\": \"The return value of the function execution.\"\n  },\n  \"executionId\": \"<string>\",\n  \"executionTime\": \"<number>\"\n}",
+                          "createdAt": "2026-07-28T02:38:58.000Z",
+                          "updatedAt": "2026-07-28T02:38:58.000Z",
+                          "uid": "35240-a03e54cf-2eff-469e-9d89-daa1f888ad59"
+                        },
+                        {
+                          "id": "c94407e7-a0b7-4b01-94a9-a043ecc5c896",
+                          "name": "Authentication is required or the provided credentials are invalid.",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"args\": [\n    {\n      \"description\": \"Function arguments, which may include PolyVariable objects for variable injection.\"\n    },\n    {\n      \"description\": \"Function arguments, which may include PolyVariable objects for variable injection.\"\n    }\n  ],\n  \"polyCustom\": {\n    \"async\": \"<boolean>\"\n  }\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/functions/server/:functionId/execute",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "functions",
+                                "server",
+                                ":functionId",
+                                "execute"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "functionId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Unauthorized",
+                          "code": 401,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"statusCode\": \"<integer>\",\n  \"message\": \"<string>\",\n  \"error\": \"<string>\"\n}",
+                          "createdAt": "2026-07-28T02:38:58.000Z",
+                          "updatedAt": "2026-07-28T02:38:58.000Z",
+                          "uid": "35240-c94407e7-a0b7-4b01-94a9-a043ecc5c896"
+                        },
+                        {
+                          "id": "063ebc34-cbd4-40c6-a9e8-7845c32e1239",
+                          "name": "The requested resource was not found.",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"args\": [\n    {\n      \"description\": \"Function arguments, which may include PolyVariable objects for variable injection.\"\n    },\n    {\n      \"description\": \"Function arguments, which may include PolyVariable objects for variable injection.\"\n    }\n  ],\n  \"polyCustom\": {\n    \"async\": \"<boolean>\"\n  }\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/functions/server/:functionId/execute",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "functions",
+                                "server",
+                                ":functionId",
+                                "execute"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "functionId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Not Found",
+                          "code": 404,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"statusCode\": \"<integer>\",\n  \"message\": \"<string>\",\n  \"error\": \"<string>\"\n}",
+                          "createdAt": "2026-07-28T02:38:58.000Z",
+                          "updatedAt": "2026-07-28T02:38:58.000Z",
+                          "uid": "35240-063ebc34-cbd4-40c6-a9e8-7845c32e1239"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T02:38:58.000Z",
+                      "updatedAt": "2026-07-28T02:38:58.000Z",
+                      "uid": "35240-303b9448-2d2c-4f65-b9b5-4a099d44df15"
+                    }
+                  ],
+                  "id": "e5962024-49bd-4a09-a50d-79d44300f92a",
+                  "createdAt": "2026-07-28T02:38:58.000Z",
+                  "updatedAt": "2026-07-28T02:38:58.000Z",
+                  "uid": "35240-e5962024-49bd-4a09-a50d-79d44300f92a"
+                },
+                {
+                  "name": "PolyAPI Get a server function",
+                  "id": "cfb14d77-f44b-4eec-940c-5de75d97adf2",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/functions/server/:functionId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "functions",
+                        "server",
+                        ":functionId"
+                      ],
+                      "variable": [
+                        {
+                          "id": "f657150f-487b-4985-bcbe-0e03549cae29",
+                          "key": "functionId",
+                          "value": "<string>",
+                          "description": "(Required) The unique identifier of the function."
+                        }
+                      ]
+                    },
+                    "description": "Retrieve details of a specific server function by its ID."
+                  },
+                  "response": [
+                    {
+                      "id": "8dec4bd3-2e79-42af-8102-2520947f476a",
+                      "name": "The server function details.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/functions/server/:functionId",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "functions",
+                            "server",
+                            ":functionId"
+                          ],
+                          "variable": [
+                            {
+                              "key": "functionId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"id\": \"<string>\",\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"context\": \"<string>\",\n  \"language\": \"java\",\n  \"code\": \"<string>\",\n  \"deploymentId\": \"<string>\",\n  \"state\": \"deprecated\",\n  \"owner\": \"<string>\",\n  \"visibility\": \"private\",\n  \"createdAt\": \"<dateTime>\",\n  \"updatedAt\": \"<dateTime>\"\n}",
+                      "createdAt": "2026-07-28T02:38:58.000Z",
+                      "updatedAt": "2026-07-28T02:38:58.000Z",
+                      "uid": "35240-8dec4bd3-2e79-42af-8102-2520947f476a"
+                    },
+                    {
+                      "id": "c4b5f340-36a7-4126-994d-44001ffd6ead",
+                      "name": "Authentication is required or the provided credentials are invalid.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/functions/server/:functionId",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "functions",
+                            "server",
+                            ":functionId"
+                          ],
+                          "variable": [
+                            {
+                              "key": "functionId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"statusCode\": \"<integer>\",\n  \"message\": \"<string>\",\n  \"error\": \"<string>\"\n}",
+                      "createdAt": "2026-07-28T02:38:58.000Z",
+                      "updatedAt": "2026-07-28T02:38:58.000Z",
+                      "uid": "35240-c4b5f340-36a7-4126-994d-44001ffd6ead"
+                    },
+                    {
+                      "id": "4fed397e-1824-4a8a-a3ee-493829f31442",
+                      "name": "The requested resource was not found.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/functions/server/:functionId",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "functions",
+                            "server",
+                            ":functionId"
+                          ],
+                          "variable": [
+                            {
+                              "key": "functionId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Not Found",
+                      "code": 404,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"statusCode\": \"<integer>\",\n  \"message\": \"<string>\",\n  \"error\": \"<string>\"\n}",
+                      "createdAt": "2026-07-28T02:38:58.000Z",
+                      "updatedAt": "2026-07-28T02:38:58.000Z",
+                      "uid": "35240-4fed397e-1824-4a8a-a3ee-493829f31442"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T02:38:58.000Z",
+                  "updatedAt": "2026-07-28T02:38:58.000Z",
+                  "uid": "35240-cfb14d77-f44b-4eec-940c-5de75d97adf2"
+                },
+                {
+                  "name": "PolyAPI Update a server function",
+                  "id": "bf3ad058-d384-4e10-8031-db53e077364d",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "PATCH",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"name\": \"<string>\",\n  \"language\": \"java\",\n  \"code\": \"<string>\",\n  \"description\": \"<string>\",\n  \"context\": \"<string>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/functions/server/:functionId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "functions",
+                        "server",
+                        ":functionId"
+                      ],
+                      "variable": [
+                        {
+                          "id": "9f27d231-69ba-4322-8f49-c22ec10fb1fe",
+                          "key": "functionId",
+                          "value": "<string>",
+                          "description": "(Required) The unique identifier of the function."
+                        }
+                      ]
+                    },
+                    "description": "Update an existing server function."
+                  },
+                  "response": [
+                    {
+                      "id": "bcd74b49-e920-4158-9473-34e4574701a6",
+                      "name": "The updated server function.",
+                      "originalRequest": {
+                        "method": "PATCH",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"name\": \"<string>\",\n  \"language\": \"java\",\n  \"code\": \"<string>\",\n  \"description\": \"<string>\",\n  \"context\": \"<string>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/functions/server/:functionId",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "functions",
+                            "server",
+                            ":functionId"
+                          ],
+                          "variable": [
+                            {
+                              "key": "functionId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"id\": \"<string>\",\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"context\": \"<string>\",\n  \"language\": \"java\",\n  \"code\": \"<string>\",\n  \"deploymentId\": \"<string>\",\n  \"state\": \"deprecated\",\n  \"owner\": \"<string>\",\n  \"visibility\": \"private\",\n  \"createdAt\": \"<dateTime>\",\n  \"updatedAt\": \"<dateTime>\"\n}",
+                      "createdAt": "2026-07-28T02:38:58.000Z",
+                      "updatedAt": "2026-07-28T02:38:58.000Z",
+                      "uid": "35240-bcd74b49-e920-4158-9473-34e4574701a6"
+                    },
+                    {
+                      "id": "01f72e44-17c0-4ffd-9448-d4df5c51fc09",
+                      "name": "Authentication is required or the provided credentials are invalid.",
+                      "originalRequest": {
+                        "method": "PATCH",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"name\": \"<string>\",\n  \"language\": \"java\",\n  \"code\": \"<string>\",\n  \"description\": \"<string>\",\n  \"context\": \"<string>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/functions/server/:functionId",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "functions",
+                            "server",
+                            ":functionId"
+                          ],
+                          "variable": [
+                            {
+                              "key": "functionId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"statusCode\": \"<integer>\",\n  \"message\": \"<string>\",\n  \"error\": \"<string>\"\n}",
+                      "createdAt": "2026-07-28T02:38:58.000Z",
+                      "updatedAt": "2026-07-28T02:38:58.000Z",
+                      "uid": "35240-01f72e44-17c0-4ffd-9448-d4df5c51fc09"
+                    },
+                    {
+                      "id": "3b206ced-7b04-49aa-af85-4afc2b833e96",
+                      "name": "The requested resource was not found.",
+                      "originalRequest": {
+                        "method": "PATCH",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"name\": \"<string>\",\n  \"language\": \"java\",\n  \"code\": \"<string>\",\n  \"description\": \"<string>\",\n  \"context\": \"<string>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/functions/server/:functionId",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "functions",
+                            "server",
+                            ":functionId"
+                          ],
+                          "variable": [
+                            {
+                              "key": "functionId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Not Found",
+                      "code": 404,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"statusCode\": \"<integer>\",\n  \"message\": \"<string>\",\n  \"error\": \"<string>\"\n}",
+                      "createdAt": "2026-07-28T02:38:58.000Z",
+                      "updatedAt": "2026-07-28T02:38:58.000Z",
+                      "uid": "35240-3b206ced-7b04-49aa-af85-4afc2b833e96"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T02:38:58.000Z",
+                  "updatedAt": "2026-07-28T02:38:58.000Z",
+                  "uid": "35240-bf3ad058-d384-4e10-8031-db53e077364d"
+                },
+                {
+                  "name": "PolyAPI Delete a server function",
+                  "id": "67a777f0-c9b3-49d1-bf11-722b46642f4d",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/functions/server/:functionId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "functions",
+                        "server",
+                        ":functionId"
+                      ],
+                      "variable": [
+                        {
+                          "id": "4df5096b-32e8-4acf-bd05-a0138228e3d5",
+                          "key": "functionId",
+                          "value": "<string>",
+                          "description": "(Required) The unique identifier of the function."
+                        }
+                      ]
+                    },
+                    "description": "Delete a specific server function by its ID."
+                  },
+                  "response": [
+                    {
+                      "id": "1b6c1e2a-9902-4bd1-b21b-1b747d3c2d99",
+                      "name": "The server function was deleted successfully.",
+                      "originalRequest": {
+                        "method": "DELETE",
+                        "header": [
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/functions/server/:functionId",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "functions",
+                            "server",
+                            ":functionId"
+                          ],
+                          "variable": [
+                            {
+                              "key": "functionId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "No Content",
+                      "code": 204,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-07-28T02:38:58.000Z",
+                      "updatedAt": "2026-07-28T02:38:58.000Z",
+                      "uid": "35240-1b6c1e2a-9902-4bd1-b21b-1b747d3c2d99"
+                    },
+                    {
+                      "id": "b5eff52a-98d9-4329-b52e-bb33f2a61a67",
+                      "name": "Authentication is required or the provided credentials are invalid.",
+                      "originalRequest": {
+                        "method": "DELETE",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/functions/server/:functionId",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "functions",
+                            "server",
+                            ":functionId"
+                          ],
+                          "variable": [
+                            {
+                              "key": "functionId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"statusCode\": \"<integer>\",\n  \"message\": \"<string>\",\n  \"error\": \"<string>\"\n}",
+                      "createdAt": "2026-07-28T02:38:58.000Z",
+                      "updatedAt": "2026-07-28T02:38:58.000Z",
+                      "uid": "35240-b5eff52a-98d9-4329-b52e-bb33f2a61a67"
+                    },
+                    {
+                      "id": "f0d0c95e-14e4-41bf-9766-22eab08fbd35",
+                      "name": "The requested resource was not found.",
+                      "originalRequest": {
+                        "method": "DELETE",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/functions/server/:functionId",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "functions",
+                            "server",
+                            ":functionId"
+                          ],
+                          "variable": [
+                            {
+                              "key": "functionId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Not Found",
+                      "code": 404,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"statusCode\": \"<integer>\",\n  \"message\": \"<string>\",\n  \"error\": \"<string>\"\n}",
+                      "createdAt": "2026-07-28T02:38:58.000Z",
+                      "updatedAt": "2026-07-28T02:38:58.000Z",
+                      "uid": "35240-f0d0c95e-14e4-41bf-9766-22eab08fbd35"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T02:38:58.000Z",
+                  "updatedAt": "2026-07-28T02:38:58.000Z",
+                  "uid": "35240-67a777f0-c9b3-49d1-bf11-722b46642f4d"
+                }
+              ],
+              "id": "822f4e73-02fb-414c-8aa7-c56c8f89fedc",
+              "createdAt": "2026-07-28T02:38:58.000Z",
+              "updatedAt": "2026-07-28T02:38:58.000Z",
+              "uid": "35240-822f4e73-02fb-414c-8aa7-c56c8f89fedc"
+            },
+            {
+              "name": "PolyAPI List server functions",
+              "id": "c610de4a-24d2-4902-8787-1522e1dce8c6",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/functions/server?limit=25&offset=0",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "functions",
+                    "server"
+                  ],
+                  "query": [
+                    {
+                      "description": "Maximum number of items to return.",
+                      "key": "limit",
+                      "value": "25"
+                    },
+                    {
+                      "description": "Number of items to skip for pagination.",
+                      "key": "offset",
+                      "value": "0"
+                    }
+                  ]
+                },
+                "description": "Retrieve a list of all server functions in the current environment."
+              },
+              "response": [
+                {
+                  "id": "2a0d4e0d-0f35-4091-a554-7fd20bc5ed17",
+                  "name": "A list of server functions.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/functions/server?limit=25&offset=0",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "functions",
+                        "server"
+                      ],
+                      "query": [
+                        {
+                          "description": "Maximum number of items to return.",
+                          "key": "limit",
+                          "value": "25"
+                        },
+                        {
+                          "description": "Number of items to skip for pagination.",
+                          "key": "offset",
+                          "value": "0"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "[\n  {\n    \"id\": \"<string>\",\n    \"name\": \"<string>\",\n    \"description\": \"<string>\",\n    \"context\": \"<string>\",\n    \"language\": \"typescript\",\n    \"code\": \"<string>\",\n    \"deploymentId\": \"<string>\",\n    \"state\": \"deprecated\",\n    \"owner\": \"<string>\",\n    \"visibility\": \"public\",\n    \"createdAt\": \"<dateTime>\",\n    \"updatedAt\": \"<dateTime>\"\n  },\n  {\n    \"id\": \"<string>\",\n    \"name\": \"<string>\",\n    \"description\": \"<string>\",\n    \"context\": \"<string>\",\n    \"language\": \"typescript\",\n    \"code\": \"<string>\",\n    \"deploymentId\": \"<string>\",\n    \"state\": \"inactive\",\n    \"owner\": \"<string>\",\n    \"visibility\": \"private\",\n    \"createdAt\": \"<dateTime>\",\n    \"updatedAt\": \"<dateTime>\"\n  }\n]",
+                  "createdAt": "2026-07-28T02:38:58.000Z",
+                  "updatedAt": "2026-07-28T02:38:58.000Z",
+                  "uid": "35240-2a0d4e0d-0f35-4091-a554-7fd20bc5ed17"
+                },
+                {
+                  "id": "7ccb4923-364f-4e0d-bed3-4b816a99455d",
+                  "name": "Authentication is required or the provided credentials are invalid.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/functions/server?limit=25&offset=0",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "functions",
+                        "server"
+                      ],
+                      "query": [
+                        {
+                          "description": "Maximum number of items to return.",
+                          "key": "limit",
+                          "value": "25"
+                        },
+                        {
+                          "description": "Number of items to skip for pagination.",
+                          "key": "offset",
+                          "value": "0"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"statusCode\": \"<integer>\",\n  \"message\": \"<string>\",\n  \"error\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T02:38:58.000Z",
+                  "updatedAt": "2026-07-28T02:38:58.000Z",
+                  "uid": "35240-7ccb4923-364f-4e0d-bed3-4b816a99455d"
+                }
+              ],
+              "createdAt": "2026-07-28T02:38:58.000Z",
+              "updatedAt": "2026-07-28T02:38:58.000Z",
+              "uid": "35240-c610de4a-24d2-4902-8787-1522e1dce8c6"
+            },
+            {
+              "name": "PolyAPI Create a server function",
+              "id": "2981164f-7ae3-46d0-9f6a-582821e627fb",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"language\": \"java\",\n  \"code\": \"<string>\",\n  \"description\": \"<string>\",\n  \"context\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/functions/server",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "functions",
+                    "server"
+                  ]
+                },
+                "description": "Create a new Knative serverless function."
+              },
+              "response": [
+                {
+                  "id": "ab9af84c-fca8-4182-bf53-689752e2e8a6",
+                  "name": "The created server function.",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"name\": \"<string>\",\n  \"language\": \"java\",\n  \"code\": \"<string>\",\n  \"description\": \"<string>\",\n  \"context\": \"<string>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/functions/server",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "functions",
+                        "server"
+                      ]
+                    }
+                  },
+                  "status": "Created",
+                  "code": 201,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"id\": \"<string>\",\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"context\": \"<string>\",\n  \"language\": \"java\",\n  \"code\": \"<string>\",\n  \"deploymentId\": \"<string>\",\n  \"state\": \"deprecated\",\n  \"owner\": \"<string>\",\n  \"visibility\": \"private\",\n  \"createdAt\": \"<dateTime>\",\n  \"updatedAt\": \"<dateTime>\"\n}",
+                  "createdAt": "2026-07-28T02:38:58.000Z",
+                  "updatedAt": "2026-07-28T02:38:58.000Z",
+                  "uid": "35240-ab9af84c-fca8-4182-bf53-689752e2e8a6"
+                },
+                {
+                  "id": "023bdfe0-6bfa-4c1a-a5fc-26e830a126f0",
+                  "name": "Authentication is required or the provided credentials are invalid.",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"name\": \"<string>\",\n  \"language\": \"java\",\n  \"code\": \"<string>\",\n  \"description\": \"<string>\",\n  \"context\": \"<string>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/functions/server",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "functions",
+                        "server"
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"statusCode\": \"<integer>\",\n  \"message\": \"<string>\",\n  \"error\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T02:38:58.000Z",
+                  "updatedAt": "2026-07-28T02:38:58.000Z",
+                  "uid": "35240-023bdfe0-6bfa-4c1a-a5fc-26e830a126f0"
+                }
+              ],
+              "createdAt": "2026-07-28T02:38:58.000Z",
+              "updatedAt": "2026-07-28T02:38:58.000Z",
+              "uid": "35240-2981164f-7ae3-46d0-9f6a-582821e627fb"
+            }
+          ],
+          "id": "8e670c49-90a2-42f2-8187-6428492ac719",
+          "createdAt": "2026-07-28T02:38:58.000Z",
+          "updatedAt": "2026-07-28T02:38:58.000Z",
+          "uid": "35240-8e670c49-90a2-42f2-8187-6428492ac719"
+        }
+      ],
+      "id": "fd9bc3b8-32cb-48bb-ad1b-f6902c0eb16f",
+      "createdAt": "2026-07-28T02:38:58.000Z",
+      "updatedAt": "2026-07-28T02:38:58.000Z",
+      "uid": "35240-fd9bc3b8-32cb-48bb-ad1b-f6902c0eb16f"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://na1.polyapi.io"
+    }
+  ]
+}

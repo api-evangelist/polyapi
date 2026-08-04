@@ -1,0 +1,955 @@
+{
+  "info": {
+    "_postman_id": "4c2696ef-17cd-4ee8-83e0-08739dc5d637",
+    "name": "PolyAPI Platform API Functions Schemas API",
+    "description": "PolyAPI is a modern enterprise middleware platform that provides a unified REST API for managing cloud service resources including functions, variables, webhooks, triggers, jobs, schemas, and environments. Built using AI and Kubernetes-native technology, it accelerates development and simplifies the operation of integrations, orchestrations, and microservices.\n\nContact Support:\n Name: PolyAPI",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T02:38:56.000Z",
+    "updatedAt": "2026-07-28T02:38:56.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-4c2696ef-17cd-4ee8-83e0-08739dc5d637"
+  },
+  "item": [
+    {
+      "name": "schemas",
+      "item": [
+        {
+          "name": "{schemaId}",
+          "item": [
+            {
+              "name": "PolyAPI Get a schema",
+              "id": "e344d01c-8f18-4ecf-b852-2e896e8fc9a8",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/schemas/:schemaId",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "schemas",
+                    ":schemaId"
+                  ],
+                  "variable": [
+                    {
+                      "id": "e834b3ed-69e8-4b71-bdee-1a7aa25e2491",
+                      "key": "schemaId",
+                      "value": "<string>",
+                      "description": "(Required) The unique identifier of the schema."
+                    }
+                  ]
+                },
+                "description": "Retrieve details of a specific schema by its ID."
+              },
+              "response": [
+                {
+                  "id": "95a3e705-7fc7-4357-9448-4ba0b74033ef",
+                  "name": "The schema details.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/schemas/:schemaId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "schemas",
+                        ":schemaId"
+                      ],
+                      "variable": [
+                        {
+                          "key": "schemaId"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"id\": \"<string>\",\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"context\": \"<string>\",\n  \"definition\": {},\n  \"visibility\": \"public\",\n  \"createdAt\": \"<dateTime>\",\n  \"updatedAt\": \"<dateTime>\"\n}",
+                  "createdAt": "2026-07-28T02:38:57.000Z",
+                  "updatedAt": "2026-07-28T02:38:57.000Z",
+                  "uid": "35240-95a3e705-7fc7-4357-9448-4ba0b74033ef"
+                },
+                {
+                  "id": "475af7c2-4881-43b9-a439-00f82a58bc84",
+                  "name": "Authentication is required or the provided credentials are invalid.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/schemas/:schemaId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "schemas",
+                        ":schemaId"
+                      ],
+                      "variable": [
+                        {
+                          "key": "schemaId"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"statusCode\": \"<integer>\",\n  \"message\": \"<string>\",\n  \"error\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T02:38:57.000Z",
+                  "updatedAt": "2026-07-28T02:38:57.000Z",
+                  "uid": "35240-475af7c2-4881-43b9-a439-00f82a58bc84"
+                },
+                {
+                  "id": "070bb5d5-877f-4b8c-a3a3-9034bb7fe526",
+                  "name": "The requested resource was not found.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/schemas/:schemaId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "schemas",
+                        ":schemaId"
+                      ],
+                      "variable": [
+                        {
+                          "key": "schemaId"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Not Found",
+                  "code": 404,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"statusCode\": \"<integer>\",\n  \"message\": \"<string>\",\n  \"error\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T02:38:57.000Z",
+                  "updatedAt": "2026-07-28T02:38:57.000Z",
+                  "uid": "35240-070bb5d5-877f-4b8c-a3a3-9034bb7fe526"
+                }
+              ],
+              "createdAt": "2026-07-28T02:38:57.000Z",
+              "updatedAt": "2026-07-28T02:38:57.000Z",
+              "uid": "35240-e344d01c-8f18-4ecf-b852-2e896e8fc9a8"
+            },
+            {
+              "name": "PolyAPI Update a schema",
+              "id": "f5024b21-0b98-4b24-8ccc-8a91a3055d47",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "PATCH",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"definition\": {},\n  \"description\": \"<string>\",\n  \"context\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/schemas/:schemaId",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "schemas",
+                    ":schemaId"
+                  ],
+                  "variable": [
+                    {
+                      "id": "c171566c-c8cd-455b-81b2-710396e0ed1a",
+                      "key": "schemaId",
+                      "value": "<string>",
+                      "description": "(Required) The unique identifier of the schema."
+                    }
+                  ]
+                },
+                "description": "Update an existing schema definition."
+              },
+              "response": [
+                {
+                  "id": "79229c74-3b96-4242-be72-c2365cdd08d5",
+                  "name": "The updated schema.",
+                  "originalRequest": {
+                    "method": "PATCH",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"name\": \"<string>\",\n  \"definition\": {},\n  \"description\": \"<string>\",\n  \"context\": \"<string>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/schemas/:schemaId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "schemas",
+                        ":schemaId"
+                      ],
+                      "variable": [
+                        {
+                          "key": "schemaId"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"id\": \"<string>\",\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"context\": \"<string>\",\n  \"definition\": {},\n  \"visibility\": \"public\",\n  \"createdAt\": \"<dateTime>\",\n  \"updatedAt\": \"<dateTime>\"\n}",
+                  "createdAt": "2026-07-28T02:38:57.000Z",
+                  "updatedAt": "2026-07-28T02:38:57.000Z",
+                  "uid": "35240-79229c74-3b96-4242-be72-c2365cdd08d5"
+                },
+                {
+                  "id": "615f8738-daa2-4e95-9c92-7ba10ebaa209",
+                  "name": "Authentication is required or the provided credentials are invalid.",
+                  "originalRequest": {
+                    "method": "PATCH",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"name\": \"<string>\",\n  \"definition\": {},\n  \"description\": \"<string>\",\n  \"context\": \"<string>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/schemas/:schemaId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "schemas",
+                        ":schemaId"
+                      ],
+                      "variable": [
+                        {
+                          "key": "schemaId"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"statusCode\": \"<integer>\",\n  \"message\": \"<string>\",\n  \"error\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T02:38:57.000Z",
+                  "updatedAt": "2026-07-28T02:38:57.000Z",
+                  "uid": "35240-615f8738-daa2-4e95-9c92-7ba10ebaa209"
+                },
+                {
+                  "id": "44b93220-223e-43be-bf6b-3277d45ea510",
+                  "name": "The requested resource was not found.",
+                  "originalRequest": {
+                    "method": "PATCH",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"name\": \"<string>\",\n  \"definition\": {},\n  \"description\": \"<string>\",\n  \"context\": \"<string>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/schemas/:schemaId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "schemas",
+                        ":schemaId"
+                      ],
+                      "variable": [
+                        {
+                          "key": "schemaId"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Not Found",
+                  "code": 404,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"statusCode\": \"<integer>\",\n  \"message\": \"<string>\",\n  \"error\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T02:38:57.000Z",
+                  "updatedAt": "2026-07-28T02:38:57.000Z",
+                  "uid": "35240-44b93220-223e-43be-bf6b-3277d45ea510"
+                }
+              ],
+              "createdAt": "2026-07-28T02:38:57.000Z",
+              "updatedAt": "2026-07-28T02:38:57.000Z",
+              "uid": "35240-f5024b21-0b98-4b24-8ccc-8a91a3055d47"
+            },
+            {
+              "name": "PolyAPI Delete a schema",
+              "id": "c4cf2838-3d49-4267-b0cf-818bab0998c5",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "DELETE",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/schemas/:schemaId",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "schemas",
+                    ":schemaId"
+                  ],
+                  "variable": [
+                    {
+                      "id": "c2ebfb73-dedb-4fb1-92e3-9d2ab3cd99ae",
+                      "key": "schemaId",
+                      "value": "<string>",
+                      "description": "(Required) The unique identifier of the schema."
+                    }
+                  ]
+                },
+                "description": "Delete a specific schema by its ID."
+              },
+              "response": [
+                {
+                  "id": "67acf37d-e222-4317-bae9-b17358162e4a",
+                  "name": "The schema was deleted successfully.",
+                  "originalRequest": {
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/schemas/:schemaId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "schemas",
+                        ":schemaId"
+                      ],
+                      "variable": [
+                        {
+                          "key": "schemaId"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "No Content",
+                  "code": 204,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-07-28T02:38:57.000Z",
+                  "updatedAt": "2026-07-28T02:38:57.000Z",
+                  "uid": "35240-67acf37d-e222-4317-bae9-b17358162e4a"
+                },
+                {
+                  "id": "0b48bca0-7c4f-43a0-8eaf-4362d5b466c6",
+                  "name": "Authentication is required or the provided credentials are invalid.",
+                  "originalRequest": {
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/schemas/:schemaId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "schemas",
+                        ":schemaId"
+                      ],
+                      "variable": [
+                        {
+                          "key": "schemaId"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"statusCode\": \"<integer>\",\n  \"message\": \"<string>\",\n  \"error\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T02:38:57.000Z",
+                  "updatedAt": "2026-07-28T02:38:57.000Z",
+                  "uid": "35240-0b48bca0-7c4f-43a0-8eaf-4362d5b466c6"
+                },
+                {
+                  "id": "5ea14ffe-4b45-4215-a951-dc5e43e3b437",
+                  "name": "The requested resource was not found.",
+                  "originalRequest": {
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/schemas/:schemaId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "schemas",
+                        ":schemaId"
+                      ],
+                      "variable": [
+                        {
+                          "key": "schemaId"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Not Found",
+                  "code": 404,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"statusCode\": \"<integer>\",\n  \"message\": \"<string>\",\n  \"error\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T02:38:57.000Z",
+                  "updatedAt": "2026-07-28T02:38:57.000Z",
+                  "uid": "35240-5ea14ffe-4b45-4215-a951-dc5e43e3b437"
+                }
+              ],
+              "createdAt": "2026-07-28T02:38:57.000Z",
+              "updatedAt": "2026-07-28T02:38:57.000Z",
+              "uid": "35240-c4cf2838-3d49-4267-b0cf-818bab0998c5"
+            }
+          ],
+          "id": "ef914843-8552-4d58-9c97-669f0f591e33",
+          "createdAt": "2026-07-28T02:38:57.000Z",
+          "updatedAt": "2026-07-28T02:38:57.000Z",
+          "uid": "35240-ef914843-8552-4d58-9c97-669f0f591e33"
+        },
+        {
+          "name": "PolyAPI List schemas",
+          "id": "251490d4-55e6-4dce-9c6c-f17bce982461",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/schemas?limit=25&offset=0",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "schemas"
+              ],
+              "query": [
+                {
+                  "description": "Maximum number of items to return.",
+                  "key": "limit",
+                  "value": "25"
+                },
+                {
+                  "description": "Number of items to skip for pagination.",
+                  "key": "offset",
+                  "value": "0"
+                }
+              ]
+            },
+            "description": "Retrieve a list of all shared JSON Schema definitions in the current environment."
+          },
+          "response": [
+            {
+              "id": "ceb28757-82db-494f-89f1-6361ddd42109",
+              "name": "A list of schemas.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/schemas?limit=25&offset=0",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "schemas"
+                  ],
+                  "query": [
+                    {
+                      "description": "Maximum number of items to return.",
+                      "key": "limit",
+                      "value": "25"
+                    },
+                    {
+                      "description": "Number of items to skip for pagination.",
+                      "key": "offset",
+                      "value": "0"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "[\n  {\n    \"id\": \"<string>\",\n    \"name\": \"<string>\",\n    \"description\": \"<string>\",\n    \"context\": \"<string>\",\n    \"definition\": {},\n    \"visibility\": \"private\",\n    \"createdAt\": \"<dateTime>\",\n    \"updatedAt\": \"<dateTime>\"\n  },\n  {\n    \"id\": \"<string>\",\n    \"name\": \"<string>\",\n    \"description\": \"<string>\",\n    \"context\": \"<string>\",\n    \"definition\": {},\n    \"visibility\": \"private\",\n    \"createdAt\": \"<dateTime>\",\n    \"updatedAt\": \"<dateTime>\"\n  }\n]",
+              "createdAt": "2026-07-28T02:38:57.000Z",
+              "updatedAt": "2026-07-28T02:38:57.000Z",
+              "uid": "35240-ceb28757-82db-494f-89f1-6361ddd42109"
+            },
+            {
+              "id": "c93884a9-0b1a-4aa6-8b69-550c9cdea05a",
+              "name": "Authentication is required or the provided credentials are invalid.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/schemas?limit=25&offset=0",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "schemas"
+                  ],
+                  "query": [
+                    {
+                      "description": "Maximum number of items to return.",
+                      "key": "limit",
+                      "value": "25"
+                    },
+                    {
+                      "description": "Number of items to skip for pagination.",
+                      "key": "offset",
+                      "value": "0"
+                    }
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"statusCode\": \"<integer>\",\n  \"message\": \"<string>\",\n  \"error\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T02:38:57.000Z",
+              "updatedAt": "2026-07-28T02:38:57.000Z",
+              "uid": "35240-c93884a9-0b1a-4aa6-8b69-550c9cdea05a"
+            }
+          ],
+          "createdAt": "2026-07-28T02:38:57.000Z",
+          "updatedAt": "2026-07-28T02:38:57.000Z",
+          "uid": "35240-251490d4-55e6-4dce-9c6c-f17bce982461"
+        },
+        {
+          "name": "PolyAPI Create a schema",
+          "id": "b73a42f7-18c5-4d2a-bad8-56c8b083f70c",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"<string>\",\n  \"definition\": {},\n  \"description\": \"<string>\",\n  \"context\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "headerFamily": "json",
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/schemas",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "schemas"
+              ]
+            },
+            "description": "Create a new shared JSON Schema definition."
+          },
+          "response": [
+            {
+              "id": "ef1220be-497e-4168-afed-db6b4731e0da",
+              "name": "The created schema.",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"definition\": {},\n  \"description\": \"<string>\",\n  \"context\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/schemas",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "schemas"
+                  ]
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"id\": \"<string>\",\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"context\": \"<string>\",\n  \"definition\": {},\n  \"visibility\": \"public\",\n  \"createdAt\": \"<dateTime>\",\n  \"updatedAt\": \"<dateTime>\"\n}",
+              "createdAt": "2026-07-28T02:38:57.000Z",
+              "updatedAt": "2026-07-28T02:38:57.000Z",
+              "uid": "35240-ef1220be-497e-4168-afed-db6b4731e0da"
+            },
+            {
+              "id": "70589617-00d0-4349-9c5a-fbb79d3cb6b1",
+              "name": "Authentication is required or the provided credentials are invalid.",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"definition\": {},\n  \"description\": \"<string>\",\n  \"context\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/schemas",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "schemas"
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"statusCode\": \"<integer>\",\n  \"message\": \"<string>\",\n  \"error\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T02:38:57.000Z",
+              "updatedAt": "2026-07-28T02:38:57.000Z",
+              "uid": "35240-70589617-00d0-4349-9c5a-fbb79d3cb6b1"
+            }
+          ],
+          "createdAt": "2026-07-28T02:38:57.000Z",
+          "updatedAt": "2026-07-28T02:38:57.000Z",
+          "uid": "35240-b73a42f7-18c5-4d2a-bad8-56c8b083f70c"
+        }
+      ],
+      "id": "e9b35811-f443-42a8-b877-72450c4cfaec",
+      "createdAt": "2026-07-28T02:38:57.000Z",
+      "updatedAt": "2026-07-28T02:38:57.000Z",
+      "uid": "35240-e9b35811-f443-42a8-b877-72450c4cfaec"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://na1.polyapi.io"
+    }
+  ]
+}
