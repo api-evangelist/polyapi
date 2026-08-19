@@ -1,0 +1,125 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "PolyAPI Platform API Functions Variables API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Variables",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "PolyAPI List variables",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://na1.polyapi.io/variables",
+            "params": [
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Maximum number of items to return."
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "Number of items to skip for pagination."
+              }
+            ]
+          },
+          "docs": "Retrieve a list of all variables and secrets in the current environment."
+        },
+        {
+          "info": {
+            "name": "PolyAPI Create a variable",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://na1.polyapi.io/variables",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a new variable or secret that can be securely injected into functions at runtime."
+        },
+        {
+          "info": {
+            "name": "PolyAPI Get a variable",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://na1.polyapi.io/variables/:variableId",
+            "params": [
+              {
+                "name": "variableId",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of the variable."
+              }
+            ]
+          },
+          "docs": "Retrieve details of a specific variable by its ID."
+        },
+        {
+          "info": {
+            "name": "PolyAPI Update a variable",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://na1.polyapi.io/variables/:variableId",
+            "params": [
+              {
+                "name": "variableId",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of the variable."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update an existing variable or secret."
+        },
+        {
+          "info": {
+            "name": "PolyAPI Delete a variable",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://na1.polyapi.io/variables/:variableId",
+            "params": [
+              {
+                "name": "variableId",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of the variable."
+              }
+            ]
+          },
+          "docs": "Delete a specific variable by its ID."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,125 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "PolyAPI Platform API Functions Jobs API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Jobs",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "PolyAPI List jobs",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://na1.polyapi.io/jobs",
+            "params": [
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Maximum number of items to return."
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "Number of items to skip for pagination."
+              }
+            ]
+          },
+          "docs": "Retrieve a list of all scheduled jobs in the current environment."
+        },
+        {
+          "info": {
+            "name": "PolyAPI Create a job",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://na1.polyapi.io/jobs",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a new job that executes a function at a set time, interval, or CRON schedule."
+        },
+        {
+          "info": {
+            "name": "PolyAPI Get a job",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://na1.polyapi.io/jobs/:jobId",
+            "params": [
+              {
+                "name": "jobId",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of the job."
+              }
+            ]
+          },
+          "docs": "Retrieve details of a specific job by its ID."
+        },
+        {
+          "info": {
+            "name": "PolyAPI Update a job",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://na1.polyapi.io/jobs/:jobId",
+            "params": [
+              {
+                "name": "jobId",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of the job."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update an existing job schedule or configuration."
+        },
+        {
+          "info": {
+            "name": "PolyAPI Delete a job",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://na1.polyapi.io/jobs/:jobId",
+            "params": [
+              {
+                "name": "jobId",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of the job."
+              }
+            ]
+          },
+          "docs": "Delete a specific job by its ID."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

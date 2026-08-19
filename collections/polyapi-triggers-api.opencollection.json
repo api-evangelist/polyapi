@@ -1,0 +1,125 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "PolyAPI Platform API Functions Triggers API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Triggers",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "PolyAPI List triggers",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://na1.polyapi.io/triggers",
+            "params": [
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Maximum number of items to return."
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "Number of items to skip for pagination."
+              }
+            ]
+          },
+          "docs": "Retrieve a list of all triggers in the current environment."
+        },
+        {
+          "info": {
+            "name": "PolyAPI Create a trigger",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://na1.polyapi.io/triggers",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a new trigger that connects a cloud event to a function for event-driven execution."
+        },
+        {
+          "info": {
+            "name": "PolyAPI Get a trigger",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://na1.polyapi.io/triggers/:triggerId",
+            "params": [
+              {
+                "name": "triggerId",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of the trigger."
+              }
+            ]
+          },
+          "docs": "Retrieve details of a specific trigger by its ID."
+        },
+        {
+          "info": {
+            "name": "PolyAPI Update a trigger",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://na1.polyapi.io/triggers/:triggerId",
+            "params": [
+              {
+                "name": "triggerId",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of the trigger."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update an existing trigger."
+        },
+        {
+          "info": {
+            "name": "PolyAPI Delete a trigger",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://na1.polyapi.io/triggers/:triggerId",
+            "params": [
+              {
+                "name": "triggerId",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of the trigger."
+              }
+            ]
+          },
+          "docs": "Delete a specific trigger by its ID."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

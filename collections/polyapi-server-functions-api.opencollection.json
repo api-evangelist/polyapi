@@ -1,0 +1,148 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "PolyAPI Platform API Functions Server Functions API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Server Functions",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "PolyAPI List server functions",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://na1.polyapi.io/functions/server",
+            "params": [
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Maximum number of items to return."
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "Number of items to skip for pagination."
+              }
+            ]
+          },
+          "docs": "Retrieve a list of all server functions in the current environment."
+        },
+        {
+          "info": {
+            "name": "PolyAPI Create a server function",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://na1.polyapi.io/functions/server",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a new Knative serverless function."
+        },
+        {
+          "info": {
+            "name": "PolyAPI Get a server function",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://na1.polyapi.io/functions/server/:functionId",
+            "params": [
+              {
+                "name": "functionId",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of the function."
+              }
+            ]
+          },
+          "docs": "Retrieve details of a specific server function by its ID."
+        },
+        {
+          "info": {
+            "name": "PolyAPI Update a server function",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://na1.polyapi.io/functions/server/:functionId",
+            "params": [
+              {
+                "name": "functionId",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of the function."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update an existing server function."
+        },
+        {
+          "info": {
+            "name": "PolyAPI Delete a server function",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://na1.polyapi.io/functions/server/:functionId",
+            "params": [
+              {
+                "name": "functionId",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of the function."
+              }
+            ]
+          },
+          "docs": "Delete a specific server function by its ID."
+        },
+        {
+          "info": {
+            "name": "PolyAPI Execute a server function",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://na1.polyapi.io/functions/server/:functionId/execute",
+            "params": [
+              {
+                "name": "functionId",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of the function."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Execute a server function by its ID. Supports asynchronous execution and custom response handling via the polyCustom object. Requires the Execute Functions permission."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
