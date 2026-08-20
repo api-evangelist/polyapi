@@ -140,6 +140,8 @@ apis:
   description: Manage jobs that execute functions at a set time, interval, or CRON schedule.
   humanURL: https://polyapi.io/
   tags:
+  - Job
+  tags_raw:
   - Jobs
   properties:
   - type: OpenAPI
@@ -308,6 +310,8 @@ apis:
     listeners.
   humanURL: https://polyapi.io/
   tags:
+  - Webhook
+  tags_raw:
   - Webhooks
   properties:
   - type: OpenAPI
@@ -338,6 +342,12 @@ apis:
     url: json-ld/polyapi-context.jsonld
 name: PolyAPI
 tags:
+  - Integration
+  - Microservices
+  - Middleware
+  - Orchestrations
+  - Pro-Code-API-Composition
+tags_raw:
   - Integrations
   - Microservices
   - Middleware
