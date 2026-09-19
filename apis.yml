@@ -40,6 +40,8 @@ apis:
   description: Manage AI assistants and conversations for AI-powered document assistance and discovery.
   humanURL: https://polyapi.io/
   tags:
+  - Assistant
+  tags_raw:
   - Assistants
   properties:
   - type: OpenAPI
@@ -107,6 +109,8 @@ apis:
     Manage environments for organizing and deploying resources across development, staging, and production.
   humanURL: https://polyapi.io/
   tags:
+  - Environment
+  tags_raw:
   - Environments
   properties:
   - type: OpenAPI
@@ -175,6 +179,8 @@ apis:
   description: Manage shared JSON Schema definitions used to type events and application data.
   humanURL: https://polyapi.io/
   tags:
+  - Schema
+  tags_raw:
   - Schemas
   properties:
   - type: OpenAPI
@@ -345,7 +351,7 @@ tags:
   - Integration
   - Microservices
   - Middleware
-  - Orchestrations
+  - Orchestration
   - Pro-Code-API-Composition
 tags_raw:
   - Integrations
