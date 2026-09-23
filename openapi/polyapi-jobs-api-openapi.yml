@@ -1,6 +1,6 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
-  title: PolyAPI Platform API Functions Jobs API
+  title: PolyAPI Platform Jobs API
   description: PolyAPI is a modern enterprise middleware platform that provides a unified REST API for managing cloud service resources including functions, variables, webhooks, triggers, jobs, schemas, and environments. Built using AI and Kubernetes-native technology, it accelerates development and simplifies the operation of integrations, orchestrations, and microservices.
   version: 1.0.0
   contact:
@@ -124,6 +124,43 @@ paths:
         '404':
           $ref: '#/components/responses/NotFound'
 components:
+  responses:
+    Unauthorized:
+      description: Authentication is required or the provided credentials are invalid.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    NotFound:
+      description: The requested resource was not found.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+  parameters:
+    jobIdParam:
+      name: jobId
+      in: path
+      required: true
+      description: The unique identifier of the job.
+      schema:
+        type: string
+    limitParam:
+      name: limit
+      in: query
+      required: false
+      description: Maximum number of items to return.
+      schema:
+        type: integer
+        default: 25
+    offsetParam:
+      name: offset
+      in: query
+      required: false
+      description: Number of items to skip for pagination.
+      schema:
+        type: integer
+        default: 0
   schemas:
     Job:
       type: object
@@ -168,6 +205,18 @@ components:
         updatedAt:
           type: string
           format: date-time
+    Error:
+      type: object
+      properties:
+        statusCode:
+          type: integer
+          description: The HTTP status code.
+        message:
+          type: string
+          description: A human-readable error message.
+        error:
+          type: string
+          description: The error type.
     JobInput:
       type: object
       required:
@@ -190,55 +239,6 @@ components:
         schedule:
           type: string
           description: CRON expression or interval.
-    Error:
-      type: object
-      properties:
-        statusCode:
-          type: integer
-          description: The HTTP status code.
-        message:
-          type: string
-          description: A human-readable error message.
-        error:
-          type: string
-          description: The error type.
-  parameters:
-    offsetParam:
-      name: offset
-      in: query
-      required: false
-      description: Number of items to skip for pagination.
-      schema:
-        type: integer
-        default: 0
-    limitParam:
-      name: limit
-      in: query
-      required: false
-      description: Maximum number of items to return.
-      schema:
-        type: integer
-        default: 25
-    jobIdParam:
-      name: jobId
-      in: path
-      required: true
-      description: The unique identifier of the job.
-      schema:
-        type: string
-  responses:
-    Unauthorized:
-      description: Authentication is required or the provided credentials are invalid.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-    NotFound:
-      description: The requested resource was not found.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
   securitySchemes:
     bearerAuth:
       type: http

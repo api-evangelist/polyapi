@@ -1,6 +1,6 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
-  title: PolyAPI Platform API Functions Client Functions API
+  title: PolyAPI Platform Client Functions API
   description: PolyAPI is a modern enterprise middleware platform that provides a unified REST API for managing cloud service resources including functions, variables, webhooks, triggers, jobs, schemas, and environments. Built using AI and Kubernetes-native technology, it accelerates development and simplifies the operation of integrations, orchestrations, and microservices.
   version: 1.0.0
   contact:
@@ -124,15 +124,27 @@ paths:
         '404':
           $ref: '#/components/responses/NotFound'
 components:
+  responses:
+    Unauthorized:
+      description: Authentication is required or the provided credentials are invalid.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    NotFound:
+      description: The requested resource was not found.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
   parameters:
-    offsetParam:
-      name: offset
-      in: query
-      required: false
-      description: Number of items to skip for pagination.
+    functionIdParam:
+      name: functionId
+      in: path
+      required: true
+      description: The unique identifier of the function.
       schema:
-        type: integer
-        default: 0
+        type: string
     limitParam:
       name: limit
       in: query
@@ -141,13 +153,14 @@ components:
       schema:
         type: integer
         default: 25
-    functionIdParam:
-      name: functionId
-      in: path
-      required: true
-      description: The unique identifier of the function.
+    offsetParam:
+      name: offset
+      in: query
+      required: false
+      description: Number of items to skip for pagination.
       schema:
-        type: string
+        type: integer
+        default: 0
   schemas:
     Error:
       type: object
@@ -161,28 +174,6 @@ components:
         error:
           type: string
           description: The error type.
-    ClientFunctionInput:
-      type: object
-      required:
-      - name
-      - language
-      - code
-      properties:
-        name:
-          type: string
-        description:
-          type: string
-        context:
-          type: string
-        language:
-          type: string
-          enum:
-          - typescript
-          - python
-          - java
-          - csharp
-        code:
-          type: string
     ClientFunction:
       type: object
       properties:
@@ -228,19 +219,28 @@ components:
         updatedAt:
           type: string
           format: date-time
-  responses:
-    Unauthorized:
-      description: Authentication is required or the provided credentials are invalid.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-    NotFound:
-      description: The requested resource was not found.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
+    ClientFunctionInput:
+      type: object
+      required:
+      - name
+      - language
+      - code
+      properties:
+        name:
+          type: string
+        description:
+          type: string
+        context:
+          type: string
+        language:
+          type: string
+          enum:
+          - typescript
+          - python
+          - java
+          - csharp
+        code:
+          type: string
   securitySchemes:
     bearerAuth:
       type: http

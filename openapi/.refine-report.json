@@ -1,16 +1,7 @@
 {
   "provider": "polyapi",
   "sources": [
-    "polyapi-api-functions-api-openapi.yml",
-    "polyapi-assistants-api-openapi.yml",
-    "polyapi-client-functions-api-openapi.yml",
-    "polyapi-environments-api-openapi.yml",
-    "polyapi-jobs-api-openapi.yml",
-    "polyapi-schemas-api-openapi.yml",
-    "polyapi-server-functions-api-openapi.yml",
-    "polyapi-triggers-api-openapi.yml",
-    "polyapi-variables-api-openapi.yml",
-    "polyapi-webhooks-api-openapi.yml"
+    "_original/polyapi-platform-openapi.yml"
   ],
   "outputs": [
     "polyapi-api-functions-api-openapi.yml",
@@ -27,6 +18,21 @@
   "archived": [],
   "errors": [],
   "warnings": [],
-  "notes": [],
-  "skipped": []
+  "notes": [
+    "sourced from openapi/_original/ (1 archived document(s)); previously refined output at the top level was skipped rather than re-split",
+    "polyapi-platform-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
+    "apis.yml register: already-registered"
+  ],
+  "skipped": [
+    "polyapi-api-functions-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "polyapi-assistants-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "polyapi-client-functions-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "polyapi-environments-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "polyapi-jobs-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "polyapi-schemas-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "polyapi-server-functions-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "polyapi-triggers-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "polyapi-variables-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "polyapi-webhooks-api-openapi.yml: previously refined output, superseded by openapi/_original/"
+  ]
 }
