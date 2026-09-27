@@ -73,14 +73,6 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/Error'
-  parameters:
-    environmentIdParam:
-      name: environmentId
-      in: path
-      required: true
-      description: The unique identifier of the environment.
-      schema:
-        type: string
   schemas:
     Error:
       type: object
@@ -115,6 +107,14 @@ components:
         updatedAt:
           type: string
           format: date-time
+  parameters:
+    environmentIdParam:
+      name: environmentId
+      in: path
+      required: true
+      description: The unique identifier of the environment.
+      schema:
+        type: string
   securitySchemes:
     bearerAuth:
       type: http

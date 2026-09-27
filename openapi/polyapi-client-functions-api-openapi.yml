@@ -124,35 +124,7 @@ paths:
         '404':
           $ref: '#/components/responses/NotFound'
 components:
-  responses:
-    Unauthorized:
-      description: Authentication is required or the provided credentials are invalid.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-    NotFound:
-      description: The requested resource was not found.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
   parameters:
-    functionIdParam:
-      name: functionId
-      in: path
-      required: true
-      description: The unique identifier of the function.
-      schema:
-        type: string
-    limitParam:
-      name: limit
-      in: query
-      required: false
-      description: Maximum number of items to return.
-      schema:
-        type: integer
-        default: 25
     offsetParam:
       name: offset
       in: query
@@ -161,19 +133,44 @@ components:
       schema:
         type: integer
         default: 0
+    limitParam:
+      name: limit
+      in: query
+      required: false
+      description: Maximum number of items to return.
+      schema:
+        type: integer
+        default: 25
+    functionIdParam:
+      name: functionId
+      in: path
+      required: true
+      description: The unique identifier of the function.
+      schema:
+        type: string
   schemas:
-    Error:
+    ClientFunctionInput:
       type: object
+      required:
+      - name
+      - language
+      - code
       properties:
-        statusCode:
-          type: integer
-          description: The HTTP status code.
-        message:
+        name:
           type: string
-          description: A human-readable error message.
-        error:
+        description:
           type: string
-          description: The error type.
+        context:
+          type: string
+        language:
+          type: string
+          enum:
+          - typescript
+          - python
+          - java
+          - csharp
+        code:
+          type: string
     ClientFunction:
       type: object
       properties:
@@ -219,28 +216,31 @@ components:
         updatedAt:
           type: string
           format: date-time
-    ClientFunctionInput:
+    Error:
       type: object
-      required:
-      - name
-      - language
-      - code
       properties:
-        name:
+        statusCode:
+          type: integer
+          description: The HTTP status code.
+        message:
           type: string
-        description:
+          description: A human-readable error message.
+        error:
           type: string
-        context:
-          type: string
-        language:
-          type: string
-          enum:
-          - typescript
-          - python
-          - java
-          - csharp
-        code:
-          type: string
+          description: The error type.
+  responses:
+    Unauthorized:
+      description: Authentication is required or the provided credentials are invalid.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    NotFound:
+      description: The requested resource was not found.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
   securitySchemes:
     bearerAuth:
       type: http

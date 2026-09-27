@@ -150,34 +150,69 @@ paths:
         '404':
           $ref: '#/components/responses/NotFound'
 components:
+  parameters:
+    offsetParam:
+      name: offset
+      in: query
+      required: false
+      description: Number of items to skip for pagination.
+      schema:
+        type: integer
+        default: 0
+    limitParam:
+      name: limit
+      in: query
+      required: false
+      description: Maximum number of items to return.
+      schema:
+        type: integer
+        default: 25
+    functionIdParam:
+      name: functionId
+      in: path
+      required: true
+      description: The unique identifier of the function.
+      schema:
+        type: string
   schemas:
-    ServerFunctionInput:
+    FunctionExecutionInput:
       type: object
-      required:
-      - name
-      - language
-      - code
       properties:
-        name:
+        args:
+          type: array
+          items:
+            description: Function arguments, which may include PolyVariable objects for variable injection.
+          description: The arguments to pass to the function. Variables can be injected using PolyVariable objects with pathIdentifier fields.
+        polyCustom:
+          type: object
+          properties:
+            async:
+              type: boolean
+              description: Whether to execute the function asynchronously.
+          description: Custom execution options for server functions, including async execution and response handling.
+    FunctionExecutionResult:
+      type: object
+      properties:
+        result:
+          description: The return value of the function execution.
+        executionId:
           type: string
-          description: The name of the server function.
-        description:
+          description: The unique identifier for this execution.
+        executionTime:
+          type: number
+          description: The execution time in milliseconds.
+    Error:
+      type: object
+      properties:
+        statusCode:
+          type: integer
+          description: The HTTP status code.
+        message:
           type: string
-          description: A description of what the function does.
-        context:
+          description: A human-readable error message.
+        error:
           type: string
-          description: The context path for organizing the function.
-        language:
-          type: string
-          enum:
-          - typescript
-          - python
-          - java
-          - csharp
-          description: The programming language.
-        code:
-          type: string
-          description: The function source code.
+          description: The error type.
     ServerFunction:
       type: object
       properties:
@@ -229,44 +264,33 @@ components:
         updatedAt:
           type: string
           format: date-time
-    FunctionExecutionResult:
+    ServerFunctionInput:
       type: object
+      required:
+      - name
+      - language
+      - code
       properties:
-        result:
-          description: The return value of the function execution.
-        executionId:
+        name:
           type: string
-          description: The unique identifier for this execution.
-        executionTime:
-          type: number
-          description: The execution time in milliseconds.
-    Error:
-      type: object
-      properties:
-        statusCode:
-          type: integer
-          description: The HTTP status code.
-        message:
+          description: The name of the server function.
+        description:
           type: string
-          description: A human-readable error message.
-        error:
+          description: A description of what the function does.
+        context:
           type: string
-          description: The error type.
-    FunctionExecutionInput:
-      type: object
-      properties:
-        args:
-          type: array
-          items:
-            description: Function arguments, which may include PolyVariable objects for variable injection.
-          description: The arguments to pass to the function. Variables can be injected using PolyVariable objects with pathIdentifier fields.
-        polyCustom:
-          type: object
-          properties:
-            async:
-              type: boolean
-              description: Whether to execute the function asynchronously.
-          description: Custom execution options for server functions, including async execution and response handling.
+          description: The context path for organizing the function.
+        language:
+          type: string
+          enum:
+          - typescript
+          - python
+          - java
+          - csharp
+          description: The programming language.
+        code:
+          type: string
+          description: The function source code.
   responses:
     Unauthorized:
       description: Authentication is required or the provided credentials are invalid.
@@ -280,30 +304,6 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/Error'
-  parameters:
-    functionIdParam:
-      name: functionId
-      in: path
-      required: true
-      description: The unique identifier of the function.
-      schema:
-        type: string
-    limitParam:
-      name: limit
-      in: query
-      required: false
-      description: Maximum number of items to return.
-      schema:
-        type: integer
-        default: 25
-    offsetParam:
-      name: offset
-      in: query
-      required: false
-      description: Number of items to skip for pagination.
-      schema:
-        type: integer
-        default: 0
   securitySchemes:
     bearerAuth:
       type: http

@@ -150,6 +150,30 @@ paths:
         '404':
           $ref: '#/components/responses/NotFound'
 components:
+  parameters:
+    offsetParam:
+      name: offset
+      in: query
+      required: false
+      description: Number of items to skip for pagination.
+      schema:
+        type: integer
+        default: 0
+    limitParam:
+      name: limit
+      in: query
+      required: false
+      description: Maximum number of items to return.
+      schema:
+        type: integer
+        default: 25
+    functionIdParam:
+      name: functionId
+      in: path
+      required: true
+      description: The unique identifier of the function.
+      schema:
+        type: string
   schemas:
     ApiFunction:
       type: object
@@ -214,6 +238,21 @@ components:
           type: string
           format: date-time
           description: Timestamp when the function was last updated.
+    FunctionExecutionInput:
+      type: object
+      properties:
+        args:
+          type: array
+          items:
+            description: Function arguments, which may include PolyVariable objects for variable injection.
+          description: The arguments to pass to the function. Variables can be injected using PolyVariable objects with pathIdentifier fields.
+        polyCustom:
+          type: object
+          properties:
+            async:
+              type: boolean
+              description: Whether to execute the function asynchronously.
+          description: Custom execution options for server functions, including async execution and response handling.
     FunctionExecutionResult:
       type: object
       properties:
@@ -237,21 +276,6 @@ components:
         error:
           type: string
           description: The error type.
-    FunctionExecutionInput:
-      type: object
-      properties:
-        args:
-          type: array
-          items:
-            description: Function arguments, which may include PolyVariable objects for variable injection.
-          description: The arguments to pass to the function. Variables can be injected using PolyVariable objects with pathIdentifier fields.
-        polyCustom:
-          type: object
-          properties:
-            async:
-              type: boolean
-              description: Whether to execute the function asynchronously.
-          description: Custom execution options for server functions, including async execution and response handling.
     ApiFunctionInput:
       type: object
       required:
@@ -305,30 +329,6 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/Error'
-  parameters:
-    functionIdParam:
-      name: functionId
-      in: path
-      required: true
-      description: The unique identifier of the function.
-      schema:
-        type: string
-    limitParam:
-      name: limit
-      in: query
-      required: false
-      description: Maximum number of items to return.
-      schema:
-        type: integer
-        default: 25
-    offsetParam:
-      name: offset
-      in: query
-      required: false
-      description: Number of items to skip for pagination.
-      schema:
-        type: integer
-        default: 0
   securitySchemes:
     bearerAuth:
       type: http
