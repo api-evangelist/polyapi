@@ -152,6 +152,18 @@ paths:
           $ref: '#/components/responses/NotFound'
 components:
   schemas:
+    Error:
+      type: object
+      properties:
+        statusCode:
+          type: integer
+          description: The HTTP status code.
+        message:
+          type: string
+          description: A human-readable error message.
+        error:
+          type: string
+          description: The error type.
     Webhook:
       type: object
       properties:
@@ -185,18 +197,6 @@ components:
         updatedAt:
           type: string
           format: date-time
-    Error:
-      type: object
-      properties:
-        statusCode:
-          type: integer
-          description: The HTTP status code.
-        message:
-          type: string
-          description: A human-readable error message.
-        error:
-          type: string
-          description: The error type.
     WebhookInput:
       type: object
       required:
@@ -236,14 +236,14 @@ components:
         type: integer
         default: 25
   responses:
-    Unauthorized:
-      description: Authentication is required or the provided credentials are invalid.
+    NotFound:
+      description: The requested resource was not found.
       content:
         application/json:
           schema:
             $ref: '#/components/schemas/Error'
-    NotFound:
-      description: The requested resource was not found.
+    Unauthorized:
+      description: Authentication is required or the provided credentials are invalid.
       content:
         application/json:
           schema:

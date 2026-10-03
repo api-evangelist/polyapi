@@ -124,43 +124,6 @@ paths:
         '404':
           $ref: '#/components/responses/NotFound'
 components:
-  parameters:
-    offsetParam:
-      name: offset
-      in: query
-      required: false
-      description: Number of items to skip for pagination.
-      schema:
-        type: integer
-        default: 0
-    jobIdParam:
-      name: jobId
-      in: path
-      required: true
-      description: The unique identifier of the job.
-      schema:
-        type: string
-    limitParam:
-      name: limit
-      in: query
-      required: false
-      description: Maximum number of items to return.
-      schema:
-        type: integer
-        default: 25
-  responses:
-    Unauthorized:
-      description: Authentication is required or the provided credentials are invalid.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-    NotFound:
-      description: The requested resource was not found.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
   schemas:
     Error:
       type: object
@@ -174,28 +137,6 @@ components:
         error:
           type: string
           description: The error type.
-    JobInput:
-      type: object
-      required:
-      - name
-      - functionId
-      - functionType
-      - schedule
-      properties:
-        name:
-          type: string
-        description:
-          type: string
-        functionId:
-          type: string
-        functionType:
-          type: string
-          enum:
-          - server
-          - api
-        schedule:
-          type: string
-          description: CRON expression or interval.
     Job:
       type: object
       properties:
@@ -239,6 +180,65 @@ components:
         updatedAt:
           type: string
           format: date-time
+    JobInput:
+      type: object
+      required:
+      - name
+      - functionId
+      - functionType
+      - schedule
+      properties:
+        name:
+          type: string
+        description:
+          type: string
+        functionId:
+          type: string
+        functionType:
+          type: string
+          enum:
+          - server
+          - api
+        schedule:
+          type: string
+          description: CRON expression or interval.
+  parameters:
+    offsetParam:
+      name: offset
+      in: query
+      required: false
+      description: Number of items to skip for pagination.
+      schema:
+        type: integer
+        default: 0
+    limitParam:
+      name: limit
+      in: query
+      required: false
+      description: Maximum number of items to return.
+      schema:
+        type: integer
+        default: 25
+    jobIdParam:
+      name: jobId
+      in: path
+      required: true
+      description: The unique identifier of the job.
+      schema:
+        type: string
+  responses:
+    NotFound:
+      description: The requested resource was not found.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    Unauthorized:
+      description: Authentication is required or the provided credentials are invalid.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
   securitySchemes:
     bearerAuth:
       type: http
