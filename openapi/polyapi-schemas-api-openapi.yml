@@ -124,19 +124,44 @@ paths:
         '404':
           $ref: '#/components/responses/NotFound'
 components:
+  responses:
+    Unauthorized:
+      description: Authentication is required or the provided credentials are invalid.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    NotFound:
+      description: The requested resource was not found.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+  parameters:
+    schemaIdParam:
+      name: schemaId
+      in: path
+      required: true
+      description: The unique identifier of the schema.
+      schema:
+        type: string
+    offsetParam:
+      name: offset
+      in: query
+      required: false
+      description: Number of items to skip for pagination.
+      schema:
+        type: integer
+        default: 0
+    limitParam:
+      name: limit
+      in: query
+      required: false
+      description: Maximum number of items to return.
+      schema:
+        type: integer
+        default: 25
   schemas:
-    Error:
-      type: object
-      properties:
-        statusCode:
-          type: integer
-          description: The HTTP status code.
-        message:
-          type: string
-          description: A human-readable error message.
-        error:
-          type: string
-          description: The error type.
     SchemaInput:
       type: object
       required:
@@ -152,6 +177,18 @@ components:
         definition:
           type: object
           description: The JSON Schema definition.
+    Error:
+      type: object
+      properties:
+        statusCode:
+          type: integer
+          description: The HTTP status code.
+        message:
+          type: string
+          description: A human-readable error message.
+        error:
+          type: string
+          description: The error type.
     Schema:
       type: object
       properties:
@@ -181,43 +218,6 @@ components:
         updatedAt:
           type: string
           format: date-time
-  parameters:
-    offsetParam:
-      name: offset
-      in: query
-      required: false
-      description: Number of items to skip for pagination.
-      schema:
-        type: integer
-        default: 0
-    schemaIdParam:
-      name: schemaId
-      in: path
-      required: true
-      description: The unique identifier of the schema.
-      schema:
-        type: string
-    limitParam:
-      name: limit
-      in: query
-      required: false
-      description: Maximum number of items to return.
-      schema:
-        type: integer
-        default: 25
-  responses:
-    NotFound:
-      description: The requested resource was not found.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-    Unauthorized:
-      description: Authentication is required or the provided credentials are invalid.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
   securitySchemes:
     bearerAuth:
       type: http

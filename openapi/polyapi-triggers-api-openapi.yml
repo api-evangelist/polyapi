@@ -124,6 +124,19 @@ paths:
         '404':
           $ref: '#/components/responses/NotFound'
 components:
+  responses:
+    Unauthorized:
+      description: Authentication is required or the provided credentials are invalid.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    NotFound:
+      description: The requested resource was not found.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
   schemas:
     Trigger:
       type: object
@@ -200,6 +213,13 @@ components:
           type: string
           description: The error type.
   parameters:
+    triggerIdParam:
+      name: triggerId
+      in: path
+      required: true
+      description: The unique identifier of the trigger.
+      schema:
+        type: string
     offsetParam:
       name: offset
       in: query
@@ -208,13 +228,6 @@ components:
       schema:
         type: integer
         default: 0
-    triggerIdParam:
-      name: triggerId
-      in: path
-      required: true
-      description: The unique identifier of the trigger.
-      schema:
-        type: string
     limitParam:
       name: limit
       in: query
@@ -223,19 +236,6 @@ components:
       schema:
         type: integer
         default: 25
-  responses:
-    NotFound:
-      description: The requested resource was not found.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-    Unauthorized:
-      description: Authentication is required or the provided credentials are invalid.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
   securitySchemes:
     bearerAuth:
       type: http

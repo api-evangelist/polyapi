@@ -132,6 +132,19 @@ paths:
         '404':
           $ref: '#/components/responses/NotFound'
 components:
+  responses:
+    Unauthorized:
+      description: Authentication is required or the provided credentials are invalid.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    NotFound:
+      description: The requested resource was not found.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
   schemas:
     ConversationInput:
       type: object
@@ -141,18 +154,6 @@ components:
         message:
           type: string
           description: The initial message to start the conversation.
-    Error:
-      type: object
-      properties:
-        statusCode:
-          type: integer
-          description: The HTTP status code.
-        message:
-          type: string
-          description: A human-readable error message.
-        error:
-          type: string
-          description: The error type.
     Conversation:
       type: object
       properties:
@@ -180,19 +181,18 @@ components:
         updatedAt:
           type: string
           format: date-time
-  responses:
-    Unauthorized:
-      description: Authentication is required or the provided credentials are invalid.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-    NotFound:
-      description: The requested resource was not found.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
+    Error:
+      type: object
+      properties:
+        statusCode:
+          type: integer
+          description: The HTTP status code.
+        message:
+          type: string
+          description: A human-readable error message.
+        error:
+          type: string
+          description: The error type.
   securitySchemes:
     bearerAuth:
       type: http
