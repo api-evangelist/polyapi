@@ -1,0 +1,34 @@
+# Front Door AI Index — polyapi — 2026-09-17
+# AI vocabulary counted on the provider's root page. Generated; do not edit.
+# `score` is null unless ownership is `own` — see front_door_ai.py.
+front_door_ai:
+  slug: polyapi
+  lexicon_version: '1.0'
+  probed_at: '2026-09-25'
+  host: polyapi.io
+  final_host: polyapi.io
+  ownership: own
+  owner: polyapi
+  shares_host_with: null
+  inherited_from: null
+  alias_of: null
+  verdict: scored
+  score: 8
+  band: 4
+  band_label: moderate
+  host_score: 8
+  density: 6.1
+  words: 1311
+  tiers:
+    agentic: 1
+    core: 6
+    model: 1
+  ambiguous: 5
+  top_terms:
+    AI: 6
+    intelligence: 2
+    AI assistant: 1
+    Claude: 1
+    agent: 1
+    automation: 1
+    smart: 1
