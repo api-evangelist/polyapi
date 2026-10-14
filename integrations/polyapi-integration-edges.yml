@@ -1,6 +1,7 @@
 generated: '2026-10-14'
 method: searched
 checked:
+- apaleo/integrations/apaleo-integration-edges.yml
 - https://github.com/marketplace?type=actions
 marketplace_apps: []
 edges:
@@ -22,5 +23,22 @@ edges:
   - Verified creator
   detected_by: sweep-devtools.py
   detected: '2026-10-14'
+- partner_name: apaleo (own)
+  partner: apaleo
+  partner_match: mirror
+  mirror_match: domain
+  type: marketplace
+  relationship: platform-app
+  direction: third-party
+  channel: partner-built
+  marketplace: own
+  evidence: https://store.apaleo.com/apps/polyapi
+  mirror_of: apaleo/integrations/apaleo-integration-edges.yml
+  apps:
+  - PolyAPI
+  listing_count: 1
+  detected: '2026-10-14'
+  detected_by: mirror-platform-listings.py
+  category: Automation platforms
 source:
 - https://github.com/marketplace?type=actions

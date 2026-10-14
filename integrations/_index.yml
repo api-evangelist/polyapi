@@ -15,3 +15,16 @@
   relationship: platform-app
   status: not-a-workflow
   arazzo: null
+- slug: polyapi-apaleo-own
+  label: apaleo (own)
+  partner: apaleo
+  partner_name: apaleo (own)
+  category: Automation platforms
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://store.apaleo.com/apps/polyapi
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
