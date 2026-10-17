@@ -124,7 +124,43 @@ paths:
         '404':
           $ref: '#/components/responses/NotFound'
 components:
+  parameters:
+    limitParam:
+      name: limit
+      in: query
+      required: false
+      description: Maximum number of items to return.
+      schema:
+        type: integer
+        default: 25
+    variableIdParam:
+      name: variableId
+      in: path
+      required: true
+      description: The unique identifier of the variable.
+      schema:
+        type: string
+    offsetParam:
+      name: offset
+      in: query
+      required: false
+      description: Number of items to skip for pagination.
+      schema:
+        type: integer
+        default: 0
   schemas:
+    Error:
+      type: object
+      properties:
+        statusCode:
+          type: integer
+          description: The HTTP status code.
+        message:
+          type: string
+          description: A human-readable error message.
+        error:
+          type: string
+          description: The error type.
     Variable:
       type: object
       properties:
@@ -174,55 +210,19 @@ components:
         secret:
           type: boolean
           default: false
-    Error:
-      type: object
-      properties:
-        statusCode:
-          type: integer
-          description: The HTTP status code.
-        message:
-          type: string
-          description: A human-readable error message.
-        error:
-          type: string
-          description: The error type.
   responses:
-    Unauthorized:
-      description: Authentication is required or the provided credentials are invalid.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
     NotFound:
       description: The requested resource was not found.
       content:
         application/json:
           schema:
             $ref: '#/components/schemas/Error'
-  parameters:
-    variableIdParam:
-      name: variableId
-      in: path
-      required: true
-      description: The unique identifier of the variable.
-      schema:
-        type: string
-    offsetParam:
-      name: offset
-      in: query
-      required: false
-      description: Number of items to skip for pagination.
-      schema:
-        type: integer
-        default: 0
-    limitParam:
-      name: limit
-      in: query
-      required: false
-      description: Maximum number of items to return.
-      schema:
-        type: integer
-        default: 25
+    Unauthorized:
+      description: Authentication is required or the provided credentials are invalid.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
   securitySchemes:
     bearerAuth:
       type: http

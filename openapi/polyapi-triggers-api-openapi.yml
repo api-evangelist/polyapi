@@ -124,19 +124,30 @@ paths:
         '404':
           $ref: '#/components/responses/NotFound'
 components:
-  responses:
-    Unauthorized:
-      description: Authentication is required or the provided credentials are invalid.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-    NotFound:
-      description: The requested resource was not found.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
+  parameters:
+    triggerIdParam:
+      name: triggerId
+      in: path
+      required: true
+      description: The unique identifier of the trigger.
+      schema:
+        type: string
+    limitParam:
+      name: limit
+      in: query
+      required: false
+      description: Maximum number of items to return.
+      schema:
+        type: integer
+        default: 25
+    offsetParam:
+      name: offset
+      in: query
+      required: false
+      description: Number of items to skip for pagination.
+      schema:
+        type: integer
+        default: 0
   schemas:
     Trigger:
       type: object
@@ -212,30 +223,19 @@ components:
         error:
           type: string
           description: The error type.
-  parameters:
-    triggerIdParam:
-      name: triggerId
-      in: path
-      required: true
-      description: The unique identifier of the trigger.
-      schema:
-        type: string
-    offsetParam:
-      name: offset
-      in: query
-      required: false
-      description: Number of items to skip for pagination.
-      schema:
-        type: integer
-        default: 0
-    limitParam:
-      name: limit
-      in: query
-      required: false
-      description: Maximum number of items to return.
-      schema:
-        type: integer
-        default: 25
+  responses:
+    NotFound:
+      description: The requested resource was not found.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    Unauthorized:
+      description: Authentication is required or the provided credentials are invalid.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
   securitySchemes:
     bearerAuth:
       type: http
