@@ -1,4 +1,4 @@
-# PolyAPI (polyapi)
+# PolyAPI
 
 <!-- API-EVANGELIST-PROVENANCE:BEGIN -->
 > ### About this repository
@@ -66,90 +66,177 @@
 
 Poly, built using cutting-edge AI and Kubernetes-native technology, accelerates development and simplifies the operation of integrations, orchestrations, and microservices with TypeScript, Python, Java, and C.
 
-**APIs.json:** [https://raw.githubusercontent.com/api-evangelist/polyapi/refs/heads/main/apis.yml](https://raw.githubusercontent.com/api-evangelist/polyapi/refs/heads/main/apis.yml)
+**Areas:** Integration · Microservices · Middleware · Orchestration · Pro-Code-API-Composition
 
-## Scope
+## PolyAPI on APIs.io
 
-- **Type:** Index
-- **Position:** Consumer
-- **Access:** 3rd-Party
+Everything profiled for PolyAPI is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/polyapi/](https://apis.io/providers/polyapi/)** — or go straight to one of the APIs or properties below.
 
-## Tags
+### APIs (10)
 
-- Integrations
-- Microservices
-- Middleware
-- Orchestrations
-- Pro-Code API Composition
+- [PolyAPI API Functions API](https://apis.io/apis/polyapi/polyapi-api-functions-api/) — Manage API functions that wrap third-party API calls and are invoked through the PolyAPI gateway.
+- [PolyAPI Assistants API](https://apis.io/apis/polyapi/polyapi-assistants-api/) — Manage AI assistants and conversations for AI-powered document assistance and discovery.
+- [PolyAPI Client Functions API](https://apis.io/apis/polyapi/polyapi-client-functions-api/) — Manage shared client functions that run wherever they are executed.
+- [PolyAPI Environments API](https://apis.io/apis/polyapi/polyapi-environments-api/) — Manage environments for organizing and deploying resources across development, staging, and production.
+- [PolyAPI Jobs API](https://apis.io/apis/polyapi/polyapi-jobs-api/) — Manage jobs that execute functions at a set time, interval, or CRON schedule.
+- [PolyAPI Schemas API](https://apis.io/apis/polyapi/polyapi-schemas-api/) — Manage shared JSON Schema definitions used to type events and application data.
+- [PolyAPI Server Functions API](https://apis.io/apis/polyapi/polyapi-server-functions-api/) — Manage Knative serverless functions that run in the PolyAPI cloud infrastructure.
+- [PolyAPI Triggers API](https://apis.io/apis/polyapi/polyapi-triggers-api/) — Manage triggers that connect cloud events to functions for event-driven execution.
+- [PolyAPI Variables API](https://apis.io/apis/polyapi/polyapi-variables-api/) — Manage variables and secrets that are stored securely and injected into functions at runtime.
+- [PolyAPI Webhooks API](https://apis.io/apis/polyapi/polyapi-webhooks-api/) — Manage webhook endpoints that receive events via HTTP calls, with support for authentication and custom listeners.
 
-## Timestamps
+### Published properties
 
-- **Created:** 2025-06-05T00:00:00.000Z
-- **Modified:** 2026-05-19
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
 
-## APIs
+#### Agentic access (1)
 
-### PolyAPI Platform API
+Which operations an agent can call, which act, and which need a human in the loop.
 
-PolyAPI is a modern enterprise middleware platform that provides a unified REST API for managing cloud service resources including functions, variables, webhooks, triggers, jobs, schemas, and environments. Built using AI and Kubernetes-native technology, it accelerates development and simplifies the operation of integrations, orchestrations, and microservices with TypeScript, Python, Java, and C#.
+- [Polyapi Agentic Access](https://apis.io/agentic-access/polyapi/polyapi-agentic-access/)
 
-- **Human URL:** [https://polyapi.io/](https://polyapi.io/)
+#### JSON Schema (10)
 
-#### Tags
+The data models the API reads and writes.
 
-- Integrations
-- Microservices
-- Middleware
-- Orchestrations
+- [PolyAPI API Function](https://apis.io/schemas/polyapi/api-function/)
+- [PolyAPI Assistant Conversation](https://apis.io/schemas/polyapi/assistant/)
+- [PolyAPI Client Function](https://apis.io/schemas/polyapi/client-function/)
+- [PolyAPI Environment](https://apis.io/schemas/polyapi/environment/)
+- [PolyAPI Job](https://apis.io/schemas/polyapi/job/)
+- [PolyAPI Schema](https://apis.io/schemas/polyapi/schema/)
+- [PolyAPI Server Function](https://apis.io/schemas/polyapi/server-function/)
+- [PolyAPI Trigger](https://apis.io/schemas/polyapi/trigger/)
+- [PolyAPI Variable](https://apis.io/schemas/polyapi/variable/)
+- [PolyAPI Webhook](https://apis.io/schemas/polyapi/webhook/)
 
-#### Properties
+#### JSON-LD (1)
 
-- [Documentation](https://docs.polyapi.io/)
-- [OpenAPI](openapi/polyapi-platform-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/polyapi-platform.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/polyapi-platform.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [JSON Schema](json-schema/api-function.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/server-function.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/client-function.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/webhook.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/variable.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/trigger.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/job.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/environment.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/assistant.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON-LD](json-ld/polyapi-context.jsonld) — [JSON-LD](https://www.w3.org/TR/json-ld11/)
+Linked-data contexts for the provider's vocabulary.
 
-## Common Properties
+- [Polyapi Context](https://apis.io/jsonld/polyapi/polyapi-context/)
 
-- [GitHub Organization](https://github.com/polyapi)
-- [LinkedIn](https://www.linkedin.com/company/poly-api)
+#### Collections (21)
+
+Postman and Open Collection request collections.
+
+- [PolyAPI Platform API Functions API](https://apis.io/collections/polyapi/open-polyapi-api-functions-api/)
+- [PolyAPI Platform API Functions Assistants API](https://apis.io/collections/polyapi/open-polyapi-assistants-api/)
+- [PolyAPI Platform API Functions Client Functions API](https://apis.io/collections/polyapi/open-polyapi-client-functions-api/)
+- [PolyAPI Platform API Functions Environments API](https://apis.io/collections/polyapi/open-polyapi-environments-api/)
+- [PolyAPI Platform API Functions Jobs API](https://apis.io/collections/polyapi/open-polyapi-jobs-api/)
+- [PolyAPI Platform API](https://apis.io/collections/polyapi/open-polyapi-platform/)
+- [PolyAPI Platform API Functions Schemas API](https://apis.io/collections/polyapi/open-polyapi-schemas-api/)
+- [PolyAPI Platform API Functions Server Functions API](https://apis.io/collections/polyapi/open-polyapi-server-functions-api/)
+- [PolyAPI Platform API Functions Triggers API](https://apis.io/collections/polyapi/open-polyapi-triggers-api/)
+- [PolyAPI Platform API Functions Variables API](https://apis.io/collections/polyapi/open-polyapi-variables-api/)
+- [PolyAPI Platform API Functions Webhooks API](https://apis.io/collections/polyapi/open-polyapi-webhooks-api/)
+- [PolyAPI Platform API Functions API](https://apis.io/collections/polyapi/postman-polyapi-api-functions-api/)
+- [PolyAPI Platform API Functions Assistants API](https://apis.io/collections/polyapi/postman-polyapi-assistants-api/)
+- [PolyAPI Platform API Functions Client Functions API](https://apis.io/collections/polyapi/postman-polyapi-client-functions-api/)
+- [PolyAPI Platform API Functions Environments API](https://apis.io/collections/polyapi/postman-polyapi-environments-api/)
+- [PolyAPI Platform API Functions Jobs API](https://apis.io/collections/polyapi/postman-polyapi-jobs-api/)
+- [PolyAPI Platform API Functions Schemas API](https://apis.io/collections/polyapi/postman-polyapi-schemas-api/)
+- [PolyAPI Platform API Functions Server Functions API](https://apis.io/collections/polyapi/postman-polyapi-server-functions-api/)
+- [PolyAPI Platform API Functions Triggers API](https://apis.io/collections/polyapi/postman-polyapi-triggers-api/)
+- [PolyAPI Platform API Functions Variables API](https://apis.io/collections/polyapi/postman-polyapi-variables-api/)
+- [PolyAPI Platform API Functions Webhooks API](https://apis.io/collections/polyapi/postman-polyapi-webhooks-api/)
+
+#### Governance rules (1)
+
+Spectral rulesets for the provider's contracts.
+
+- [PolyAPI — jsonschema rules](https://apis.io/rules/polyapi/polyapi-jsonschema-spectral-rules/)
+
+#### Security (2)
+
+Authentication, trust centre, and vulnerability disclosure.
+
+- [Polyapi Authentication](https://apis.io/security/polyapi/polyapi-authentication/)
+- [Polyapi Domain Security](https://apis.io/security/polyapi/polyapi-domain-security/)
+
+#### Plans and pricing (1)
+
+Published plans, tiers and prices.
+
+- [Polyapi Plans Pricing](https://apis.io/plans/polyapi/polyapi-plans-pricing/)
+
+#### Rate limits (1)
+
+Published request limits.
+
+- [Polyapi Rate Limits](https://apis.io/rate-limits/polyapi/polyapi-rate-limits/)
+
+#### FinOps (1)
+
+What the API costs to run, by operation.
+
+- [Polyapi Finops](https://apis.io/finops/polyapi/polyapi-finops/)
+
+## Where to find this API
+
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
+
 - [Website](https://polyapi.io/)
-- [Pricing](https://polyapi.io/#pricing)
-- [Use Cases](https://polyapi.io/platform/use-cases/)
-- [Features](undefined)
-- [Roadmap](https://polyapi.io/platform/#roadmap)
-- [Status Page](https://polyapi.io/platform/system-status/)
-- [Case Studies](https://polyapi.io/solutions/case-studies/)
-- [Changelog](https://polyapi.io/learn-more/release-notes/)
 - [Documentation](https://docs.polyapi.io/)
-- [S D Ks](https://docs.polyapi.io/generated_sdks/index.html)
-- [Authentication](https://docs.polyapi.io/authentication/index.html)
-- [Webhooks](https://docs.polyapi.io/webhooks/index.html)
-- [Schema](https://docs.polyapi.io/schemas/index.html)
-- [Snippets](https://docs.polyapi.io/snippets/index.html)
-- [Environments](https://docs.polyapi.io/environments/index.html)
-- [Versioning](https://docs.polyapi.io/versions.html)
-- [Getting Started](https://docs.polyapi.io/quickstart.html)
-- [Videos](https://polyapi.io/learn-more/videos/)
-- [White Papers](https://polyapi.io/learn-more/white-papers/)
+- [Getting started](https://docs.polyapi.io/quickstart.html)
+- [Pricing](https://polyapi.io/#pricing)
+- [Changelog](https://polyapi.io/learn-more/release-notes/)
 - [Blog](https://polyapi.io/learn-more/blog/)
-- [Partners](https://polyapi.io/about-us/investors-partners/#partners)
-- [Login](https://na1.polyapi.io/canopy/polyui/login)
-- [Sign Up](https://na1.polyapi.io/canopy/polyui/signup)
-- [L L Ms Txt](https://na1.polyapi.io/llms.txt)
+- [GitHub](https://github.com/polyapi)
+- [Status](https://polyapi.io/platform/system-status/)
 
-## Maintainers
+## API Evangelist rating
 
-**FN:** Kin Lane
-**Email:** kin@apievangelist.com
+**Kin Score 45.9** — developing · rubric 0.25.0 · scored 2026-10-23
+
+| Facet | Score |
+|---|---|
+| Discoverability | 64.3 |
+| Contract quality | 65.9 |
+| Contract governance | 9.8 |
+| Operational transparency | 55.3 |
+| Developer ergonomics | 44.0 |
+| Access clarity | 31.6 |
+
+**Agent readiness 24.3** — agent-aware
+
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | yes |
+| Agentic Access | derived (partial credit) |
+| Reversibility Documented | — |
+| MCP Server | — |
+| Auth Clarity | bearer (partial credit) |
+| Idempotency | — |
+| Error Semantics | — |
+| OpenAPI Examples | — |
+| Rate Limit Signal | derived (partial credit) |
+| Event Surface Described | unknown |
+| Agent Skills | — |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | — |
+| Delegated Identity | — |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
+| Pagination Ratio | partial |
+| Operation Distinctiveness | distinct |
+
+**Regulatory alignment 16.7** — Horizontal (data, software, accessibility, platform)
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/polyapi/](https://apis.io/providers/polyapi/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for PolyAPI: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/polyapi/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
